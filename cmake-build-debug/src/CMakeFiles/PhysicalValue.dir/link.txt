@@ -1,0 +1,2 @@
+/usr/bin/ar qc libPhysicalValue.a  CMakeFiles/PhysicalValue.dir/PhysicalUnit.cpp.o CMakeFiles/PhysicalValue.dir/main.cpp.o
+/usr/bin/ranlib libPhysicalValue.a
