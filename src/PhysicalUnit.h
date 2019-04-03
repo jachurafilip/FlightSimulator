@@ -15,12 +15,12 @@ struct MKSUnit
 };
 
 template <typename MKSUnit>
-class PhysicalValue {
+class PhysicalUnit {
 private:
     long double magnitude_ {0.0};
 
 public:
-    constexpr explicit PhysicalValue(const long double magnitude) : magnitude_(magnitude) {}
+    constexpr explicit PhysicalUnit(const long double magnitude) : magnitude_(magnitude) {}
 
     constexpr long double getMagnitude() const
     {
@@ -35,150 +35,183 @@ public:
 
 template<int M, int K, int S>
 bool operator==
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
     return left.getMagnitude()==right.getMagnitude();
 }
 
 template<int M, int K, int S>
 bool operator!=
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
     return left.getMagnitude()!=right.getMagnitude();
 }
 
 template<int M, int K, int S>
 bool operator>
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
     return left.getMagnitude()>right.getMagnitude();
 }
 
 template<int M, int K, int S>
 bool operator>=
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
     return left.getMagnitude()>=right.getMagnitude();
 }
 
 template<int M, int K, int S>
 bool operator<
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
     return left.getMagnitude()<right.getMagnitude();
 }
 
 template<int M, int K, int S>
 bool operator<=
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
     return left.getMagnitude()<=right.getMagnitude();
 }
 
 template<int M, int K, int S>
-constexpr PhysicalValue<MKSUnit<M,K,S>>operator+
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator+
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
-    return PhysicalValue<MKSUnit<M,K,S>>(left.getMagnitude()+right.getMagnitude());
+    return PhysicalUnit<MKSUnit<M,K,S>>(left.getMagnitude()+right.getMagnitude());
 }
 
 template<int M, int K, int S>
-constexpr PhysicalValue<MKSUnit<M,K,S>>operator-
-        (const PhysicalValue<MKSUnit<M,K,S>> &left, const PhysicalValue<MKSUnit<M,K,S>> &right) noexcept
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator-
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
 {
-    return PhysicalValue<MKSUnit<M,K,S>>(left.getMagnitude()-right.getMagnitude());
+    return PhysicalUnit<MKSUnit<M,K,S>>(left.getMagnitude()-right.getMagnitude());
+}
+
+template<int M, int K, int S>
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator-
+        (const PhysicalUnit<MKSUnit<M,K,S>> &value) noexcept
+{
+    return PhysicalUnit<MKSUnit<M,K,S>>(-value.getMagnitude());
 }
 
 template<int M1, int K1, int S1, int M2, int K2, int S2>
-constexpr PhysicalValue<MKSUnit<M1+M2,K1+K2,S1+S2>>operator*
-        (const PhysicalValue<MKSUnit<M1,K1,S1>> &left, const PhysicalValue<MKSUnit<M2,K2,S2>> &right)
+constexpr PhysicalUnit<MKSUnit<M1+M2,K1+K2,S1+S2>>operator*
+        (const PhysicalUnit<MKSUnit<M1,K1,S1>> &left, const PhysicalUnit<MKSUnit<M2,K2,S2>> &right) noexcept
 {
-    return PhysicalValue<MKSUnit<M1+M2,K1+K2,S1+S2>>(left.getMagnitude()*right.getMagnitude());
+    return PhysicalUnit<MKSUnit<M1+M2,K1+K2,S1+S2>>(left.getMagnitude()*right.getMagnitude());
 }
 
 template<int M1, int K1, int S1, int M2, int K2, int S2>
-constexpr PhysicalValue<MKSUnit<M1-M2,K1-K2,S1-S2>>operator/
-        (const PhysicalValue<MKSUnit<M1,K1,S1>> &left, const PhysicalValue<MKSUnit<M2,K2,S2>> &right)
+constexpr PhysicalUnit<MKSUnit<M1-M2,K1-K2,S1-S2>>operator/
+        (const PhysicalUnit<MKSUnit<M1,K1,S1>> &left, const PhysicalUnit<MKSUnit<M2,K2,S2>> &right) noexcept
 {
-    return PhysicalValue<MKSUnit<M1-M2,K1-K2,S1-S2>>(left.getMagnitude()/right.getMagnitude());
+    return PhysicalUnit<MKSUnit<M1-M2,K1-K2,S1-S2>>(left.getMagnitude()/right.getMagnitude());
 }
 
-using Quantity = PhysicalValue<MKSUnit<0,0,0>>;
-constexpr Quantity operator""_Deg(long double magnitude)
+template<int M, int K, int S>
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator*
+        (const long double multiplier, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
+{
+    return PhysicalUnit<MKSUnit<M,K,S>>(multiplier*right.getMagnitude());
+}
+
+template<int M, int K, int S>
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator*
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const long double right) noexcept
+{
+    return PhysicalUnit<MKSUnit<M,K,S>>(right*left.getMagnitude());
+}
+
+template<int M, int K, int S>
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator/
+        (const PhysicalUnit<MKSUnit<M,K,S>> &left, const long double right) noexcept
+{
+    return PhysicalUnit<MKSUnit<M,K,S>>(left.getMagnitude()/right);
+}
+
+template<int M, int K, int S>
+constexpr PhysicalUnit<MKSUnit<M,K,S>>operator/
+        (long double left, const PhysicalUnit<MKSUnit<M,K,S>> &right) noexcept
+{
+    return PhysicalUnit<MKSUnit<-M,-K,-S>>(left/right.getMagnitude());
+}
+
+using Quantity = PhysicalUnit<MKSUnit<0,0,0>>;
+constexpr Quantity operator""_Deg(long double magnitude) noexcept
 {
     return Quantity(magnitude);
 }
-using Mass = PhysicalValue<MKSUnit<0,1,0>>;
-constexpr Mass operator""_kg(long double magnitude)
+using Mass = PhysicalUnit<MKSUnit<0,1,0>>;
+constexpr Mass operator""_kg(long double magnitude) noexcept
 {
     return Mass(magnitude);
 }
 
-using Length = PhysicalValue<MKSUnit<1,0,0>>;
-constexpr Length operator""_m(long double magnitude)
+using Length = PhysicalUnit<MKSUnit<1,0,0>>;
+constexpr Length operator""_m(long double magnitude) noexcept
 {
     return Length(magnitude);
 }
 
-using Area = PhysicalValue<MKSUnit<2,0,0>>;
-constexpr Area operator""_m2(long double magnitude)
+using Area = PhysicalUnit<MKSUnit<2,0,0>>;
+constexpr Area operator""_m2(long double magnitude) noexcept
 {
     return Area(magnitude);
 }
 
-using Volume = PhysicalValue<MKSUnit<3,0,0>>;
-constexpr Volume operator""_m3(long double magnitude)
+using Volume = PhysicalUnit<MKSUnit<3,0,0>>;
+constexpr Volume operator""_m3(long double magnitude) noexcept
 {
     return Volume(magnitude);
 }
 
-using Time = PhysicalValue<MKSUnit<0,0,1>>;
-constexpr Time operator""_s(long double magnitude)
+using Time = PhysicalUnit<MKSUnit<0,0,1>>;
+constexpr Time operator""_s(long double magnitude) noexcept
 {
     return Time(magnitude);
 }
 
-using Frequency = PhysicalValue<MKSUnit<0,0,-1>>;
-constexpr Frequency operator""_Hz(long double magnitude)
+using Frequency = PhysicalUnit<MKSUnit<0,0,-1>>;
+constexpr Frequency operator""_Hz(long double magnitude) noexcept
 {
     return Frequency(magnitude);
 }
 
-using Speed = PhysicalValue<MKSUnit<1,0,-1>>;
-constexpr Speed operator""_ms(long double magnitude)
+using Speed = PhysicalUnit<MKSUnit<1,0,-1>>;
+constexpr Speed operator""_ms(long double magnitude) noexcept
 {
     return Speed(magnitude);
 }
 
-using Acceleration = PhysicalValue<MKSUnit<1,0,-2>>;
-constexpr Acceleration operator""_ms2(long double magnitude)
+using Acceleration = PhysicalUnit<MKSUnit<1,0,-2>>;
+constexpr Acceleration operator""_ms2(long double magnitude) noexcept
 {
     return Acceleration(magnitude);
 }
-using Force = PhysicalValue<MKSUnit<1,1,-2>>;
-constexpr Force operator""_N(long double magnitude)
+using Force = PhysicalUnit<MKSUnit<1,1,-2>>;
+constexpr Force operator""_N(long double magnitude) noexcept
 {
     return Force(magnitude);
 }
-using Pressure = PhysicalValue<MKSUnit<-1,1,-2>>;
-constexpr Pressure operator""_Pa(long double magnitude)
+using Pressure = PhysicalUnit<MKSUnit<-1,1,-2>>;
+constexpr Pressure operator""_Pa(long double magnitude) noexcept
 {
     return Pressure(magnitude);
 }
 
-using Energy = PhysicalValue<MKSUnit<2,1,-2>>;
-constexpr Energy operator""_J(long double magnitude)
+using Energy = PhysicalUnit<MKSUnit<2,1,-2>>;
+constexpr Energy operator""_J(long double magnitude) noexcept
 {
     return Energy(magnitude);
 }
 
-using Power = PhysicalValue<MKSUnit<2,1,-3>>;
-constexpr Power operator""_W(long double magnitude)
+using Power = PhysicalUnit<MKSUnit<2,1,-3>>;
+constexpr Power operator""_W(long double magnitude) noexcept
 {
     return Power(magnitude);
 }
-
-
 
 
 #endif //FLIGHTSIMULATOR_PHYSICALVALUE_H

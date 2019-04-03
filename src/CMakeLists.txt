@@ -1,5 +1,5 @@
-set(HEADERS PhysicalUnit.h)
-set(SOURCE_FILES PhysicalUnit.cpp)
+set(HEADERS PhysicalUnit.h Vector.h VectorUnit.h)
+set(SOURCE_FILES PhysicalUnit.cpp Vector.cpp VectorUnit.cpp )
 
 add_library(PhysicalUnit STATIC ${SOURCE_FILES} main.cpp)
 target_include_directories(PhysicalUnit PUBLIC . )
