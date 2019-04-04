@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/67/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/filip/CLionProjects/FlightSimulator
+CMAKE_SOURCE_DIR = /home/filip/FlightSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/filip/FlightSimulator/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,37 +59,37 @@ CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target list_install_components
@@ -105,7 +105,7 @@ list_install_components/fast: list_install_components
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/67/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -116,7 +116,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/67/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -126,9 +126,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -192,7 +192,7 @@ gtest_main: cmake_check_build_system
 
 # fast build rule for target.
 gtest_main/fast:
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
 #=============================================================================
@@ -205,7 +205,7 @@ gtest: cmake_check_build_system
 
 # fast build rule for target.
 gtest/fast:
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest.dir/build.make lib/gtest/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
 #=============================================================================
@@ -222,17 +222,30 @@ PhysicalUnit/fast:
 .PHONY : PhysicalUnit/fast
 
 #=============================================================================
-# Target rules for targets named PhysicalUnitsTests
+# Target rules for targets named VectorUnitsTests
 
 # Build rule for target.
-PhysicalUnitsTests: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 PhysicalUnitsTests
-.PHONY : PhysicalUnitsTests
+VectorUnitsTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 VectorUnitsTests
+.PHONY : VectorUnitsTests
 
 # fast build rule for target.
-PhysicalUnitsTests/fast:
-	$(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/build
-.PHONY : PhysicalUnitsTests/fast
+VectorUnitsTests/fast:
+	$(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/build
+.PHONY : VectorUnitsTests/fast
+
+#=============================================================================
+# Target rules for targets named ScalarUnitsTests
+
+# Build rule for target.
+ScalarUnitsTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ScalarUnitsTests
+.PHONY : ScalarUnitsTests
+
+# fast build rule for target.
+ScalarUnitsTests/fast:
+	$(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/build
+.PHONY : ScalarUnitsTests/fast
 
 # Help Target
 help:
@@ -251,7 +264,8 @@ help:
 	@echo "... gtest_main"
 	@echo "... gtest"
 	@echo "... PhysicalUnit"
-	@echo "... PhysicalUnitsTests"
+	@echo "... VectorUnitsTests"
+	@echo "... ScalarUnitsTests"
 .PHONY : help
 
 

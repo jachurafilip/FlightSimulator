@@ -478,16 +478,6 @@ gtest/internal/gtest-string.h
 gtest/internal/gtest-type-util.h
 ../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-type-util.h
 
-../lib/gtest/googletest/include/gtest/internal/gtest-param-util-generated.h
-assert.h
--
-memory
--
-gtest/internal/gtest-param-util.h
-../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-param-util.h
-gtest/internal/gtest-port.h
-../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-port.h
-
 ../lib/gtest/googletest/include/gtest/internal/gtest-param-util.h
 ctype.h
 -
@@ -592,17 +582,17 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc
 gmock/gmock.h
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock/gmock.h
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock/gmock.h
 src/gmock-cardinalities.cc
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/src/gmock-cardinalities.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/src/gmock-cardinalities.cc
 src/gmock-internal-utils.cc
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/src/gmock-internal-utils.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/src/gmock-internal-utils.cc
 src/gmock-matchers.cc
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/src/gmock-matchers.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/src/gmock-matchers.cc
 src/gmock-spec-builders.cc
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/src/gmock-spec-builders.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/src/gmock-spec-builders.cc
 src/gmock.cc
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/src/gmock.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/src/gmock.cc
 

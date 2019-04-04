@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/67/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/filip/CLionProjects/FlightSimulator
+CMAKE_SOURCE_DIR = /home/filip/FlightSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/filip/FlightSimulator/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/PhysicalUnit.dir/depend.make
@@ -57,47 +57,92 @@ include src/CMakeFiles/PhysicalUnit.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/PhysicalUnit.dir/flags.make
 
-src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o: src/CMakeFiles/PhysicalUnit.dir/flags.make
-src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o: ../src/PhysicalUnit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o -c /home/filip/CLionProjects/FlightSimulator/src/PhysicalUnit.cpp
+src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o: src/CMakeFiles/PhysicalUnit.dir/flags.make
+src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o: ../src/ScalarUnit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o -c /home/filip/FlightSimulator/src/ScalarUnit.cpp
 
-src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.i"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/CLionProjects/FlightSimulator/src/PhysicalUnit.cpp > CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.i
+src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.i"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/FlightSimulator/src/ScalarUnit.cpp > CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.i
 
-src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.s"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/CLionProjects/FlightSimulator/src/PhysicalUnit.cpp -o CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.s
+src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.s"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/FlightSimulator/src/ScalarUnit.cpp -o CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.s
+
+src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.o: src/CMakeFiles/PhysicalUnit.dir/flags.make
+src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.o: ../src/Vector.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.o"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/Vector.cpp.o -c /home/filip/FlightSimulator/src/Vector.cpp
+
+src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicalUnit.dir/Vector.cpp.i"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/FlightSimulator/src/Vector.cpp > CMakeFiles/PhysicalUnit.dir/Vector.cpp.i
+
+src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicalUnit.dir/Vector.cpp.s"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/FlightSimulator/src/Vector.cpp -o CMakeFiles/PhysicalUnit.dir/Vector.cpp.s
+
+src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o: src/CMakeFiles/PhysicalUnit.dir/flags.make
+src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o: ../src/VectorUnit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o -c /home/filip/FlightSimulator/src/VectorUnit.cpp
+
+src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.i"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/FlightSimulator/src/VectorUnit.cpp > CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.i
+
+src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.s"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/FlightSimulator/src/VectorUnit.cpp -o CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.s
+
+src/CMakeFiles/PhysicalUnit.dir/Point.cpp.o: src/CMakeFiles/PhysicalUnit.dir/flags.make
+src/CMakeFiles/PhysicalUnit.dir/Point.cpp.o: ../src/Point.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/Point.cpp.o"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/Point.cpp.o -c /home/filip/FlightSimulator/src/Point.cpp
+
+src/CMakeFiles/PhysicalUnit.dir/Point.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicalUnit.dir/Point.cpp.i"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/FlightSimulator/src/Point.cpp > CMakeFiles/PhysicalUnit.dir/Point.cpp.i
+
+src/CMakeFiles/PhysicalUnit.dir/Point.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicalUnit.dir/Point.cpp.s"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/FlightSimulator/src/Point.cpp -o CMakeFiles/PhysicalUnit.dir/Point.cpp.s
 
 src/CMakeFiles/PhysicalUnit.dir/main.cpp.o: src/CMakeFiles/PhysicalUnit.dir/flags.make
 src/CMakeFiles/PhysicalUnit.dir/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/main.cpp.o"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/main.cpp.o -c /home/filip/CLionProjects/FlightSimulator/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/PhysicalUnit.dir/main.cpp.o"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PhysicalUnit.dir/main.cpp.o -c /home/filip/FlightSimulator/src/main.cpp
 
 src/CMakeFiles/PhysicalUnit.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicalUnit.dir/main.cpp.i"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/CLionProjects/FlightSimulator/src/main.cpp > CMakeFiles/PhysicalUnit.dir/main.cpp.i
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/FlightSimulator/src/main.cpp > CMakeFiles/PhysicalUnit.dir/main.cpp.i
 
 src/CMakeFiles/PhysicalUnit.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicalUnit.dir/main.cpp.s"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/CLionProjects/FlightSimulator/src/main.cpp -o CMakeFiles/PhysicalUnit.dir/main.cpp.s
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/FlightSimulator/src/main.cpp -o CMakeFiles/PhysicalUnit.dir/main.cpp.s
 
 # Object files for target PhysicalUnit
 PhysicalUnit_OBJECTS = \
-"CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o" \
+"CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o" \
+"CMakeFiles/PhysicalUnit.dir/Vector.cpp.o" \
+"CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o" \
+"CMakeFiles/PhysicalUnit.dir/Point.cpp.o" \
 "CMakeFiles/PhysicalUnit.dir/main.cpp.o"
 
 # External object files for target PhysicalUnit
 PhysicalUnit_EXTERNAL_OBJECTS =
 
-src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o
+src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o
+src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.o
+src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o
+src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/Point.cpp.o
 src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/main.cpp.o
 src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/build.make
 src/libPhysicalUnit.a: src/CMakeFiles/PhysicalUnit.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libPhysicalUnit.a"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/PhysicalUnit.dir/cmake_clean_target.cmake
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PhysicalUnit.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libPhysicalUnit.a"
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/PhysicalUnit.dir/cmake_clean_target.cmake
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PhysicalUnit.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/PhysicalUnit.dir/build: src/libPhysicalUnit.a
@@ -105,10 +150,10 @@ src/CMakeFiles/PhysicalUnit.dir/build: src/libPhysicalUnit.a
 .PHONY : src/CMakeFiles/PhysicalUnit.dir/build
 
 src/CMakeFiles/PhysicalUnit.dir/clean:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/PhysicalUnit.dir/cmake_clean.cmake
+	cd /home/filip/FlightSimulator/cmake-build-debug/src && $(CMAKE_COMMAND) -P CMakeFiles/PhysicalUnit.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/PhysicalUnit.dir/clean
 
 src/CMakeFiles/PhysicalUnit.dir/depend:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/filip/CLionProjects/FlightSimulator /home/filip/CLionProjects/FlightSimulator/src /home/filip/CLionProjects/FlightSimulator/cmake-build-debug /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src/CMakeFiles/PhysicalUnit.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/filip/FlightSimulator /home/filip/FlightSimulator/src /home/filip/FlightSimulator/cmake-build-debug /home/filip/FlightSimulator/cmake-build-debug/src /home/filip/FlightSimulator/cmake-build-debug/src/CMakeFiles/PhysicalUnit.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/PhysicalUnit.dir/depend
 

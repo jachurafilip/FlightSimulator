@@ -1,5 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o"
+  "CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o"
+  "CMakeFiles/PhysicalUnit.dir/Vector.cpp.o"
+  "CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o"
+  "CMakeFiles/PhysicalUnit.dir/Point.cpp.o"
   "CMakeFiles/PhysicalUnit.dir/main.cpp.o"
   "libPhysicalUnit.pdb"
   "libPhysicalUnit.a"

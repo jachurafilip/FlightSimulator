@@ -39,27 +39,51 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/67/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/filip/CLionProjects/FlightSimulator
+CMAKE_SOURCE_DIR = /home/filip/FlightSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/filip/FlightSimulator/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/67/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -67,22 +91,10 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/67/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -100,40 +112,28 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/tests/CMakeFiles/progress.marks
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles /home/filip/FlightSimulator/cmake-build-debug/tests/CMakeFiles/progress.marks
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,60 +143,102 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-tests/CMakeFiles/PhysicalUnitsTests.dir/rule:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/PhysicalUnitsTests.dir/rule
-.PHONY : tests/CMakeFiles/PhysicalUnitsTests.dir/rule
+tests/CMakeFiles/VectorUnitsTests.dir/rule:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/VectorUnitsTests.dir/rule
+.PHONY : tests/CMakeFiles/VectorUnitsTests.dir/rule
 
 # Convenience name for target.
-PhysicalUnitsTests: tests/CMakeFiles/PhysicalUnitsTests.dir/rule
+VectorUnitsTests: tests/CMakeFiles/VectorUnitsTests.dir/rule
 
-.PHONY : PhysicalUnitsTests
+.PHONY : VectorUnitsTests
 
 # fast build rule for target.
-PhysicalUnitsTests/fast:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/build
-.PHONY : PhysicalUnitsTests/fast
+VectorUnitsTests/fast:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/build
+.PHONY : VectorUnitsTests/fast
 
-PhysicalUnitsTests.o: PhysicalUnitsTests.cpp.o
+# Convenience name for target.
+tests/CMakeFiles/ScalarUnitsTests.dir/rule:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/ScalarUnitsTests.dir/rule
+.PHONY : tests/CMakeFiles/ScalarUnitsTests.dir/rule
 
-.PHONY : PhysicalUnitsTests.o
+# Convenience name for target.
+ScalarUnitsTests: tests/CMakeFiles/ScalarUnitsTests.dir/rule
+
+.PHONY : ScalarUnitsTests
+
+# fast build rule for target.
+ScalarUnitsTests/fast:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/build
+.PHONY : ScalarUnitsTests/fast
+
+ScalarUnitsTests.o: ScalarUnitsTests.cpp.o
+
+.PHONY : ScalarUnitsTests.o
 
 # target to build an object file
-PhysicalUnitsTests.cpp.o:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/PhysicalUnitsTests.cpp.o
-.PHONY : PhysicalUnitsTests.cpp.o
+ScalarUnitsTests.cpp.o:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/ScalarUnitsTests.cpp.o
+.PHONY : ScalarUnitsTests.cpp.o
 
-PhysicalUnitsTests.i: PhysicalUnitsTests.cpp.i
+ScalarUnitsTests.i: ScalarUnitsTests.cpp.i
 
-.PHONY : PhysicalUnitsTests.i
+.PHONY : ScalarUnitsTests.i
 
 # target to preprocess a source file
-PhysicalUnitsTests.cpp.i:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/PhysicalUnitsTests.cpp.i
-.PHONY : PhysicalUnitsTests.cpp.i
+ScalarUnitsTests.cpp.i:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/ScalarUnitsTests.cpp.i
+.PHONY : ScalarUnitsTests.cpp.i
 
-PhysicalUnitsTests.s: PhysicalUnitsTests.cpp.s
+ScalarUnitsTests.s: ScalarUnitsTests.cpp.s
 
-.PHONY : PhysicalUnitsTests.s
+.PHONY : ScalarUnitsTests.s
 
 # target to generate assembly for a file
-PhysicalUnitsTests.cpp.s:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/PhysicalUnitsTests.cpp.s
-.PHONY : PhysicalUnitsTests.cpp.s
+ScalarUnitsTests.cpp.s:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/ScalarUnitsTests.cpp.s
+.PHONY : ScalarUnitsTests.cpp.s
+
+VectorUnitsTests.o: VectorUnitsTests.cpp.o
+
+.PHONY : VectorUnitsTests.o
+
+# target to build an object file
+VectorUnitsTests.cpp.o:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o
+.PHONY : VectorUnitsTests.cpp.o
+
+VectorUnitsTests.i: VectorUnitsTests.cpp.i
+
+.PHONY : VectorUnitsTests.i
+
+# target to preprocess a source file
+VectorUnitsTests.cpp.i:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.i
+.PHONY : VectorUnitsTests.cpp.i
+
+VectorUnitsTests.s: VectorUnitsTests.cpp.s
+
+.PHONY : VectorUnitsTests.s
+
+# target to generate assembly for a file
+VectorUnitsTests.cpp.s:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.s
+.PHONY : VectorUnitsTests.cpp.s
 
 # Help Target
 help:
@@ -204,16 +246,20 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... install/strip"
-	@echo "... PhysicalUnitsTests"
+	@echo "... install/local"
+	@echo "... VectorUnitsTests"
+	@echo "... edit_cache"
+	@echo "... ScalarUnitsTests"
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
-	@echo "... install/local"
 	@echo "... install"
-	@echo "... PhysicalUnitsTests.o"
-	@echo "... PhysicalUnitsTests.i"
-	@echo "... PhysicalUnitsTests.s"
+	@echo "... ScalarUnitsTests.o"
+	@echo "... ScalarUnitsTests.i"
+	@echo "... ScalarUnitsTests.s"
+	@echo "... VectorUnitsTests.o"
+	@echo "... VectorUnitsTests.i"
+	@echo "... VectorUnitsTests.s"
 .PHONY : help
 
 
@@ -225,6 +271,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

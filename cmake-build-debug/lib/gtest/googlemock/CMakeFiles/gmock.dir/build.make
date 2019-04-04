@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/67/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/filip/CLionProjects/FlightSimulator
+CMAKE_SOURCE_DIR = /home/filip/FlightSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/filip/FlightSimulator/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include lib/gtest/googlemock/CMakeFiles/gmock.dir/depend.make
@@ -59,16 +59,16 @@ include lib/gtest/googlemock/CMakeFiles/gmock.dir/flags.make
 
 lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: lib/gtest/googlemock/CMakeFiles/gmock.dir/flags.make
 lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: ../lib/gtest/googlemock/src/gmock-all.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+	cd /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc
 
 lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gmock.dir/src/gmock-all.cc.i"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc > CMakeFiles/gmock.dir/src/gmock-all.cc.i
+	cd /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc > CMakeFiles/gmock.dir/src/gmock-all.cc.i
 
 lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gmock.dir/src/gmock-all.cc.s"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc -o CMakeFiles/gmock.dir/src/gmock-all.cc.s
+	cd /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock-all.cc -o CMakeFiles/gmock.dir/src/gmock-all.cc.s
 
 # Object files for target gmock
 gmock_OBJECTS = \
@@ -80,9 +80,9 @@ gmock_EXTERNAL_OBJECTS =
 lib/libgmockd.a: lib/gtest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
 lib/libgmockd.a: lib/gtest/googlemock/CMakeFiles/gmock.dir/build.make
 lib/libgmockd.a: lib/gtest/googlemock/CMakeFiles/gmock.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../libgmockd.a"
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock.dir/cmake_clean_target.cmake
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmock.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../libgmockd.a"
+	cd /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock.dir/cmake_clean_target.cmake
+	cd /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmock.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 lib/gtest/googlemock/CMakeFiles/gmock.dir/build: lib/libgmockd.a
@@ -90,10 +90,10 @@ lib/gtest/googlemock/CMakeFiles/gmock.dir/build: lib/libgmockd.a
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock.dir/build
 
 lib/gtest/googlemock/CMakeFiles/gmock.dir/clean:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock.dir/cmake_clean.cmake
+	cd /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock && $(CMAKE_COMMAND) -P CMakeFiles/gmock.dir/cmake_clean.cmake
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock.dir/clean
 
 lib/gtest/googlemock/CMakeFiles/gmock.dir/depend:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/filip/CLionProjects/FlightSimulator /home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock /home/filip/CLionProjects/FlightSimulator/cmake-build-debug /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/lib/gtest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/filip/FlightSimulator /home/filip/FlightSimulator/lib/gtest/googlemock /home/filip/FlightSimulator/cmake-build-debug /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock /home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googlemock/CMakeFiles/gmock.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock.dir/depend
 

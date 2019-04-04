@@ -188,16 +188,6 @@ gtest/internal/gtest-string.h
 gtest/internal/gtest-type-util.h
 ../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-type-util.h
 
-../lib/gtest/googletest/include/gtest/internal/gtest-param-util-generated.h
-assert.h
--
-memory
--
-gtest/internal/gtest-param-util.h
-../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-param-util.h
-gtest/internal/gtest-port.h
-../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-port.h
-
 ../lib/gtest/googletest/include/gtest/internal/gtest-param-util.h
 ctype.h
 -
@@ -302,11 +292,11 @@ cxxabi.h
 acxx_demangle.h
 -
 
-../src/./PhysicalUnit.h
+../src/./ScalarUnit.h
 
-/home/filip/CLionProjects/FlightSimulator/tests/PhysicalUnitsTests.cpp
+/home/filip/FlightSimulator/tests/PhysicalUnitsTests.cpp
 gtest/gtest.h
 -
-PhysicalUnit.h
+ScalarUnit.h
 -
 

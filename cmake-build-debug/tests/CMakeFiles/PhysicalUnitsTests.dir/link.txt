@@ -1,1 +1,1 @@
-/usr/bin/c++   -Wall -Wextra -g   CMakeFiles/PhysicalUnitsTests.dir/PhysicalUnitsTests.cpp.o  -o PhysicalUnitsTests ../lib/libgtestd.a ../lib/libgtest_maind.a ../lib/libgmockd.a ../lib/libgmock_maind.a ../src/libPhysicalUnit.a ../lib/libgmockd.a ../lib/libgtestd.a -lpthread 
+/usr/bin/c++   -Wall -Wextra -g   CMakeFiles/PhysicalUnitsTests.dir/ScalarUnitsTests.cpp.o  -o PhysicalUnitsTests ../lib/libgtestd.a ../lib/libgtest_maind.a ../lib/libgmockd.a ../lib/libgmock_maind.a ../src/libPhysicalUnit.a ../lib/libgmockd.a ../lib/libgtestd.a -lpthread 

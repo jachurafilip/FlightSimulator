@@ -1,6 +1,6 @@
 
 #include <gtest/gtest.h>
-#include <PhysicalUnit.h>
+#include <ScalarUnit.h>
 
 TEST(PhysicalUnitsTests,Equality)
 {

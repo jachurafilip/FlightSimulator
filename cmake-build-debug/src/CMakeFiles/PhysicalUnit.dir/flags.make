@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wextra -g   -std=gnu++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/filip/CLionProjects/FlightSimulator/src/. 
+CXX_INCLUDES = -I/home/filip/FlightSimulator/src/. 
 

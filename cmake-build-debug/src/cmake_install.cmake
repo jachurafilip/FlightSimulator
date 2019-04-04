@@ -1,4 +1,4 @@
-# Install script for directory: /home/filip/CLionProjects/FlightSimulator/src
+# Install script for directory: /home/filip/FlightSimulator/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -4,16 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/filip/CLionProjects/FlightSimulator/main.cpp" "/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles/FlightSimulator.dir/main.cpp.o"
+  "/home/filip/FlightSimulator/lib/gtest/googletest/src/gtest_main.cc" "/home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../lib/gtest/googletest/include"
+  "../lib/gtest/googletest"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "/home/filip/FlightSimulator/cmake-build-debug/lib/gtest/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -50,19 +50,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/67/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/filip/CLionProjects/FlightSimulator
+CMAKE_SOURCE_DIR = /home/filip/FlightSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/filip/FlightSimulator/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for directory lib/gtest
@@ -88,19 +88,19 @@ lib/gtest/preinstall: lib/gtest/googlemock/preinstall
 # Convenience name for "all" pass in the directory.
 lib/gtest/googlemock/all: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
 lib/gtest/googlemock/all: lib/gtest/googlemock/CMakeFiles/gmock.dir/all
-lib/gtest/googlemock/all: lib/gtest/googlemock/gtest/all
+lib/gtest/googlemock/all: lib/gtest/googletest/all
 
 .PHONY : lib/gtest/googlemock/all
 
 # Convenience name for "clean" pass in the directory.
 lib/gtest/googlemock/clean: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/clean
 lib/gtest/googlemock/clean: lib/gtest/googlemock/CMakeFiles/gmock.dir/clean
-lib/gtest/googlemock/clean: lib/gtest/googlemock/gtest/clean
+lib/gtest/googlemock/clean: lib/gtest/googletest/clean
 
 .PHONY : lib/gtest/googlemock/clean
 
 # Convenience name for "preinstall" pass in the directory.
-lib/gtest/googlemock/preinstall: lib/gtest/googlemock/gtest/preinstall
+lib/gtest/googlemock/preinstall: lib/gtest/googletest/preinstall
 
 .PHONY : lib/gtest/googlemock/preinstall
 
@@ -109,10 +109,10 @@ lib/gtest/googlemock/preinstall: lib/gtest/googlemock/gtest/preinstall
 
 # All Build rule for target.
 lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all: lib/gtest/googlemock/CMakeFiles/gmock.dir/all
-lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
+lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f lib/gtest/googlemock/CMakeFiles/gmock_main.dir/build.make lib/gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f lib/gtest/googlemock/CMakeFiles/gmock_main.dir/build.make lib/gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=8,9 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=13,14 "Built target gmock_main"
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Include target in all.
@@ -122,9 +122,9 @@ all: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
 lib/gtest/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock_main.dir/rule
 
 # Convenience name for target.
@@ -146,10 +146,10 @@ clean: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/clean
 # Target rules for target lib/gtest/googlemock/CMakeFiles/gmock.dir
 
 # All Build rule for target.
-lib/gtest/googlemock/CMakeFiles/gmock.dir/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
+lib/gtest/googlemock/CMakeFiles/gmock.dir/all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f lib/gtest/googlemock/CMakeFiles/gmock.dir/build.make lib/gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f lib/gtest/googlemock/CMakeFiles/gmock.dir/build.make lib/gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=6,7 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=11,12 "Built target gmock"
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Include target in all.
@@ -159,9 +159,9 @@ all: lib/gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
 lib/gtest/googlemock/CMakeFiles/gmock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 lib/gtest/googlemock/CMakeFiles/gmock.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : lib/gtest/googlemock/CMakeFiles/gmock.dir/rule
 
 # Convenience name for target.
@@ -180,96 +180,96 @@ clean: lib/gtest/googlemock/CMakeFiles/gmock.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory lib/gtest/googlemock/gtest
+# Directory level rules for directory lib/gtest/googletest
 
 # Convenience name for "all" pass in the directory.
-lib/gtest/googlemock/gtest/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
-lib/gtest/googlemock/gtest/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
+lib/gtest/googletest/all: lib/gtest/googletest/CMakeFiles/gtest_main.dir/all
+lib/gtest/googletest/all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
 
-.PHONY : lib/gtest/googlemock/gtest/all
+.PHONY : lib/gtest/googletest/all
 
 # Convenience name for "clean" pass in the directory.
-lib/gtest/googlemock/gtest/clean: lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
-lib/gtest/googlemock/gtest/clean: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
+lib/gtest/googletest/clean: lib/gtest/googletest/CMakeFiles/gtest_main.dir/clean
+lib/gtest/googletest/clean: lib/gtest/googletest/CMakeFiles/gtest.dir/clean
 
-.PHONY : lib/gtest/googlemock/gtest/clean
+.PHONY : lib/gtest/googletest/clean
 
 # Convenience name for "preinstall" pass in the directory.
-lib/gtest/googlemock/gtest/preinstall:
+lib/gtest/googletest/preinstall:
 
-.PHONY : lib/gtest/googlemock/gtest/preinstall
+.PHONY : lib/gtest/googletest/preinstall
 
 #=============================================================================
-# Target rules for target lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir
+# Target rules for target lib/gtest/googletest/CMakeFiles/gtest_main.dir
 
 # All Build rule for target.
-lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/depend
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=12,13 "Built target gtest_main"
-.PHONY : lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
+lib/gtest/googletest/CMakeFiles/gtest_main.dir/all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googletest/CMakeFiles/gtest_main.dir/depend
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googletest/CMakeFiles/gtest_main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=17,18 "Built target gtest_main"
+.PHONY : lib/gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Include target in all.
-all: lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
+all: lib/gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
-.PHONY : lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
+lib/gtest/googletest/CMakeFiles/gtest_main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 lib/gtest/googletest/CMakeFiles/gtest_main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
+.PHONY : lib/gtest/googletest/CMakeFiles/gtest_main.dir/rule
 
 # Convenience name for target.
-gtest_main: lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/rule
+gtest_main: lib/gtest/googletest/CMakeFiles/gtest_main.dir/rule
 
 .PHONY : gtest_main
 
 # clean rule for target.
-lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean:
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
-.PHONY : lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
+lib/gtest/googletest/CMakeFiles/gtest_main.dir/clean:
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest_main.dir/build.make lib/gtest/googletest/CMakeFiles/gtest_main.dir/clean
+.PHONY : lib/gtest/googletest/CMakeFiles/gtest_main.dir/clean
 
 # clean rule for target.
-clean: lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/clean
+clean: lib/gtest/googletest/CMakeFiles/gtest_main.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir
+# Target rules for target lib/gtest/googletest/CMakeFiles/gtest.dir
 
 # All Build rule for target.
-lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all:
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/depend
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=10,11 "Built target gtest"
-.PHONY : lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
+lib/gtest/googletest/CMakeFiles/gtest.dir/all:
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest.dir/build.make lib/gtest/googletest/CMakeFiles/gtest.dir/depend
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest.dir/build.make lib/gtest/googletest/CMakeFiles/gtest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=15,16 "Built target gtest"
+.PHONY : lib/gtest/googletest/CMakeFiles/gtest.dir/all
 
 # Include target in all.
-all: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
+all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
-.PHONY : lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/rule
+lib/gtest/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 lib/gtest/googletest/CMakeFiles/gtest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
+.PHONY : lib/gtest/googletest/CMakeFiles/gtest.dir/rule
 
 # Convenience name for target.
-gtest: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/rule
+gtest: lib/gtest/googletest/CMakeFiles/gtest.dir/rule
 
 .PHONY : gtest
 
 # clean rule for target.
-lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean:
-	$(MAKE) -f lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
-.PHONY : lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
+lib/gtest/googletest/CMakeFiles/gtest.dir/clean:
+	$(MAKE) -f lib/gtest/googletest/CMakeFiles/gtest.dir/build.make lib/gtest/googletest/CMakeFiles/gtest.dir/clean
+.PHONY : lib/gtest/googletest/CMakeFiles/gtest.dir/clean
 
 # clean rule for target.
-clean: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
+clean: lib/gtest/googletest/CMakeFiles/gtest.dir/clean
 
 .PHONY : clean
 
@@ -298,7 +298,7 @@ src/preinstall:
 src/CMakeFiles/PhysicalUnit.dir/all:
 	$(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/depend
 	$(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target PhysicalUnit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target PhysicalUnit"
 .PHONY : src/CMakeFiles/PhysicalUnit.dir/all
 
 # Include target in all.
@@ -308,9 +308,9 @@ all: src/CMakeFiles/PhysicalUnit.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/PhysicalUnit.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/PhysicalUnit.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : src/CMakeFiles/PhysicalUnit.dir/rule
 
 # Convenience name for target.
@@ -332,12 +332,14 @@ clean: src/CMakeFiles/PhysicalUnit.dir/clean
 # Directory level rules for directory tests
 
 # Convenience name for "all" pass in the directory.
-tests/all: tests/CMakeFiles/PhysicalUnitsTests.dir/all
+tests/all: tests/CMakeFiles/VectorUnitsTests.dir/all
+tests/all: tests/CMakeFiles/ScalarUnitsTests.dir/all
 
 .PHONY : tests/all
 
 # Convenience name for "clean" pass in the directory.
-tests/clean: tests/CMakeFiles/PhysicalUnitsTests.dir/clean
+tests/clean: tests/CMakeFiles/VectorUnitsTests.dir/clean
+tests/clean: tests/CMakeFiles/ScalarUnitsTests.dir/clean
 
 .PHONY : tests/clean
 
@@ -347,43 +349,84 @@ tests/preinstall:
 .PHONY : tests/preinstall
 
 #=============================================================================
-# Target rules for target tests/CMakeFiles/PhysicalUnitsTests.dir
+# Target rules for target tests/CMakeFiles/VectorUnitsTests.dir
 
 # All Build rule for target.
-tests/CMakeFiles/PhysicalUnitsTests.dir/all: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
-tests/CMakeFiles/PhysicalUnitsTests.dir/all: lib/gtest/googlemock/CMakeFiles/gmock.dir/all
-tests/CMakeFiles/PhysicalUnitsTests.dir/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
-tests/CMakeFiles/PhysicalUnitsTests.dir/all: lib/gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
-tests/CMakeFiles/PhysicalUnitsTests.dir/all: src/CMakeFiles/PhysicalUnit.dir/all
-	$(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/depend
-	$(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=4,5 "Built target PhysicalUnitsTests"
-.PHONY : tests/CMakeFiles/PhysicalUnitsTests.dir/all
+tests/CMakeFiles/VectorUnitsTests.dir/all: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
+tests/CMakeFiles/VectorUnitsTests.dir/all: lib/gtest/googlemock/CMakeFiles/gmock.dir/all
+tests/CMakeFiles/VectorUnitsTests.dir/all: lib/gtest/googletest/CMakeFiles/gtest_main.dir/all
+tests/CMakeFiles/VectorUnitsTests.dir/all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/VectorUnitsTests.dir/all: src/CMakeFiles/PhysicalUnit.dir/all
+	$(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/depend
+	$(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target VectorUnitsTests"
+.PHONY : tests/CMakeFiles/VectorUnitsTests.dir/all
 
 # Include target in all.
-all: tests/CMakeFiles/PhysicalUnitsTests.dir/all
+all: tests/CMakeFiles/VectorUnitsTests.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-tests/CMakeFiles/PhysicalUnitsTests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 13
-	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/PhysicalUnitsTests.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
-.PHONY : tests/CMakeFiles/PhysicalUnitsTests.dir/rule
+tests/CMakeFiles/VectorUnitsTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 16
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/VectorUnitsTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
+.PHONY : tests/CMakeFiles/VectorUnitsTests.dir/rule
 
 # Convenience name for target.
-PhysicalUnitsTests: tests/CMakeFiles/PhysicalUnitsTests.dir/rule
+VectorUnitsTests: tests/CMakeFiles/VectorUnitsTests.dir/rule
 
-.PHONY : PhysicalUnitsTests
-
-# clean rule for target.
-tests/CMakeFiles/PhysicalUnitsTests.dir/clean:
-	$(MAKE) -f tests/CMakeFiles/PhysicalUnitsTests.dir/build.make tests/CMakeFiles/PhysicalUnitsTests.dir/clean
-.PHONY : tests/CMakeFiles/PhysicalUnitsTests.dir/clean
+.PHONY : VectorUnitsTests
 
 # clean rule for target.
-clean: tests/CMakeFiles/PhysicalUnitsTests.dir/clean
+tests/CMakeFiles/VectorUnitsTests.dir/clean:
+	$(MAKE) -f tests/CMakeFiles/VectorUnitsTests.dir/build.make tests/CMakeFiles/VectorUnitsTests.dir/clean
+.PHONY : tests/CMakeFiles/VectorUnitsTests.dir/clean
+
+# clean rule for target.
+clean: tests/CMakeFiles/VectorUnitsTests.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/ScalarUnitsTests.dir
+
+# All Build rule for target.
+tests/CMakeFiles/ScalarUnitsTests.dir/all: lib/gtest/googlemock/CMakeFiles/gmock_main.dir/all
+tests/CMakeFiles/ScalarUnitsTests.dir/all: lib/gtest/googlemock/CMakeFiles/gmock.dir/all
+tests/CMakeFiles/ScalarUnitsTests.dir/all: lib/gtest/googletest/CMakeFiles/gtest_main.dir/all
+tests/CMakeFiles/ScalarUnitsTests.dir/all: lib/gtest/googletest/CMakeFiles/gtest.dir/all
+tests/CMakeFiles/ScalarUnitsTests.dir/all: src/CMakeFiles/PhysicalUnit.dir/all
+	$(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/depend
+	$(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/filip/FlightSimulator/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target ScalarUnitsTests"
+.PHONY : tests/CMakeFiles/ScalarUnitsTests.dir/all
+
+# Include target in all.
+all: tests/CMakeFiles/ScalarUnitsTests.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+tests/CMakeFiles/ScalarUnitsTests.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 16
+	$(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/ScalarUnitsTests.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
+.PHONY : tests/CMakeFiles/ScalarUnitsTests.dir/rule
+
+# Convenience name for target.
+ScalarUnitsTests: tests/CMakeFiles/ScalarUnitsTests.dir/rule
+
+.PHONY : ScalarUnitsTests
+
+# clean rule for target.
+tests/CMakeFiles/ScalarUnitsTests.dir/clean:
+	$(MAKE) -f tests/CMakeFiles/ScalarUnitsTests.dir/build.make tests/CMakeFiles/ScalarUnitsTests.dir/clean
+.PHONY : tests/CMakeFiles/ScalarUnitsTests.dir/clean
+
+# clean rule for target.
+clean: tests/CMakeFiles/ScalarUnitsTests.dir/clean
 
 .PHONY : clean
 

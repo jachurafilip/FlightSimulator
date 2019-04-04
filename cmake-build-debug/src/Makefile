@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/61/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/67/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/61/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/filip/CLionProjects/FlightSimulator
+CMAKE_SOURCE_DIR = /home/filip/FlightSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /home/filip/FlightSimulator/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,19 +59,19 @@ CMAKE_BINARY_DIR = /home/filip/CLionProjects/FlightSimulator/cmake-build-debug
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/67/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -82,7 +82,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/67/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -103,37 +103,37 @@ list_install_components/fast: list_install_components
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/snap/clion/61/bin/cmake/linux/bin/cmake -P cmake_install.cmake
+	/snap/clion/67/bin/cmake/linux/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/src/CMakeFiles/progress.marks
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/CLionProjects/FlightSimulator/cmake-build-debug/CMakeFiles 0
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles /home/filip/FlightSimulator/cmake-build-debug/src/CMakeFiles/progress.marks
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/filip/FlightSimulator/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/PhysicalUnit.dir/rule:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/PhysicalUnit.dir/rule
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/PhysicalUnit.dir/rule
 .PHONY : src/CMakeFiles/PhysicalUnit.dir/rule
 
 # Convenience name for target.
@@ -168,35 +168,116 @@ PhysicalUnit: src/CMakeFiles/PhysicalUnit.dir/rule
 
 # fast build rule for target.
 PhysicalUnit/fast:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/build
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/build
 .PHONY : PhysicalUnit/fast
 
-PhysicalUnit.o: PhysicalUnit.cpp.o
+Point.o: Point.cpp.o
 
-.PHONY : PhysicalUnit.o
+.PHONY : Point.o
 
 # target to build an object file
-PhysicalUnit.cpp.o:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.o
-.PHONY : PhysicalUnit.cpp.o
+Point.cpp.o:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/Point.cpp.o
+.PHONY : Point.cpp.o
 
-PhysicalUnit.i: PhysicalUnit.cpp.i
+Point.i: Point.cpp.i
 
-.PHONY : PhysicalUnit.i
+.PHONY : Point.i
 
 # target to preprocess a source file
-PhysicalUnit.cpp.i:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.i
-.PHONY : PhysicalUnit.cpp.i
+Point.cpp.i:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/Point.cpp.i
+.PHONY : Point.cpp.i
 
-PhysicalUnit.s: PhysicalUnit.cpp.s
+Point.s: Point.cpp.s
 
-.PHONY : PhysicalUnit.s
+.PHONY : Point.s
 
 # target to generate assembly for a file
-PhysicalUnit.cpp.s:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/PhysicalUnit.cpp.s
-.PHONY : PhysicalUnit.cpp.s
+Point.cpp.s:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/Point.cpp.s
+.PHONY : Point.cpp.s
+
+ScalarUnit.o: ScalarUnit.cpp.o
+
+.PHONY : ScalarUnit.o
+
+# target to build an object file
+ScalarUnit.cpp.o:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.o
+.PHONY : ScalarUnit.cpp.o
+
+ScalarUnit.i: ScalarUnit.cpp.i
+
+.PHONY : ScalarUnit.i
+
+# target to preprocess a source file
+ScalarUnit.cpp.i:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.i
+.PHONY : ScalarUnit.cpp.i
+
+ScalarUnit.s: ScalarUnit.cpp.s
+
+.PHONY : ScalarUnit.s
+
+# target to generate assembly for a file
+ScalarUnit.cpp.s:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/ScalarUnit.cpp.s
+.PHONY : ScalarUnit.cpp.s
+
+Vector.o: Vector.cpp.o
+
+.PHONY : Vector.o
+
+# target to build an object file
+Vector.cpp.o:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.o
+.PHONY : Vector.cpp.o
+
+Vector.i: Vector.cpp.i
+
+.PHONY : Vector.i
+
+# target to preprocess a source file
+Vector.cpp.i:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.i
+.PHONY : Vector.cpp.i
+
+Vector.s: Vector.cpp.s
+
+.PHONY : Vector.s
+
+# target to generate assembly for a file
+Vector.cpp.s:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/Vector.cpp.s
+.PHONY : Vector.cpp.s
+
+VectorUnit.o: VectorUnit.cpp.o
+
+.PHONY : VectorUnit.o
+
+# target to build an object file
+VectorUnit.cpp.o:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.o
+.PHONY : VectorUnit.cpp.o
+
+VectorUnit.i: VectorUnit.cpp.i
+
+.PHONY : VectorUnit.i
+
+# target to preprocess a source file
+VectorUnit.cpp.i:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.i
+.PHONY : VectorUnit.cpp.i
+
+VectorUnit.s: VectorUnit.cpp.s
+
+.PHONY : VectorUnit.s
+
+# target to generate assembly for a file
+VectorUnit.cpp.s:
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/VectorUnit.cpp.s
+.PHONY : VectorUnit.cpp.s
 
 main.o: main.cpp.o
 
@@ -204,7 +285,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/main.cpp.o
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -213,7 +294,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/main.cpp.i
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -222,7 +303,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/main.cpp.s
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(MAKE) -f src/CMakeFiles/PhysicalUnit.dir/build.make src/CMakeFiles/PhysicalUnit.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -238,9 +319,18 @@ help:
 	@echo "... list_install_components"
 	@echo "... install/local"
 	@echo "... install"
-	@echo "... PhysicalUnit.o"
-	@echo "... PhysicalUnit.i"
-	@echo "... PhysicalUnit.s"
+	@echo "... Point.o"
+	@echo "... Point.i"
+	@echo "... Point.s"
+	@echo "... ScalarUnit.o"
+	@echo "... ScalarUnit.i"
+	@echo "... ScalarUnit.s"
+	@echo "... Vector.o"
+	@echo "... Vector.i"
+	@echo "... Vector.s"
+	@echo "... VectorUnit.o"
+	@echo "... VectorUnit.i"
+	@echo "... VectorUnit.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -255,6 +345,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/filip/CLionProjects/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/filip/FlightSimulator/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

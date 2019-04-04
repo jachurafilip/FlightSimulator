@@ -6,5 +6,5 @@ CXX_FLAGS =  -Wall -Wextra -g   -Wall -Wshadow -Werror -Wno-error=dangling-else 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/include -isystem /home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock -isystem /home/filip/CLionProjects/FlightSimulator/lib/gtest/googletest/include -isystem /home/filip/CLionProjects/FlightSimulator/lib/gtest/googletest 
+CXX_INCLUDES = -isystem /home/filip/FlightSimulator/lib/gtest/googlemock/include -isystem /home/filip/FlightSimulator/lib/gtest/googlemock -isystem /home/filip/FlightSimulator/lib/gtest/googletest/include -isystem /home/filip/FlightSimulator/lib/gtest/googletest 
 

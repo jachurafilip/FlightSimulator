@@ -40,7 +40,7 @@ bool Vector::operator!=(const Vector &other) const {
 }
 
 
-Vector Vector::operator+(const Vector &other) {
+Vector Vector::operator+(const Vector &other) const {
     return Vector(x+other.x,y+other.y,z+other.z);
 }
 
@@ -119,6 +119,22 @@ Vector unit(Vector v) {
 
 double cosine(const Vector &v, const Vector &u) {
     return unit(u).dot(unit(v));
+}
+
+bool Vector::operator<(const Vector &rhs) const {
+    return magnitude()<rhs.magnitude();
+}
+
+bool Vector::operator>(const Vector &rhs) const {
+    return rhs < *this;
+}
+
+bool Vector::operator<=(const Vector &rhs) const {
+    return !(rhs < *this);
+}
+
+bool Vector::operator>=(const Vector &rhs) const {
+    return !(*this < rhs);
 }
 
 

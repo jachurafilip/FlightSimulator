@@ -402,16 +402,6 @@ gtest/internal/gtest-string.h
 gtest/internal/gtest-type-util.h
 ../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-type-util.h
 
-../lib/gtest/googletest/include/gtest/internal/gtest-param-util-generated.h
-assert.h
--
-memory
--
-gtest/internal/gtest-param-util.h
-../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-param-util.h
-gtest/internal/gtest-port.h
-../lib/gtest/googletest/include/gtest/internal/gtest/internal/gtest-port.h
-
 ../lib/gtest/googletest/include/gtest/internal/gtest-param-util.h
 ctype.h
 -
@@ -516,13 +506,13 @@ cxxabi.h
 acxx_demangle.h
 -
 
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock_main.cc
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock_main.cc
 iostream
 -
 gmock/gmock.h
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gmock/gmock.h
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/gmock/gmock.h
 gtest/gtest.h
-/home/filip/CLionProjects/FlightSimulator/lib/gtest/googlemock/src/gtest/gtest.h
+/home/filip/FlightSimulator/lib/gtest/googlemock/src/gtest/gtest.h
 tchar.h
 -
 
