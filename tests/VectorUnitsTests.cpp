@@ -17,11 +17,14 @@ TEST(VectorUnitsTests,VectorUnitsAddition)
     VelocityV v1(1,1,1);
     VelocityV v2(2,2,2);
 
-    EXPECT_EQ(v1+v2, AccelerationV(3,3,3));
+    EXPECT_EQ(v1+v2, VelocityV(3,3,3));
 
 }
 
-TEST(VectorUnitsTests,VectorUnitsDot)
+TEST(VectorUnitsTests, VectorUnitsDot)
 {
+    LengthV x(1,0,0);
+    ForceV f(5,0,0);
 
+    EXPECT_EQ(f.dot(x),Energy(5.0));
 }

@@ -62,6 +62,17 @@ public:
     VectorUnit<M,K,S> operator*(const long double rhs) {
         return VectorUnit<M, K, S>(rhs*value_);
     }
+    template<int M1, int K1, int S1>
+    VectorUnit<M+M1, K+K1, S+S1> operator*(const ScalarUnit<M1,K1,S1> &rhs) const
+    {
+        return VectorUnit<M+M1, K+K1, S+S1>(value_*rhs.getMagnitude());
+    }
+
+    template<int M1, int K1, int S1>
+    friend VectorUnit<M-M1, K-K1, S-S1> operator*(const ScalarUnit<M,K,S> &lhs, const VectorUnit<M1,K1,S1> &rhs)
+    {
+        return VectorUnit<M-M1, K-K1, S-S1>(rhs.magnitude()*lhs.getMagnitude());
+    }
 
     friend VectorUnit<M,K,S> operator*(const VectorUnit<M,K,S> &lhs, const long double rhs) {
         return VectorUnit<M, K, S>(rhs*lhs);
@@ -81,15 +92,21 @@ public:
         return *this;
     }
 
+    template<int M1, int K1, int S1>
+    VectorUnit<M+M1, K+K1, S+S1> operator/(const ScalarUnit<M1,K1,S1> &rhs) const
+    {
+        return VectorUnit<M-M1, K-K1, S-S1>(value_/rhs.getMagnitude());
+    }
+
 
     template<int M1, int K1, int S1>
     ScalarUnit<M+M1,K+K1,S+S1> dot(const VectorUnit<M1,K1,S1> &other) {
-        return ScalarUnit<M + M1, K + K1, S + S1>(value_.dot(other.value_));
+        return ScalarUnit<M + M1, K + K1, S + S1>(value_.dot(other.getValue()));
     }
 
     template<int M1, int K1, int S1>
     VectorUnit<M+M1,K+K1,S+S1> cross(const VectorUnit<M1,K1,S1> &other) {
-        return VectorUnit<M + M1, K + K1, S + S1>(value_.cross(other.value_));
+        return VectorUnit<M + M1, K + K1, S + S1>(value_.cross(other.getValue()));
     }
 
     double magnitude() const {
@@ -103,6 +120,7 @@ private:
 
 };
 
+using LengthV = VectorUnit<1,0,0>;
 using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;

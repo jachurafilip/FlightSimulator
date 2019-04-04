@@ -21,6 +21,7 @@ tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../lib/gtest/googl
 tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../lib/gtest/googletest/include/gtest/internal/gtest-port.h
 tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../lib/gtest/googletest/include/gtest/internal/gtest-string.h
 tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../lib/gtest/googletest/include/gtest/internal/gtest-type-util.h
+tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../src/./ScalarUnit.h
 tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../src/./Vector.h
 tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../src/./VectorUnit.h
 tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o: ../tests/VectorUnitsTests.cpp

@@ -22,6 +22,7 @@ tests/CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o
  ../lib/gtest/googletest/include/gtest/internal/gtest-port.h
  ../lib/gtest/googletest/include/gtest/internal/gtest-string.h
  ../lib/gtest/googletest/include/gtest/internal/gtest-type-util.h
+ ../src/./ScalarUnit.h
  ../src/./Vector.h
  ../src/./VectorUnit.h
  /home/filip/FlightSimulator/tests/VectorUnitsTests.cpp

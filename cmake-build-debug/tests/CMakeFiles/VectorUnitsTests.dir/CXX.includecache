@@ -296,6 +296,8 @@ cxxabi.h
 acxx_demangle.h
 -
 
+../src/./ScalarUnit.h
+
 ../src/./Vector.h
 memory
 -
@@ -303,6 +305,8 @@ memory
 ../src/./VectorUnit.h
 Vector.h
 ../src/./Vector.h
+ScalarUnit.h
+../src/./ScalarUnit.h
 
 /home/filip/FlightSimulator/tests/VectorUnitsTests.cpp
 gtest/gtest.h
