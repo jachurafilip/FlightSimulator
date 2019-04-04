@@ -38,18 +38,18 @@ public:
     Vector operator+(const Vector &other) const;
     Vector& operator+=(const Vector &other);
 
-    Vector operator-(const Vector &other);
+    Vector operator-(const Vector &other) const;
     Vector& operator-=(const Vector &other);
     Vector operator-();
 
     double dot(const Vector &other) const ;
-    Vector cross(const Vector &other);
+    Vector cross(const Vector &other) const;
 
-    Vector operator*(double c);
+    Vector operator*(double c) const;
     friend Vector operator*(double c, const Vector &vec);
     Vector&operator*=(double c);
 
-    Vector operator/(double c);
+    Vector operator/(double c)const;
     friend Vector operator/(double c, const Vector &vec);
     Vector&operator/=(double c);
 

@@ -48,19 +48,21 @@ public:
         return !(*this < rhs);
     }
 
-    VectorUnit<M,K,S> operator+(const VectorUnit<M,K,S> &other)
+    VectorUnit<M,K,S> operator+(const VectorUnit<M,K,S> &other) const
     {
         return VectorUnit<M,K,S>(value_+other.value_);
     }
-    VectorUnit<M,K,S> operator-(const VectorUnit<M,K,S> &other) {
+    VectorUnit<M,K,S> operator-(const VectorUnit<M,K,S> &other) const
+    {
         return VectorUnit<M, K, S>(value_-other.value_);
     }
-    VectorUnit<M,K,S> operator-()
+    VectorUnit<M,K,S> operator-() const
     {
         return VectorUnit<M,K,S>(-value_);
     }
 
-    VectorUnit<M,K,S> operator*(const long double rhs) {
+    VectorUnit<M,K,S> operator*(const long double rhs) const
+    {
         return VectorUnit<M, K, S>(rhs*value_);
     }
     template<int M1, int K1, int S1>
@@ -75,20 +77,24 @@ public:
         return VectorUnit<M+M1, K+K1, S+S1>(rhs.magnitude()*lhs.getMagnitude());
     }
 
-    friend VectorUnit<M,K,S> operator*(const long double rhs,const VectorUnit<M,K,S> &lhs) {
+    friend VectorUnit<M,K,S> operator*(const long double rhs,const VectorUnit<M,K,S> &lhs)
+    {
         return VectorUnit<M, K, S>(rhs*lhs);
     }
 
-    VectorUnit<M,K,S>&operator*=(const long double rhs) {
+    VectorUnit<M,K,S>&operator*=(const long double rhs)
+    {
         value_*=rhs;
         return *this;
     }
 
-    VectorUnit<M,K,S> operator/(const long double rhs) {
+    VectorUnit<M,K,S> operator/(const long double rhs) const
+    {
         return VectorUnit<M, K, S>(value_/rhs);
     }
 
-    VectorUnit<M,K,S>&operator/=(const long double rhs) {
+    VectorUnit<M,K,S>&operator/=(const long double rhs) const
+    {
         value_/=rhs;
         return *this;
     }
@@ -101,12 +107,12 @@ public:
 
 
     template<int M1, int K1, int S1>
-    ScalarUnit<M+M1,K+K1,S+S1> dot(const VectorUnit<M1,K1,S1> &other) {
+    ScalarUnit<M+M1,K+K1,S+S1> dot(const VectorUnit<M1,K1,S1> &other) const {
         return ScalarUnit<M + M1, K + K1, S + S1>(value_.dot(other.getValue()));
     }
 
     template<int M1, int K1, int S1>
-    VectorUnit<M+M1,K+K1,S+S1> cross(const VectorUnit<M1,K1,S1> &other) {
+    VectorUnit<M+M1,K+K1,S+S1> cross(const VectorUnit<M1,K1,S1> &other) const {
         return VectorUnit<M + M1, K + K1, S + S1>(value_.cross(other.getValue()));
     }
 
@@ -134,7 +140,6 @@ using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;
 using MomentOfForce = VectorUnit<2,1,-2>;
-
 
 
 #endif //FLIGHTSIMULATOR_VECTORUNIT_H

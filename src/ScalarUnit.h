@@ -50,23 +50,24 @@ public:
         return !(*this < rhs);
     }
 
-    ScalarUnit<M,K,S> operator+(const ScalarUnit<M,K,S> &other)
+    ScalarUnit<M,K,S> operator+(const ScalarUnit<M,K,S> &other) const
     {
         return ScalarUnit<M,K,S>(magnitude_+other.getMagnitude());
     }
-    ScalarUnit<M,K,S> operator-(const ScalarUnit<M,K,S> &other) {
+    ScalarUnit<M,K,S> operator-(const ScalarUnit<M,K,S> &other) const
+    {
         return ScalarUnit<M, K, S>(magnitude_-other.getMagnitude());
     }
-    ScalarUnit<M,K,S> operator-()
+    ScalarUnit<M,K,S> operator-() const
     {
         return ScalarUnit<M,K,S>(-magnitude_);
     }
 
-    ScalarUnit<M,K,S> operator* (const long double rhs)
+    ScalarUnit<M,K,S> operator* (const long double rhs) const
     {
         return ScalarUnit<M,K,S>(magnitude_*rhs);
     }
-    friend ScalarUnit<M,K,S> operator*(const long double lhs, const ScalarUnit<M,K,S> &rhs )
+    friend ScalarUnit<M,K,S> operator*(const long double lhs, const ScalarUnit<M,K,S> &rhs)
     {
         return ScalarUnit<M,K,S>(rhs.magnitude_*lhs);
     }
@@ -77,16 +78,16 @@ public:
         return *this;
     }
 
-    ScalarUnit<M,K,S> operator/ (const long double rhs)
+    ScalarUnit<M,K,S> operator/ (const long double rhs) const
     {
         return ScalarUnit<M,K,S>(magnitude_/rhs);
     }
-    friend ScalarUnit<M,K,S> operator/(const long double lhs, const ScalarUnit<M,K,S> &rhs )
+    friend ScalarUnit<M,K,S> operator/(const long double lhs, const ScalarUnit<M,K,S> &rhs) const
     {
         return ScalarUnit<M,K,S>(rhs.magnitude_/lhs);
     }
 
-    ScalarUnit<M,K,S>&operator/=(const long double rhs)
+    ScalarUnit<M,K,S>&operator/=(const long double rhs) const
     {
         magnitude_/=rhs;
         return *this;
@@ -111,11 +112,6 @@ public:
     }
 };
 
-using Quantity = ScalarUnit<0,0,0>;
-Quantity operator""_Deg(long double magnitude) noexcept
-{
-    return Quantity(magnitude);
-}
 using Mass = ScalarUnit<0,1,0>;
 Mass operator""_kg(long double magnitude) noexcept
 {
