@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -g   CMakeFiles/VectorUnitsTests.dir/VectorUnitsTests.cpp.o  -o VectorUnitsTests ../lib/libgtestd.a ../lib/libgtest_maind.a ../lib/libgmockd.a ../lib/libgmock_maind.a ../src/libPhysicalUnit.a ../lib/libgmockd.a ../lib/libgtestd.a -lpthread 
