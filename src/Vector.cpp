@@ -137,6 +137,11 @@ bool Vector::operator>=(const Vector &rhs) const {
     return !(*this < rhs);
 }
 
+std::ostream &operator<<(std::ostream &os, const Vector &vector) {
+    os << "x: " << vector.x << " y: " << vector.y << " z: " << vector.z<<" magnitude"<<vector.magnitude();
+    return os;
+}
+
 
 
 

@@ -5,6 +5,7 @@
 #ifndef FLIGHTSIMULATOR_VECTORUNIT_H
 #define FLIGHTSIMULATOR_VECTORUNIT_H
 
+#include <ostream>
 #include "Vector.h"
 #include "ScalarUnit.h"
 template <int M, int K, int S>
@@ -23,27 +24,27 @@ public:
         value_ = value;
     }
 
-    bool operator==(const VectorUnit &rhs) const {
+    bool operator==(const VectorUnit<M,K,S> &rhs) const {
         return value_ == rhs.value_;
     }
 
-    bool operator!=(const VectorUnit &rhs) const {
+    bool operator!=(const VectorUnit<M,K,S> &rhs) const {
         return !(rhs == *this);
     }
 
-    bool operator<(const VectorUnit &rhs) const {
+    bool operator<(const VectorUnit<M,K,S> &rhs) const {
         return value_ < rhs.value_;
     }
 
-    bool operator>(const VectorUnit &rhs) const {
+    bool operator>(const VectorUnit<M,K,S> &rhs) const {
         return rhs < *this;
     }
 
-    bool operator<=(const VectorUnit &rhs) const {
+    bool operator<=(const VectorUnit<M,K,S> &rhs) const {
         return !(rhs < *this);
     }
 
-    bool operator>=(const VectorUnit &rhs) const {
+    bool operator>=(const VectorUnit<M,K,S> &rhs) const {
         return !(*this < rhs);
     }
 
@@ -69,12 +70,12 @@ public:
     }
 
     template<int M1, int K1, int S1>
-    friend VectorUnit<M-M1, K-K1, S-S1> operator*(const ScalarUnit<M,K,S> &lhs, const VectorUnit<M1,K1,S1> &rhs)
+    friend VectorUnit<M+M1, K+K1, S+S1> operator*(const ScalarUnit<M,K,S> &lhs, const VectorUnit<M1,K1,S1> &rhs)
     {
-        return VectorUnit<M-M1, K-K1, S-S1>(rhs.magnitude()*lhs.getMagnitude());
+        return VectorUnit<M+M1, K+K1, S+S1>(rhs.magnitude()*lhs.getMagnitude());
     }
 
-    friend VectorUnit<M,K,S> operator*(const VectorUnit<M,K,S> &lhs, const long double rhs) {
+    friend VectorUnit<M,K,S> operator*(const long double rhs,const VectorUnit<M,K,S> &lhs) {
         return VectorUnit<M, K, S>(rhs*lhs);
     }
 
@@ -112,10 +113,18 @@ public:
     double magnitude() const {
         return value_.magnitude();
     }
-
+    friend std::ostream &operator<<(std::ostream &os, const VectorUnit &unit) {
+        os << "value_: " << unit.value_;
+        return os;
+    }
+    explicit operator ScalarUnit<M,K,S>() const
+    {
+        return ScalarUnit<M,K,S>(value_.magnitude());
+    }
 
 private:
     Vector value_;
+
 
 
 };
@@ -124,6 +133,7 @@ using LengthV = VectorUnit<1,0,0>;
 using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;
+using MomentOfForce = VectorUnit<2,1,-2>;
 
 
 
