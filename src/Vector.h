@@ -5,10 +5,11 @@
 #ifndef FLIGHTSIMULATOR_VECTOR_H
 #define FLIGHTSIMULATOR_VECTOR_H
 
+#include <memory>
 
 class Vector {
 public:
-    Vector(double x, double y, double z);
+    Vector(double x, double y, double z) : x(x), y(y), z(z) {}
 
     double getX() const;
 
@@ -23,6 +24,7 @@ public:
     void setZ(double z);
 
     bool operator==(const Vector &other) const;
+    bool operator!=(const Vector &other) const;
     Vector operator+(const Vector &other);
     Vector& operator+=(const Vector &other);
 

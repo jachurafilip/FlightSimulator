@@ -5,7 +5,6 @@
 #include <cmath>
 #include "Vector.h"
 
-Vector::Vector(double x, double y, double z) : x(x), y(y), z(z) {}
 
 double Vector::getX() const {
     return x;
@@ -31,8 +30,13 @@ void Vector::setZ(double z) {
     Vector::z = z;
 }
 
+
 bool Vector::operator==(const Vector &other) const {
     return x==other.x && y==other.y && z==other.z;
+}
+
+bool Vector::operator!=(const Vector &other) const {
+    return !(*this==other);
 }
 
 
@@ -116,6 +120,9 @@ Vector unit(Vector v) {
 double cosine(const Vector &v, const Vector &u) {
     return unit(u).dot(unit(v));
 }
+
+
+
 
 
 
