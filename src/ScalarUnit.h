@@ -82,12 +82,12 @@ public:
     {
         return ScalarUnit<M,K,S>(magnitude_/rhs);
     }
-    friend ScalarUnit<M,K,S> operator/(const long double lhs, const ScalarUnit<M,K,S> &rhs) const
+    friend ScalarUnit<M,K,S> operator/(const long double lhs, const ScalarUnit<M,K,S> &rhs)
     {
         return ScalarUnit<M,K,S>(rhs.magnitude_/lhs);
     }
 
-    ScalarUnit<M,K,S>&operator/=(const long double rhs) const
+    ScalarUnit<M,K,S>&operator/=(const long double rhs)
     {
         magnitude_/=rhs;
         return *this;

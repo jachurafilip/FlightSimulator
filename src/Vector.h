@@ -40,7 +40,7 @@ public:
 
     Vector operator-(const Vector &other) const;
     Vector& operator-=(const Vector &other);
-    Vector operator-();
+    Vector operator-() const;
 
     double dot(const Vector &other) const ;
     Vector cross(const Vector &other) const;

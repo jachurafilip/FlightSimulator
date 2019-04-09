@@ -93,7 +93,7 @@ public:
         return VectorUnit<M, K, S>(value_/rhs);
     }
 
-    VectorUnit<M,K,S>&operator/=(const long double rhs) const
+    VectorUnit<M,K,S>&operator/=(const long double rhs)
     {
         value_/=rhs;
         return *this;
