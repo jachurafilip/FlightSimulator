@@ -23,8 +23,24 @@ TEST(VectorUnitsTests,VectorUnitsAddition)
 
 TEST(VectorUnitsTests, VectorUnitsDot)
 {
-    LengthV x(1,0,0);
-    ForceV f(5,0,0);
+    LengthV x(2,1,0);
+    ForceV f(5,3,0);
 
-    EXPECT_EQ(f.dot(x),Energy(5.0));
+    EXPECT_EQ(f.dot(x),Energy(13.0));
+}
+
+TEST(VectorUnitsTests, VectorUnitsCross)
+{
+    LengthV x(2,1,0);
+    ForceV y(5,3,2);
+
+    EXPECT_EQ(x.cross(y),MomentOfForce(2,-4,1));
+}
+
+TEST(VectorUnitsTests, VectorCastedToScalar)
+{
+    ForceV f(3,4,0);
+    Force s(5.0);
+
+    EXPECT_EQ(static_cast<Force>(f),s);
 }

@@ -6,9 +6,11 @@
 #define FLIGHTSIMULATOR_PHYSICALVALUE_H
 
 
+#include <ostream>
+
 template <int M, int K, int S>
 class ScalarUnit {
-protected:
+private:
     long double magnitude_ {0.0};
 
 public:
@@ -23,118 +25,93 @@ public:
     {
         magnitude_ = magnitude_;
     }
+
+    bool operator==(const ScalarUnit<M,K,S> &rhs) const {
+        return magnitude_ == rhs.magnitude_;
+    }
+
+    bool operator!=(const ScalarUnit<M,K,S> &rhs) const {
+        return !(rhs == *this);
+    }
+
+    bool operator<(const ScalarUnit<M,K,S> &rhs) const {
+        return magnitude_ < rhs.magnitude_;
+    }
+
+    bool operator>(const ScalarUnit<M,K,S> &rhs) const {
+        return rhs < *this;
+    }
+
+    bool operator<=(const ScalarUnit<M,K,S> &rhs) const {
+        return !(rhs < *this);
+    }
+
+    bool operator>=(const ScalarUnit<M,K,S> &rhs) const {
+        return !(*this < rhs);
+    }
+
+    ScalarUnit<M,K,S> operator+(const ScalarUnit<M,K,S> &other) const
+    {
+        return ScalarUnit<M,K,S>(magnitude_+other.getMagnitude());
+    }
+    ScalarUnit<M,K,S> operator-(const ScalarUnit<M,K,S> &other) const
+    {
+        return ScalarUnit<M, K, S>(magnitude_-other.getMagnitude());
+    }
+    ScalarUnit<M,K,S> operator-() const
+    {
+        return ScalarUnit<M,K,S>(-magnitude_);
+    }
+
+    ScalarUnit<M,K,S> operator* (const long double rhs) const
+    {
+        return ScalarUnit<M,K,S>(magnitude_*rhs);
+    }
+    friend ScalarUnit<M,K,S> operator*(const long double lhs, const ScalarUnit<M,K,S> &rhs)
+    {
+        return ScalarUnit<M,K,S>(rhs.magnitude_*lhs);
+    }
+
+    ScalarUnit<M,K,S>&operator*=(const long double rhs)
+    {
+        magnitude_*=rhs;
+        return *this;
+    }
+
+    ScalarUnit<M,K,S> operator/ (const long double rhs) const
+    {
+        return ScalarUnit<M,K,S>(magnitude_/rhs);
+    }
+    friend ScalarUnit<M,K,S> operator/(const long double lhs, const ScalarUnit<M,K,S> &rhs) const
+    {
+        return ScalarUnit<M,K,S>(rhs.magnitude_/lhs);
+    }
+
+    ScalarUnit<M,K,S>&operator/=(const long double rhs) const
+    {
+        magnitude_/=rhs;
+        return *this;
+    }
+
+    template <int M1, int K1, int S1>
+    ScalarUnit<M+M1, K+K1,S+S1> operator*(const ScalarUnit<M1,K1,S1> &rhs) const
+    {
+        return ScalarUnit<M+M1, K+K1,S+S1>(rhs.getMagnitude()*magnitude_);
+    }
+
+    template <int M1, int K1, int S1>
+    ScalarUnit<M-M1, K-K1,S-S1> operator/(const ScalarUnit<M1,K1,S1> &rhs) const
+    {
+        return ScalarUnit<M-M1, K-K1,S-S1>(magnitude_/rhs.getMagnitude());
+    }
+
+
+    friend std::ostream &operator<<(std::ostream &os, const ScalarUnit &unit) {
+        os << "magnitude_: " << unit.magnitude_;
+        return os;
+    }
 };
 
-template<int M, int K, int S>
-bool operator==
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return left.getMagnitude()==right.getMagnitude();
-}
-
-template<int M, int K, int S>
-bool operator!=
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return left.getMagnitude()!=right.getMagnitude();
-}
-
-template<int M, int K, int S>
-bool operator>
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return left.getMagnitude()>right.getMagnitude();
-}
-
-template<int M, int K, int S>
-bool operator>=
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return left.getMagnitude()>=right.getMagnitude();
-}
-
-template<int M, int K, int S>
-bool operator<
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return left.getMagnitude()<right.getMagnitude();
-}
-
-template<int M, int K, int S>
-bool operator<=
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return left.getMagnitude()<=right.getMagnitude();
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator+
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return ScalarUnit<M,K,S>(left.getMagnitude()+right.getMagnitude());
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator-
-        (const ScalarUnit<M,K,S> &left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return ScalarUnit<M,K,S>(left.getMagnitude()-right.getMagnitude());
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator-
-        (const ScalarUnit<M,K,S> &value) noexcept
-{
-    return ScalarUnit<M,K,S>(-value.getMagnitude());
-}
-
-template<int M1, int K1, int S1, int M2, int K2, int S2>
-ScalarUnit<M1+M2,K1+K2,S1+S2>operator*
-        (const ScalarUnit<M1,K1,S1> &left, const ScalarUnit<M2,K2,S2> &right) noexcept
-{
-    return ScalarUnit<M1+M2,K1+K2,S1+S2>(left.getMagnitude()*right.getMagnitude());
-}
-
-template<int M1, int K1, int S1, int M2, int K2, int S2>
-ScalarUnit<M1-M2,K1-K2,S1-S2>operator/
-        (const ScalarUnit<M1,K1,S1> &left, const ScalarUnit<M2,K2,S2> &right) noexcept
-{
-    return ScalarUnit<M1-M2,K1-K2,S1-S2>(left.getMagnitude()/right.getMagnitude());
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator*
-        (const long double multiplier, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return ScalarUnit<M,K,S>(multiplier*right.getMagnitude());
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator*
-        (const ScalarUnit<M,K,S> &left, const long double right) noexcept
-{
-    return ScalarUnit<M,K,S>(right*left.getMagnitude());
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator/
-        (const ScalarUnit<M,K,S> &left, const long double right) noexcept
-{
-    return ScalarUnit<M,K,S>(left.getMagnitude()/right);
-}
-
-template<int M, int K, int S>
-ScalarUnit<M,K,S>operator/
-        (long double left, const ScalarUnit<M,K,S> &right) noexcept
-{
-    return ScalarUnit<-M,-K,-S>(left/right.getMagnitude());
-}
-
-using Quantity = ScalarUnit<0,0,0>;
-Quantity operator""_Deg(long double magnitude) noexcept
-{
-    return Quantity(magnitude);
-}
 using Mass = ScalarUnit<0,1,0>;
 Mass operator""_kg(long double magnitude) noexcept
 {
