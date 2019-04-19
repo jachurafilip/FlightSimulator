@@ -48,3 +48,8 @@ void Point::moveByVec(const Vector &vec) {
     z+=vec.getZ();
 }
 
+std::ostream &operator<<(std::ostream &os, const Point &point) {
+    os << "x: " << point.x << " y: " << point.y << " z: " << point.z;
+    return os;
+}
+

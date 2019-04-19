@@ -6,6 +6,7 @@
 #define FLIGHTSIMULATOR_POINT_H
 
 #include <memory>
+#include <ostream>
 #include "Vector.h"
 
 class Point {
@@ -24,6 +25,8 @@ public:
     double getZ() const;
 
     void setZ(double z);
+
+    friend std::ostream &operator<<(std::ostream &os, const Point &point);
 
     double distance(const Point &other);
 

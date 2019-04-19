@@ -12,6 +12,7 @@ template <int M, int K, int S>
 class VectorUnit{
 
 public:
+    VectorUnit(): value_(0,0,0){}
     explicit VectorUnit(Vector vector) : value_(std::move(vector)) {}
     explicit VectorUnit(const long double magnitude) : value_(magnitude,0,0){}
     VectorUnit(const long double x, const long double y, const long double z) : value_(x,y,z) {}
