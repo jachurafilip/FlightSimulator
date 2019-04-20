@@ -14,6 +14,11 @@ struct Angles
     double pitch;
     double roll;
     double yaw;
+
+    friend std::ostream &operator<<(std::ostream &os, const Angles &angles) {
+        os << "pitch: " << angles.pitch << " roll: " << angles.roll << " yaw: " << angles.yaw;
+        return os;
+    }
 };
 
 
@@ -23,7 +28,7 @@ struct Position
     Angles angles;
 
     friend std::ostream &operator<<(std::ostream &os, const Position &position) {
-        os << "point: " << position.point;
+        os << "point: " << position.point<<", angles: "<<position.angles;
         return os;
     }
 };

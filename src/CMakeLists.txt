@@ -23,4 +23,9 @@ add_library(Planes STATIC ${PlanesSourceFiles})
 target_include_directories(Planes PUBLIC .)
 
 
+add_executable(main main.cpp)
+target_link_libraries(main Models)
+target_link_libraries(main Controller)
+target_link_libraries(main Planes)
+
 

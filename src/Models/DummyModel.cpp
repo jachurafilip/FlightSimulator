@@ -6,7 +6,6 @@
 #include "DummyModel.h"
 
 VelocityV DummyModel::getCurrentSpeed(const Plane &plane, const VelocityV &v0) {
-    std::cout<<plane.pos;
     return v0;
 }
 

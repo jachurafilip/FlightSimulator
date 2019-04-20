@@ -3,5 +3,7 @@
 //
 
 #include "Plane.h"
-
-void Plane::draw() {}
+#include <iostream>
+void Plane::draw() {
+    std::cout<<this->pos<<std::endl;
+}
