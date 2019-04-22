@@ -12,7 +12,7 @@
 class PlaneController {
 public:
 
-    PlaneController(Plane *p,PhysicalModel *m): model(m), plane(p){};
+    PlaneController(Plane *p,PhysicalModel *m):plane(p), model(m){};
     void simulate();
     void waitForUsersAction();
 

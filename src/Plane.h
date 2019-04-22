@@ -11,7 +11,8 @@
 
 class Plane {
 public:
-    Plane(VelocityV v): speed(v){}
+    Plane() = default;
+    explicit Plane(VelocityV v): speed(v){}
     virtual void draw();
 
     Position pos;
