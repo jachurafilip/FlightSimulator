@@ -17,9 +17,9 @@ void PlaneController::simulate()
     using namespace std::chrono;
 
 
-    time_point<system_clock> start = system_clock::now();
+    time_point<system_clock> start = system_clock::now() - 1ms;
     while(true) {
-        duration<double, seconds> dt = system_clock::now() - start;
+        duration<double> dt = system_clock::now() - start;
         start = system_clock::now();
 
         model->update(dt.count());

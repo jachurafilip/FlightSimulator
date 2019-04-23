@@ -10,6 +10,9 @@
 
 class DummyModel: public PhysicalModel {
 public:
+    DummyModel(const Position &position);
+
+public:
     void update(double dt) override;
 };
 

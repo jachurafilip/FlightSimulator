@@ -9,3 +9,5 @@
 void DummyModel::update(double dt) {
     position.point.moveByVec(Vector{1, 0, 0} * dt);
 }
+
+DummyModel::DummyModel(const Position &position) : PhysicalModel(position) {}
