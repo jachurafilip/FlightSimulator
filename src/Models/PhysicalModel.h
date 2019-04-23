@@ -6,14 +6,18 @@
 #define FLIGHTSIMULATOR_PHYSICALMODEL_H
 
 
+#include <chrono>
 #include "../Basic/VectorUnit.h"
 #include "../Plane.h"
 
 class PhysicalModel {
-
+protected:
+    Position position;
 public:
-    virtual VelocityV getCurrentSpeed(const Plane &plane, const VelocityV &v0) = 0;
-    virtual Angles getCurrentAngles(const Plane &plane) = 0;
+    explicit PhysicalModel(const Position &position);
+
+    Position getCurrentPosition() const;
+    virtual void update(double dt) = 0; // dt is time step in seconds
 
 };
 

@@ -3,3 +3,9 @@
 //
 
 #include "PhysicalModel.h"
+
+PhysicalModel::PhysicalModel(const Position &position) : position(position) {}
+
+Position PhysicalModel::getCurrentPosition() const {
+    return position;
+}

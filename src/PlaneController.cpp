@@ -13,18 +13,20 @@ void PlaneController::waitForUsersAction() {
 
 void PlaneController::simulate()
 {
-    std::chrono::time_point<std::chrono::system_clock> t = std::chrono::system_clock::now();
-    while(true) {
-        auto newSpeed = model->getCurrentSpeed(*plane, plane->speed);
-        auto newAngles = model->getCurrentAngles(*plane);
+    using namespace std::chrono_literals;
+    using namespace std::chrono;
 
-        plane->pos.point.moveByVec(newSpeed.getValue() / FPS);
-        plane->pos.angles = newAngles;
+
+    time_point<system_clock> start = system_clock::now();
+    while(true) {
+        duration<double, seconds> dt = system_clock::now() - start;
+        start = system_clock::now();
+
+        model->update(dt.count());
+        plane->pos = model->getCurrentPosition();
 
         plane->draw();
-        t+=std::chrono::milliseconds(33);
-        std::this_thread::sleep_until(t);
-
+        std::this_thread::sleep_until(start + 1s/FPS);
     }
 
 }

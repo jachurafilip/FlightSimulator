@@ -1,8 +1,8 @@
 set(UnitsHeaders Basic/ScalarUnit.h Basic/Vector.h Basic/VectorUnit.h Basic/Point.h Basic/Position.h)
 set(UnitsSourceFiles Basic/ScalarUnit.cpp Basic/Vector.cpp Basic/VectorUnit.cpp Basic/Point.cpp)
 
-set(ModelsHeaders Models/PhysicalModel.h Models/DummyModel.h)
-set(ModelsSourceFiles Models/PhysicalModel.cpp Models/DummyModel.cpp)
+set(ModelsHeaders Models/PhysicalModel.h Models/DummyModel.h Models/Model_6DOF.h)
+set(ModelsSourceFiles Models/PhysicalModel.cpp Models/DummyModel.cpp Models/Model_6DOF.cpp)
 
 set(ControllerSourceFiles PlaneController.cpp)
 set(ControllerHearder PlaneController.h)

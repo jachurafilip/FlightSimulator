@@ -5,10 +5,7 @@
 #include <iostream>
 #include "DummyModel.h"
 
-VelocityV DummyModel::getCurrentSpeed(const Plane &plane, const VelocityV &v0) {
-    return v0;
-}
 
-Angles DummyModel::getCurrentAngles(const Plane &plane) {
-    return plane.pos.angles;
+void DummyModel::update(double dt) {
+    position.point.moveByVec(Vector{1, 0, 0} * dt);
 }
