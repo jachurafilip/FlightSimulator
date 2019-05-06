@@ -8,7 +8,7 @@ set(ControllerSourceFiles PlaneController.cpp)
 set(ControllerHearder PlaneController.h)
 
 set(PlanesSourceFiles Plane.cpp)
-set(PlanesHeaders Plane.h)
+set(PlanesHeaders Plane.h linmath.h)
 add_library(Units STATIC ${UnitsSourceFiles})
 target_include_directories(Units PUBLIC . )
 
