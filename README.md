@@ -1,3 +1,5 @@
 # FlightSimulator
 
-To run, clone gtest library from https://github.com/google/googletest and put it into lib/gtest folder
+Before building run:
+git submodule init
+git submodule update
