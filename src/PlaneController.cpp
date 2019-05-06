@@ -1,7 +1,8 @@
 //
 // Created by filip on 19.04.19.
 //
-
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "PlaneController.h"
 #include <chrono>
 #include <thread>
@@ -9,7 +10,9 @@
 
 void PlaneController::waitForUsersAction() {
 
+
 }
+
 
 void PlaneController::simulate()
 {
@@ -20,8 +23,8 @@ void PlaneController::simulate()
     time_point<system_clock> start = system_clock::now();
     while(true) {
         duration<double> dt = system_clock::now() - start;
+        waitForUsersAction();
         start = system_clock::now();
-
         model->update(dt.count());
         plane->pos = model->getCurrentPosition();
 
