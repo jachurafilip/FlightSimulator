@@ -17,7 +17,7 @@ void PlaneController::simulate()
     using namespace std::chrono;
 
 
-    time_point<system_clock> start = system_clock::now() - 1ms;
+    time_point<system_clock> start = system_clock::now();
     while(true) {
         duration<double> dt = system_clock::now() - start;
         start = system_clock::now();
@@ -26,7 +26,7 @@ void PlaneController::simulate()
         plane->pos = model->getCurrentPosition();
 
         plane->draw();
-        std::this_thread::sleep_until(start + 1s/FPS);
+        std::this_thread::sleep_until(start + 1000ms/FPS);
     }
 
 }
