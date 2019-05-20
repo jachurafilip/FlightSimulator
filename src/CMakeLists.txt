@@ -30,6 +30,7 @@ target_link_libraries(main Controller)
 target_link_libraries(main Planes)
 target_link_libraries(main glfw)
 target_link_libraries(main glad)
+target_link_libraries(main glm)
 
 
 
