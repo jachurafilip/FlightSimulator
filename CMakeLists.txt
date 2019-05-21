@@ -13,7 +13,7 @@ set(GTEST_LIBS gtest gtest_main gmock gmock_main)
 
 add_subdirectory(lib/gtest)
 add_subdirectory(src)
-add_subdirectory(tests)
+
 include_directories(lib/gtest/googletest/include)
 include_directories(lib/gtest/googlemock/include)
 
