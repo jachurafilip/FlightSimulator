@@ -9,6 +9,7 @@
 
 // May need to replace with absolute path on some systems 
 #define PATH_TO_TEAPOT_OBJ_FILE "teapot.obj"
+#define DIRECTORY "/home/filip/FlightSimulator/"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -191,8 +192,8 @@ void init() {
 	// For now, lights and materials are set in display.  Will move to init 
 	// later, per update lights
 
-	vertexshader = initshaders(GL_VERTEX_SHADER,"/home/joasia/Symulator/FlightSimulator/src/Scene/light.vert");
-	fragmentshader = initshaders(GL_FRAGMENT_SHADER,"/home/joasia/Symulator/FlightSimulator/src/Scene/light.frag");
+	vertexshader = initshaders(GL_VERTEX_SHADER,DIRECTORY"src/Scene/light.vert");
+	fragmentshader = initshaders(GL_FRAGMENT_SHADER,DIRECTORY"src/Scene/light.frag");
 	shaderprogram = initprogram(vertexshader,fragmentshader); 
 	islight = glGetUniformLocation(shaderprogram,"islight");        
 	light0posn = glGetUniformLocation(shaderprogram,"light0posn");       
