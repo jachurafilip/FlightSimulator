@@ -25,7 +25,7 @@ void PlaneController::simulate()
         duration<double> dt = system_clock::now() - start;
         waitForUsersAction();
         start = system_clock::now();
-        model->update(dt.count());
+        model->update(Time(0));
         plane->pos = model->getCurrentPosition();
 
         plane->draw();

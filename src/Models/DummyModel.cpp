@@ -6,8 +6,8 @@
 #include "DummyModel.h"
 
 
-void DummyModel::update(double dt) {
-    position.point.moveByVec(Vector{1, 0, 0} * dt);
+void DummyModel::update(Time dt) {
+    position.point.moveByVec((VelocityV{1, 0, 0} * dt).getValue());
 }
 
 DummyModel::DummyModel(const Position &position) : PhysicalModel(position) {}

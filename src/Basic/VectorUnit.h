@@ -141,6 +141,9 @@ using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;
 using MomentOfForce = VectorUnit<2,1,-2>;
+using MomentOfInertia = VectorUnit<2, 1, 0>;
+using AngularVelocity = VectorUnit<0, 0, -1>;
+using AngularAcceleration = VectorUnit<0, 0, -2>;
 
 
 #endif //FLIGHTSIMULATOR_VECTORUNIT_H

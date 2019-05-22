@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "Basic/Vector.h"
-#include "Basic/VectorUnit.h"
-#include "Basic/ScalarUnit.cpp"
+#include <Basic/Vector.h>
+#include <Basic/VectorUnit.h>
+#include <Basic/ScalarUnit.cpp>
 TEST(VectorUnitsTests, VectorsAddition)
 {
     EXPECT_EQ(Vector(2,1,1)+Vector(3,2,4),Vector(5,3,5));

@@ -6,8 +6,8 @@
 
 
 
-void Model_6DOF::update(double dt) {
-    plane_state newState;
+void Model_6DOF::update(Time dt) {
+    PlaneState newState;
     //TODO actual calculations
     state = newState;
     position = state.position;

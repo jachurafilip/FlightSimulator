@@ -7,8 +7,8 @@
 
 
 #include <chrono>
-#include "../Basic/VectorUnit.h"
-#include "../Plane.h"
+#include <Basic/VectorUnit.h>
+#include <Plane.h>
 
 class PhysicalModel {
 protected:
@@ -17,7 +17,7 @@ public:
     explicit PhysicalModel(const Position &position);
 
     Position getCurrentPosition() const;
-    virtual void update(double dt) = 0; // dt is time step in seconds
+    virtual void update(Time dt) = 0; // dt is time step in seconds
 
 };
 
