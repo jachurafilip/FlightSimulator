@@ -128,6 +128,6 @@ void solidTeapot(float size) {
 	}
 
 	glBindVertexArray(defaultVAO);
-	glDrawElements(GL_TRIANGLES, teapotIndices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, teapotIndices.size(), GL_UNSIGNED_INT, 0); //todo dlaczego tutaj ten adres to 0 (nullptr)?
 	glBindVertexArray(0); // Unbind the VAO when done
 }

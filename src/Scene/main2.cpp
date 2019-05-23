@@ -7,9 +7,9 @@
 /******************************************************************************/
 
 
-// May need to replace with absolute path on some systems 
-#define PATH_TO_TEAPOT_OBJ_FILE "teapot.obj"
+// May need to replace with absolute path on some systems
 #define DIRECTORY "/home/filip/FlightSimulator/"
+#define PATH_TO_TEAPOT_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/teapot.obj"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

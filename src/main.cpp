@@ -64,7 +64,6 @@ int main(int argc, char** argv)
     exit(EXIT_SUCCESS);
 
     return 0;
-
     Plane f(VelocityV(1,0,0));
     DummyModel m{Position()};
     PlaneController p(&f,&m);

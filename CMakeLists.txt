@@ -11,7 +11,7 @@ endif()
 
 set(GTEST_LIBS gtest gtest_main gmock gmock_main)
 
-add_subdirectory(lib/gtest)
+
 add_subdirectory(src)
 
 include_directories(lib/gtest/googletest/include)
@@ -24,3 +24,4 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory(lib/glfw)
 add_subdirectory(lib/glad)
 add_subdirectory(lib/glm)
+add_subdirectory(lib/gtest)
