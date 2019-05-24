@@ -18,7 +18,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
-    window = glfwCreateWindow(640, 480, "Simulation", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "Simulation", nullptr, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -34,18 +34,8 @@ int main(int argc, char** argv)
 
     init();
     glfwSetWindowRefreshCallback(window, (GLFWwindowrefreshfun)display);
-    glfwSetKeyCallback(window, (GLFWkeyfun)keyboard);
     glfwSetCharCallback(window, (GLFWcharfun)specialKey);
     glfwSetWindowSizeCallback(window, (GLFWwindowsizefun)reshape);
-
-    if(argc > 1) {
-        allowGrader = true;
-        grader.init(argv[1]);
-        grader.loadCommands(argv[1]);
-        grader.bindDisplayFunc(display);
-        grader.bindSpecialFunc(specialKey);
-        grader.bindKeyboardFunc(keyboard);
-    }
 
     printHelp();
     bool redraw = true;

@@ -99,48 +99,6 @@ void printHelp() {
 		<< "press ESC to quit.\n";  
 }
 
-void keyboard(unsigned char key,int x,int y) {
-	switch(key) {
-	case '+':
-		amount++;
-		std::cout << "amount set to " << amount << "\n";
-		break;
-	case '-':
-		amount--;
-		std::cout << "amount set to " << amount << "\n"; 
-		break;
-	case 'i':
-		if(useGlu) {
-			std::cout << "Please disable glm::LookAt by pressing 'g'"
-				  << " before running tests\n";
-		}
-		else if(!allowGrader) {
-			std::cout << "Error: no input file specified for grader\n";
-		} else {
-			std::cout << "Running tests...\n";
-			grader.runTests();
-			std::cout << "Done! [ESC to quit]\n";
-		}
-		break;
-	case 'g':
-		useGlu = !useGlu;
-		std::cout << "Using glm::LookAt set to: " 
-			<< (useGlu ? " true " : " false ") << "\n"; 
-		break;
-	case 'h':
-		printHelp();
-		break;
-	case 27:  // Escape to quit
-		exit(0);
-		break;
-	case 'r': // reset eye and up vectors 
-		eye = eyeinit; 
-		up = upinit; 
-		amount = amountinit;
-		std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
-		break;                 
-	}
-}
 
 //  You will need to enter code for the arrow keys 
 //  When an arrow key is pressed, it will call your transform functions
@@ -243,7 +201,7 @@ void display() {
 	glUniform1i(islight,true);
 
 	solidTeapot(4.5f);
-	//glutSwapBuffers();
+	glfwSwapInterval(1);
 }
 
 static void error_callback(int error, const char* description)
@@ -254,66 +212,54 @@ static void error_callback(int error, const char* description)
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-}
-
-
-
-int main2(int argc,char* argv[]) {
-
-    GLFWwindow* window;
-    glfwSetErrorCallback(error_callback);
-
-    if (!glfwInit())
-        exit(EXIT_FAILURE);
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-
-    window = glfwCreateWindow(640, 480, "Simulation", NULL, NULL);
-    if (!window)
     {
-        glfwTerminate();
-        exit(EXIT_FAILURE);
+        cout << "ESC";
+        glfwSetWindowShouldClose(window, GLFW_TRUE);
     }
-
-    glfwSetKeyCallback(window, key_callback);
-
-    glfwMakeContextCurrent(window);
-    gladLoadGL();
-    glfwSwapInterval(1);
-
-
-    init();
-    glfwSetWindowRefreshCallback(window, (GLFWwindowrefreshfun)display);
-    glfwSetKeyCallback(window, (GLFWkeyfun)keyboard);
-    glfwSetCharCallback(window, (GLFWcharfun)specialKey);
-    glfwSetWindowSizeCallback(window, (GLFWwindowsizefun)reshape);
-
-    if(argc > 1) {
-        allowGrader = true;
-        grader.init(argv[1]);
-        grader.loadCommands(argv[1]);
-        grader.bindDisplayFunc(display);
-        grader.bindSpecialFunc(specialKey);
-        grader.bindKeyboardFunc(keyboard);
+    switch(key) {
+        case '+':
+            amount++;
+            std::cout << "amount set to " << amount << "\n";
+            break;
+        case '-':
+            amount--;
+            std::cout << "amount set to " << amount << "\n";
+            break;
+        case 'i':
+        case 'I':
+            if(useGlu) {
+                std::cout << "Please disable glm::LookAt by pressing 'g'"
+                          << " before running tests\n";
+            }
+            else if(!allowGrader) {
+                std::cout << "Error: no input file specified for grader\n";
+            } else {
+                std::cout << "Running tests...\n";
+                grader.runTests();
+                std::cout << "Done! [ESC to quit]\n";
+            }
+            break;
+        case 'g':
+        case 'G':
+            useGlu = !useGlu;
+            std::cout << "Using glm::LookAt set to: "
+                      << (useGlu ? " true " : " false ") << "\n";
+            break;
+        case 'h':
+        case 'H':
+            printHelp();
+            break;
+        case 27:  // Escape to quit
+            exit(0);
+        case 'r':
+        case 'R':  // reset eye and up vectors
+            eye = eyeinit;
+            up = upinit;
+            amount = amountinit;
+            std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
+            break;
+        default:
+            break;
     }
-
-    printHelp();
-    bool redraw = true;
-
-    do{
-        glfwWaitEvents ();
-        if(redraw)
-            display();
-    } while( !glfwWindowShouldClose(window) );
-
-
-    cleanup();
-    glfwDestroyWindow(window);
-
-    glfwTerminate();
-    exit(EXIT_SUCCESS);
-
-    return 0;
 }
+
