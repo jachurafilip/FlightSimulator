@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "DummyModel.h"
-
+#include "../Basic/Point.h"
 
 void DummyModel::update(Time dt) {
     position.point.moveByVec((VelocityV{1, 0, 0} * dt).getValue());

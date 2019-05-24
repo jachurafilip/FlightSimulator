@@ -1,3 +1,8 @@
+set(UnitsHeaders Basic/ScalarUnit.h Basic/Vector.h Basic/VectorUnit.h Basic/Point.h Basic/Position.h)
+set(UnitsSourceFiles Basic/Vector.cpp Basic/VectorUnit.cpp Basic/Point.cpp)
+
+add_library(Units STATIC ${UnitsSourceFiles})
+target_include_directories(Units PUBLIC ./)
 set(ModelsHeaders Models/PhysicalModel.h Models/DummyModel.h Models/Model_6DOF.h Models/PlaneState.h)
 set(ModelsSourceFiles Models/PhysicalModel.cpp Models/DummyModel.cpp Models/Model_6DOF.cpp)
 
@@ -9,10 +14,11 @@ set(PlanesHeaders Plane.h)
 
 add_library(Models STATIC ${ModelsSourceFiles})
 target_include_directories(Models PUBLIC . )
+target_link_libraries(Models Units)
 
 add_library(Controller STATIC ${ControllerSourceFiles})
 target_include_directories(Controller PUBLIC .)
-target_link_libraries(Controller Units)
+#target_link_libraries(Controller Units)
 target_link_libraries(Controller glfw)
 target_link_libraries(Controller glad)
 
@@ -20,7 +26,6 @@ add_library(Planes STATIC ${PlanesSourceFiles})
 target_include_directories(Planes PUBLIC .)
 
 add_subdirectory(Models/PlaneParts)
-add_subdirectory(Basic)
 
 add_executable(main main.cpp)
 target_link_libraries(main Models)
