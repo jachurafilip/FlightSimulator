@@ -34,7 +34,6 @@ int main(int argc, char** argv)
 
     init();
     glfwSetWindowRefreshCallback(window, (GLFWwindowrefreshfun)display);
-    glfwSetCharCallback(window, (GLFWcharfun)specialKey);
     glfwSetWindowSizeCallback(window, (GLFWwindowsizefun)reshape);
 
     printHelp();

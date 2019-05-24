@@ -91,7 +91,7 @@ std::string imgNumber(int num) {
 
 void printHelp() {
 	std::cout << "\npress 'h' to print this message again.\n" 
-		<< "press '+' or '-' to change the amount of rotation that\n"
+		<< "press ']' or '[' to change the amount of rotation that\n"
 		<< "occurs with each arrow press.\n" 
 		<< "press 'i' to run image grader test cases\n"
 		<< "press 'g' to switch between using glm::lookAt or your own LookAt.\n"     
@@ -103,22 +103,7 @@ void printHelp() {
 //  You will need to enter code for the arrow keys 
 //  When an arrow key is pressed, it will call your transform functions
 
-void specialKey(int key,int x,int y) {
-	switch(key) {
-	case 100: //left
-		Transform::left(amount,eye,up);
-		break;
-	case 101: //up
-		Transform::up(amount,eye,up);
-		break;
-	case 102: //right
-		Transform::left(-amount,eye,up);
-		break;
-	case 103: //down
-		Transform::up(-amount,eye,up);
-		break;
-	}
-}
+
 
 // This function gets called when the window size gets changed
 void reshape(int width,int height){
@@ -211,22 +196,24 @@ static void error_callback(int error, const char* description)
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    if (action == GLFW_PRESS)
     {
-        cout << "ESC";
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-    }
+
+
     switch(key) {
-        case '+':
+        case GLFW_KEY_ESCAPE:
+            cout << "ESC";
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
+            break;
+        case GLFW_KEY_RIGHT_BRACKET:
             amount++;
             std::cout << "amount set to " << amount << "\n";
             break;
-        case '-':
+        case GLFW_KEY_LEFT_BRACKET:
             amount--;
             std::cout << "amount set to " << amount << "\n";
             break;
-        case 'i':
-        case 'I':
+        case GLFW_KEY_I:
             if(useGlu) {
                 std::cout << "Please disable glm::LookAt by pressing 'g'"
                           << " before running tests\n";
@@ -239,27 +226,35 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
                 std::cout << "Done! [ESC to quit]\n";
             }
             break;
-        case 'g':
-        case 'G':
+        case GLFW_KEY_G:
             useGlu = !useGlu;
             std::cout << "Using glm::LookAt set to: "
                       << (useGlu ? " true " : " false ") << "\n";
             break;
-        case 'h':
-        case 'H':
+        case GLFW_KEY_H:
             printHelp();
             break;
-        case 27:  // Escape to quit
-            exit(0);
-        case 'r':
-        case 'R':  // reset eye and up vectors
+        case GLFW_KEY_R:  // reset eye and up vectors
             eye = eyeinit;
             up = upinit;
             amount = amountinit;
             std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
             break;
+        case GLFW_KEY_LEFT: //left
+            Transform::left(amount,eye,up);
+            break;
+        case GLFW_KEY_UP: //up
+            Transform::up(amount,eye,up);
+            break;
+        case GLFW_KEY_RIGHT: //right
+            Transform::left(-amount,eye,up);
+            break;
+        case GLFW_KEY_DOWN: //down
+            Transform::up(-amount,eye,up);
+            break;
         default:
             break;
+    }
     }
 }
 
