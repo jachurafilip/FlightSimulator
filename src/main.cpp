@@ -26,15 +26,15 @@ int main(int argc, char** argv)
     }
 
     glfwSetKeyCallback(window, key_callback);
+    glfwSetWindowRefreshCallback(window, display);
+    glfwSetWindowSizeCallback(window, reshape);
 
     glfwMakeContextCurrent(window);
     gladLoadGL();
     glfwSwapInterval(1);
 
-
     init();
-    glfwSetWindowRefreshCallback(window, (GLFWwindowrefreshfun)display);
-    glfwSetWindowSizeCallback(window, (GLFWwindowsizefun)reshape);
+
 
     printHelp();
     bool redraw = true;
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     do{
         glfwWaitEvents ();
         if(redraw)
-            display();
+            display(window);
     } while( !glfwWindowShouldClose(window) );
 
 
