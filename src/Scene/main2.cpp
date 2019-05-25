@@ -242,16 +242,16 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
             break;
         case GLFW_KEY_LEFT: //left
-            roll(amount);
+            roll(-amount*M_PI/180);
             break;
         case GLFW_KEY_UP: //up
-            pitch(amount);
+            pitch(amount*M_PI/180);
             break;
         case GLFW_KEY_RIGHT: //right
-            roll(-amount);
+            roll(amount*M_PI/180);
             break;
         case GLFW_KEY_DOWN: //down
-            pitch(-amount);
+            pitch(-amount*M_PI/180);
             break;
         default:
             break;
