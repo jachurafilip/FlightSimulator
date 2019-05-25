@@ -59,6 +59,9 @@ extern std::vector <glm::vec3> teapotNormals;
 extern std::vector <unsigned int> teapotIndices;
 // Helper function to parse an OBJ file
 void parse(const char*);
+void yaw(double angle);
+void pitch(double angle);
+void roll(double angle);
 
 // To save time, only (re)bind the teapot buffers when needed
 void bindTeapot();

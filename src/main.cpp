@@ -35,14 +35,12 @@ int main(int argc, char** argv)
 
     init();
 
-
     printHelp();
-    bool redraw = true;
 
     do{
-        glfwWaitEvents ();
-        if(redraw)
-            display(window);
+        glfwWaitEvents();
+        display(window);
+        glfwSwapBuffers(window);
     } while( !glfwWindowShouldClose(window) );
 
 

@@ -9,7 +9,7 @@
 
 // May need to replace with absolute path on some systems
 #define DIRECTORY "/home/filip/FlightSimulator/"
-#define PATH_TO_TEAPOT_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/teapot.obj"
+#define PATH_TO_TEAPOT_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/Plane.obj"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -28,7 +28,7 @@ int amount; // The amount of rotation for each arrow press
 
 vec3 eye; // The (regularly updated) vector coordinates of the eye location 
 vec3 up;  // The (regularly updated) vector coordinates of the up location 
-const vec3 eyeinit(0.0,0.0,7.0); // Initial eye position, also for resets
+const vec3 eyeinit(-20.0,2.0,0.0); // Initial eye position, also for resets
 const vec3 upinit(0.0,1.0,0.0); // Initial up position, also for resets
 const int amountinit = 5; //Initial step amount for camera movement, also for resets
 
@@ -122,7 +122,7 @@ void reshape(GLFWwindow* window, int width,int height){
 void init() {
 	// Set up initial position for eye,up and amount
 	// As well as booleans 
-
+    glMatrixMode(GL_MODELVIEW);
 	eye = eyeinit; 
 	up = upinit; 
 	amount = amountinit;
@@ -134,6 +134,7 @@ void init() {
 	// Except that we use two point lights
 	// For now, lights and materials are set in display.  Will move to init 
 	// later, per update lights
+
 
 	vertexshader = initshaders(GL_VERTEX_SHADER,DIRECTORY"src/Scene/light.vert");
 	fragmentshader = initshaders(GL_FRAGMENT_SHADER,DIRECTORY"src/Scene/light.frag");
@@ -156,14 +157,15 @@ void init() {
 	// Other initializations here
 	initBufferObjects();
 	// Load 3D model of the teapot so it can be drawn later.
-	parse(PATH_TO_TEAPOT_OBJ_FILE);
+    parse(PATH_TO_TEAPOT_OBJ_FILE);
+
 }
 
 void display(GLFWwindow* window) {
 	glClearColor(0,0,1,0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	const vec3 center(0.0,0.0,0.0); 
+	const vec3 center(0.0,0.0,0.0);
 
 	if (useGlu) {
 		view = glm::lookAt(eye, center, up);
@@ -186,7 +188,6 @@ void display(GLFWwindow* window) {
 	glUniform1i(islight,true);
 
 	solidTeapot(4.5f);
-	glfwSwapInterval(1);
 }
 
 static void error_callback(int error, const char* description)
@@ -196,7 +197,7 @@ static void error_callback(int error, const char* description)
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    if (action == GLFW_PRESS)
+    if (action == GLFW_REPEAT || action == GLFW_PRESS)
     {
 
 
@@ -241,16 +242,16 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
             break;
         case GLFW_KEY_LEFT: //left
-            Transform::left(amount,eye,up);
+            roll(amount);
             break;
         case GLFW_KEY_UP: //up
-            Transform::up(amount,eye,up);
+            pitch(amount);
             break;
         case GLFW_KEY_RIGHT: //right
-            Transform::left(-amount,eye,up);
+            roll(-amount);
             break;
         case GLFW_KEY_DOWN: //down
-            Transform::up(-amount,eye,up);
+            pitch(-amount);
             break;
         default:
             break;

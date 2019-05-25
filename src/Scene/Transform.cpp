@@ -30,8 +30,7 @@ void Transform::left(float degrees, vec3& eye, vec3& up) {
 	for(int i=0; i<3; i++)
 		cout<<eye[i]<<" "<<up[i]<<endl;
 	printf("Coordinates: %.2f, %.2f, %.2f; distance: %.2f\n", eye.x, eye.y, eye.z, sqrt(pow(eye.x, 2) + pow(eye.y, 2) + pow(eye.z, 2)));
-	// YOUR CODE FOR HW1 HERE
-	// eye = glm::dot(eye, Transform::rotate(degrees, up));
+
 	eye = eye * Transform::rotate(-degrees, up);
 }
 

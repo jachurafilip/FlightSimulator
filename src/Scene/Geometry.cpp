@@ -11,7 +11,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Geometry.h"
-
+#include <algorithm>
 // Avoiding linker error caused by multiply defined variables
 GLuint defaultVAO, defaultVBO, defaultNBO, defaultEBO;
 GLuint vertexshader, fragmentshader, shaderprogram;
@@ -32,6 +32,8 @@ void initBufferObjects() {
 	glGenBuffers(1, &defaultNBO);
 	glGenBuffers(1, &defaultEBO);
 }
+
+
 
 // Free up any dynamically allocated memory here
 void destroyBufferObjects() {
@@ -122,12 +124,40 @@ void bindTeapot() {
 void solidTeapot(float size) {
 	model = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
 	glUniformMatrix4fv(modelviewPos, 1, GL_FALSE, &(view * model)[0][0]);
-
-	if (lastUsed != TEAPOT) {
 		bindTeapot();
-	}
 
 	glBindVertexArray(defaultVAO);
 	glDrawElements(GL_TRIANGLES , teapotIndices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0); // Unbind the VAO when done
+}
+
+void pitch(double angle) {
+    for(auto &v: teapotVertices)
+    {
+        auto v0 = v[0], v1 = v[1];
+        v[0] = v0 * cos(angle)-v1*sin(angle);
+        v[1] = v0 * sin(angle)+v1*cos(angle);
+    }
+
+
+}
+
+void roll(double angle) {
+    for(auto &v: teapotVertices)
+    {
+        auto v0 = v[1], v1 = v[2];
+        v[1] = v0 * cos(angle)-v1*sin(angle);
+        v[2] = v0 * sin(angle)+v1*cos(angle);
+    }
+
+}
+
+void yaw(double angle)
+{
+    for(auto &v: teapotVertices)
+    {
+        auto v0 = v[2], v1 = v[0];
+        v[2] = v0 * cos(angle)-v1*sin(angle);
+        v[0] = v0 * sin(angle)+v1*cos(angle);
+    }
 }
