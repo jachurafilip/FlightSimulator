@@ -9,6 +9,11 @@
 
 int main(int argc, char** argv)
 {
+
+    Plane p;
+    DummyModel m;
+
+    PlaneController pc(&p,&m);
     GLFWwindow* window;
     glfwSetErrorCallback(error_callback);
 
@@ -40,6 +45,10 @@ int main(int argc, char** argv)
     do{
         glfwWaitEvents();
         display(window);
+        pc.simulate();
+        roll((m.getCurrentPosition().angles.roll-m.getPreviousPosition().angles.roll)*M_PI/180);
+        pitch((m.getCurrentPosition().angles.pitch-m.getPreviousPosition().angles.pitch)*M_PI/180);
+        yaw((m.getCurrentPosition().angles.yaw-m.getPreviousPosition().angles.yaw)*M_PI/180);
         glfwSwapBuffers(window);
     } while( !glfwWindowShouldClose(window) );
 
@@ -50,12 +59,5 @@ int main(int argc, char** argv)
     glfwTerminate();
     exit(EXIT_SUCCESS);
 
-    return 0;
-    Plane f(VelocityV(1,0,0));
-    DummyModel m{Position()};
-    PlaneController p(&f,&m);
-    p.simulate();
-
-    return 0;
 }
 

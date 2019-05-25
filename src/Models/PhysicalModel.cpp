@@ -6,6 +6,15 @@
 
 PhysicalModel::PhysicalModel(const Position &position) : position(position) {}
 
-Position PhysicalModel::getCurrentPosition() const {
+const Position &PhysicalModel::getCurrentPosition() const {
     return position;
+}
+
+PhysicalModel::PhysicalModel() {
+    position = Position();
+
+}
+
+const Position &PhysicalModel::getPreviousPosition() const {
+    return previousPosition;
 }
