@@ -19,16 +19,16 @@ public:
     void waitForUsersAction();
     std::unique_ptr<Plane> plane;
     std::unique_ptr<PhysicalModel> model;
-
+    void moveAilerons(double value);
+    void moveElevators(double value);
+    void moveRudder(double value);
+    void throttle(double value);
 
 private:
     const int FPS = 30;
     std::chrono::time_point<std::chrono::system_clock> previous;
 
-    void moveAilerons(double value);
-    void moveElevators(double value);
-    void moveRudder(double value);
-    void throttle(double value);
+
 };
 
 

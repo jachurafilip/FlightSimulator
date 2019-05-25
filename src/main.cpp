@@ -6,14 +6,80 @@
 #include "Scene/FreeImage.h"
 #include <iostream>
 
+Plane p;
+DummyModel m;
+
+PlaneController pc(&p,&m);
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (action == GLFW_REPEAT || action == GLFW_PRESS)
+    {
+
+
+        switch(key) {
+            case GLFW_KEY_ESCAPE:
+                cout << "ESC";
+                glfwSetWindowShouldClose(window, GLFW_TRUE);
+                break;
+            case GLFW_KEY_RIGHT_BRACKET:
+                amount++;
+                std::cout << "amount set to " << amount << "\n";
+                break;
+            case GLFW_KEY_LEFT_BRACKET:
+                amount--;
+                std::cout << "amount set to " << amount << "\n";
+                break;
+            case GLFW_KEY_I:
+                if(useGlu) {
+                    std::cout << "Please disable glm::LookAt by pressing 'g'"
+                              << " before running tests\n";
+                }
+                else if(!allowGrader) {
+                    std::cout << "Error: no input file specified for grader\n";
+                } else {
+                    std::cout << "Running tests...\n";
+                    grader.runTests();
+                    std::cout << "Done! [ESC to quit]\n";
+                }
+                break;
+            case GLFW_KEY_G:
+                useGlu = !useGlu;
+                std::cout << "Using glm::LookAt set to: "
+                          << (useGlu ? " true " : " false ") << "\n";
+                break;
+            case GLFW_KEY_H:
+                printHelp();
+                break;
+            case GLFW_KEY_R:  // reset eye and up vectors
+                eye = eyeinit;
+                up = upinit;
+                amount = amountinit;
+                std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
+                break;
+            case GLFW_KEY_LEFT: //left
+                pc.moveAilerons(amount);
+                break;
+            case GLFW_KEY_UP: //up
+                pc.moveElevators(amount);
+                break;
+            case GLFW_KEY_RIGHT: //right
+                pc.moveAilerons(-amount);
+                break;
+            case GLFW_KEY_DOWN: //down
+                pc.moveElevators(-amount);
+                break;
+            default:
+                break;
+        }
+    }
+}
+
 
 int main(int argc, char** argv)
 {
 
-    Plane p;
-    DummyModel m;
 
-    PlaneController pc(&p,&m);
     GLFWwindow* window;
     glfwSetErrorCallback(error_callback);
 

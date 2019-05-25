@@ -7,6 +7,7 @@
 #include <chrono>
 #include <thread>
 #include <Models/DummyModel.h>
+#include <iostream>
 
 void PlaneController::waitForUsersAction() {
 
@@ -28,6 +29,15 @@ void PlaneController::simulate()
         plane->draw();
         std::this_thread::sleep_until(previous + 1000ms/FPS);
         previous = next;
+
+}
+
+void PlaneController::moveAilerons(double value) {
+    std::cout<<"Ailerons moved by "<<value;
+
+}
+
+void PlaneController::moveElevators(double value) {
 
 }
 

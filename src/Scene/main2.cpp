@@ -21,11 +21,10 @@
 #include "Transform.h"
 #include <string>
 #include <sstream>
+#include <PlaneController.h>
 #include "FreeImage.h"
 #include "grader.h"
-
 int amount; // The amount of rotation for each arrow press
-
 vec3 eye; // The (regularly updated) vector coordinates of the eye location 
 vec3 up;  // The (regularly updated) vector coordinates of the up location 
 const vec3 eyeinit(-20.0,2.0,0.0); // Initial eye position, also for resets
@@ -195,67 +194,5 @@ static void error_callback(int error, const char* description)
     fprintf(stderr, "Error: %s\n", description);
 }
 
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
-    if (action == GLFW_REPEAT || action == GLFW_PRESS)
-    {
 
-
-    switch(key) {
-        case GLFW_KEY_ESCAPE:
-            cout << "ESC";
-            glfwSetWindowShouldClose(window, GLFW_TRUE);
-            break;
-        case GLFW_KEY_RIGHT_BRACKET:
-            amount++;
-            std::cout << "amount set to " << amount << "\n";
-            break;
-        case GLFW_KEY_LEFT_BRACKET:
-            amount--;
-            std::cout << "amount set to " << amount << "\n";
-            break;
-        case GLFW_KEY_I:
-            if(useGlu) {
-                std::cout << "Please disable glm::LookAt by pressing 'g'"
-                          << " before running tests\n";
-            }
-            else if(!allowGrader) {
-                std::cout << "Error: no input file specified for grader\n";
-            } else {
-                std::cout << "Running tests...\n";
-                grader.runTests();
-                std::cout << "Done! [ESC to quit]\n";
-            }
-            break;
-        case GLFW_KEY_G:
-            useGlu = !useGlu;
-            std::cout << "Using glm::LookAt set to: "
-                      << (useGlu ? " true " : " false ") << "\n";
-            break;
-        case GLFW_KEY_H:
-            printHelp();
-            break;
-        case GLFW_KEY_R:  // reset eye and up vectors
-            eye = eyeinit;
-            up = upinit;
-            amount = amountinit;
-            std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
-            break;
-        case GLFW_KEY_LEFT: //left
-            roll(-amount*M_PI/180);
-            break;
-        case GLFW_KEY_UP: //up
-            pitch(amount*M_PI/180);
-            break;
-        case GLFW_KEY_RIGHT: //right
-            roll(amount*M_PI/180);
-            break;
-        case GLFW_KEY_DOWN: //down
-            pitch(-amount*M_PI/180);
-            break;
-        default:
-            break;
-    }
-    }
-}
 
