@@ -43,7 +43,7 @@ int main(int argc, char** argv)
     printHelp();
 
     do{
-        glfwWaitEvents();
+        glfwPollEvents();
         display(window);
         pc.simulate();
         roll((m.getCurrentPosition().angles.roll-m.getPreviousPosition().angles.roll)*M_PI/180);
