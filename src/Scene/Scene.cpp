@@ -1,7 +1,7 @@
 
 
-#define DIRECTORY "/home/filip/FlightSimulator/"
-#define PATH_TO_TEAPOT_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/Plane.obj"
+#define DIRECTORY "/Users/asia/Documents/FlightSimulator/"
+#define PATH_TO_TEAPOT_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/Plane.obj"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>

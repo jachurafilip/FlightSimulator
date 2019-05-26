@@ -59,7 +59,12 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
 }
 
+int main(int argc, char** argv) {
+    fix("/Users/asia/Documents/FlightSimulator/src/Scene/blguru.obj", "Scene/teapot.obj");
+}
 
+
+/*
 int main(int argc, char** argv)
 {
 
@@ -70,8 +75,10 @@ int main(int argc, char** argv)
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     window = glfwCreateWindow(640, 480, "Simulation", nullptr, NULL);
     if (!window)
@@ -110,4 +117,4 @@ int main(int argc, char** argv)
     exit(EXIT_SUCCESS);
 
 }
-
+*/
