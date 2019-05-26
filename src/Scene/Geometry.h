@@ -11,14 +11,9 @@
 #ifndef _GLUT_SHAPES_REPLACEMENT
 #define _GLUT_SHAPES_REPLACEMENT
 
-#ifdef __APPLE__
-#include <OpenGL/gl3.h>
-#include <OpenGL/glext.h>
-#include <GLUT/glut.h>
-#else
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#endif
+
 #ifndef GLM_FORCE_RADIANS
 #define GLM_FORCE_RADIANS
 #endif

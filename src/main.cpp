@@ -3,6 +3,7 @@
 #include "Models/DummyModel.h"
 #include "PlaneController.h"
 #include "Scene/main2.cpp"
+#include "Scene/FixObj.cpp"
 #include "Scene/FreeImage.h"
 #include <iostream>
 

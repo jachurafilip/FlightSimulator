@@ -90,9 +90,8 @@ void parse(const char * filepath) {
 		}
 	}
 
-	fclose(fp); // Finished parsing
-	// Recenter the teapot
-	float avgY = (minY + maxY) / 2.0f - 0.0234f; // Closest possible approximation
+	fclose(fp);
+	float avgY = (minY + maxY) / 2.0f - 0.0234f;
 	float avgZ = (minZ + maxZ) / 2.0f;
 	for (unsigned int i = 0; i < teapotVertices.size(); ++i) {
 		glm::vec3 shiftedVertex = (teapotVertices[i] - glm::vec3(0.0f, avgY, avgZ)) * glm::vec3(0.975f, 0.975f, 0.975f);
