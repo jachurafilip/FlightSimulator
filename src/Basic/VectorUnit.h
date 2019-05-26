@@ -101,7 +101,7 @@ public:
     }
 
     template<int M1, int K1, int S1>
-    VectorUnit<M+M1, K+K1, S+S1> operator/(const ScalarUnit<M1,K1,S1> &rhs) const
+    VectorUnit<M-M1, K-K1, S-S1> operator/(const ScalarUnit<M1,K1,S1> &rhs) const
     {
         return VectorUnit<M-M1, K-K1, S-S1>(value_/rhs.getMagnitude());
     }

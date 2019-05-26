@@ -5,5 +5,5 @@
 #include "Plane.h"
 #include <iostream>
 void Plane::draw() {
-    std::cout<<this->pos<<std::endl;
+  //  std::cout<<this->pos<<std::endl;
 }

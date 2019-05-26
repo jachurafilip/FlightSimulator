@@ -4,6 +4,7 @@
 #include "PlaneController.h"
 #include "Scene/main2.cpp"
 #include "Scene/FixObj.cpp"
+#include "Scene/Scene.cpp"
 #include "Scene/FreeImage.h"
 #include <iostream>
 
@@ -37,28 +38,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             case GLFW_KEY_O:
                 pc.throttle(-amount);
                 break;
-            case GLFW_KEY_G:
-                useGlu = !useGlu;
-                std::cout << "Using glm::LookAt set to: "
-                          << (useGlu ? " true " : " false ") << "\n";
-                break;
             case GLFW_KEY_H:
                 printHelp();
                 break;
-            case GLFW_KEY_R:  // reset eye and up vectors
-                eye = eyeinit;
-                up = upinit;
-                amount = amountinit;
-                std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
-                break;
             case GLFW_KEY_LEFT: //left
-                pc.moveAilerons(-amount);
+                cameraLeft(amount,eye,up);
                 break;
             case GLFW_KEY_UP: //up
                 pc.moveElevators(-amount);
                 break;
             case GLFW_KEY_RIGHT: //right
-                pc.moveAilerons(amount);
+                cameraLeft(-amount,eye,up);
                 break;
             case GLFW_KEY_DOWN: //down
                 pc.moveElevators(amount);
