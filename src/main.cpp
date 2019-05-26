@@ -54,13 +54,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
                 pc.moveAilerons(-amount);
                 break;
             case GLFW_KEY_UP: //up
-                pc.moveElevators(amount);
+                pc.moveElevators(-amount);
                 break;
             case GLFW_KEY_RIGHT: //right
                 pc.moveAilerons(amount);
                 break;
             case GLFW_KEY_DOWN: //down
-                pc.moveElevators(-amount);
+                pc.moveElevators(amount);
                 break;
             default:
                 break;

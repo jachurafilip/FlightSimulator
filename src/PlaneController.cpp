@@ -39,6 +39,8 @@ void PlaneController::moveAilerons(double value) {
 }
 
 void PlaneController::moveElevators(double value) {
+    model->setElevators(value);
+    std::cout<<"Elevetators moved by"<<value;
 }
 
 void PlaneController::throttle(double value) {
