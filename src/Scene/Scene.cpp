@@ -1,13 +1,5 @@
-/******************************************************************************/
-/* This is the program skeleton for homework 1 in CSE167 by Ravi Ramamoorthi  */
-/* Based on an assignment designed by former TA Aner Ben-Artzi                */
-/* The idea is to draw a teapot, that can be moved by a crystal ball          */
-/* interface                                                                  */
-/* Rewritten by Hoang Tran in July 2016 to exclusively use modern OpenGL.     */
-/******************************************************************************/
 
 
-// May need to replace with absolute path on some systems
 #define DIRECTORY "/home/filip/FlightSimulator/"
 #define PATH_TO_TEAPOT_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/Plane.obj"
 
@@ -90,11 +82,9 @@ std::string imgNumber(int num) {
 
 void printHelp() {
 	std::cout << "\npress 'h' to print this message again.\n" 
-		<< "press ']' or '[' to change the amount of rotation that\n"
-		<< "occurs with each arrow press.\n" 
-		<< "press 'i' to run image grader test cases\n"
-		<< "press 'g' to switch between using glm::lookAt or your own LookAt.\n"     
-		<< "press 'r' to reset the transformation (eye and up).\n"
+		<< "press ']' or '[' to change the accuracy of each operation\n"
+		<< "press i/o to throttle up/down\n"
+		<< "press Up/Down to steer the plane vertically\n"
 		<< "press ESC to quit.\n";  
 }
 
@@ -194,5 +184,34 @@ static void error_callback(int error, const char* description)
     fprintf(stderr, "Error: %s\n", description);
 }
 
+mat3 rotate(const float degrees, const vec3& axis) {
+    // YOUR CODE FOR HW1 HERE
+
+    mat3 I = mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+    mat3 aa = mat3(axis[0]*axis[0], axis[0]*axis[1], axis[0]*axis[2],
+                   axis[0]*axis[1], axis[1]*axis[1], axis[1]*axis[2],
+                   axis[0]*axis[2], axis[1]*axis[2], axis[2]*axis[2]);
+    mat3 A = mat3(0, axis[2], -axis[1], -axis[2], 0, axis[0], axis[1], -axis[0], 0);
+
+    float radians = pi/180.0 * degrees;
+    // You will change this return call
+    return cos(radians) * I + (1-cos(radians))*aa + sin(radians)*A;
+}
+
+void cameraUp(float degrees, vec3& eye, vec3& up) {
+    // YOUR CODE FOR HW1 HERE
+    vec3 p = glm::cross(eye, up);
+    p = glm::normalize(p);
+    eye = eye * Transform::rotate(-degrees, p);
+    up = up * Transform::rotate(-degrees, p);
+    // eye = eye * Transform::rotate(-degrees, up);
+}
+
+void cameraLeft(float degrees, vec3& eye, vec3& up) {
+    cout<<degrees<<endl;
+    for(int i=0; i<3; i++)
+        cout<<eye[i]<<" "<<up[i]<<endl;
+    eye = eye * Transform::rotate(-degrees, up);
+}
 
 

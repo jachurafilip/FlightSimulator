@@ -10,7 +10,7 @@ set(ControllerHearder PlaneController.h)
 set(PlanesSourceFiles Plane.cpp)
 set(PlanesHeaders Plane.h linmath.h)
 
-set(SceneSourceFiles Scene/Geometry.cpp Scene/shaders.cpp Scene/Transform.cpp Scene/grader.cpp Scene/main2.cpp)
+set(SceneSourceFiles Scene/Geometry.cpp Scene/shaders.cpp Scene/Transform.cpp Scene/grader.cpp Scene/Scene.cpp)
 set(SceneHearder Scene/Geometry.h Scene/shaders.h Scene/Transform.h Scene/grader.h Scene/FreeImage.h)
 
 add_library(Scene STATIC ${SceneSourceFiles})
