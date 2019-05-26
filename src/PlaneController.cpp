@@ -33,11 +33,16 @@ void PlaneController::simulate()
 }
 
 void PlaneController::moveAilerons(double value) {
+    model->setAilerons(value);
     std::cout<<"Ailerons moved by "<<value;
 
 }
 
 void PlaneController::moveElevators(double value) {
+}
+
+void PlaneController::throttle(double value) {
+    model->setThrottle(value);
 
 }
 

@@ -31,17 +31,10 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
                 std::cout << "amount set to " << amount << "\n";
                 break;
             case GLFW_KEY_I:
-                if(useGlu) {
-                    std::cout << "Please disable glm::LookAt by pressing 'g'"
-                              << " before running tests\n";
-                }
-                else if(!allowGrader) {
-                    std::cout << "Error: no input file specified for grader\n";
-                } else {
-                    std::cout << "Running tests...\n";
-                    grader.runTests();
-                    std::cout << "Done! [ESC to quit]\n";
-                }
+                pc.throttle(amount);
+                break;
+            case GLFW_KEY_O:
+                pc.throttle(-amount);
                 break;
             case GLFW_KEY_G:
                 useGlu = !useGlu;
@@ -58,13 +51,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
                 std::cout << "eye and up vectors reset, amount set to " << amountinit << "\n";
                 break;
             case GLFW_KEY_LEFT: //left
-                pc.moveAilerons(amount);
+                pc.moveAilerons(-amount);
                 break;
             case GLFW_KEY_UP: //up
                 pc.moveElevators(amount);
                 break;
             case GLFW_KEY_RIGHT: //right
-                pc.moveAilerons(-amount);
+                pc.moveAilerons(amount);
                 break;
             case GLFW_KEY_DOWN: //down
                 pc.moveElevators(-amount);

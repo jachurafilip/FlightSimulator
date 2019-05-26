@@ -27,7 +27,7 @@
 int amount; // The amount of rotation for each arrow press
 vec3 eye; // The (regularly updated) vector coordinates of the eye location 
 vec3 up;  // The (regularly updated) vector coordinates of the up location 
-const vec3 eyeinit(-20.0,2.0,0.0); // Initial eye position, also for resets
+const vec3 eyeinit(-20.0,5.0,0.0); // Initial eye position, also for resets
 const vec3 upinit(0.0,1.0,0.0); // Initial up position, also for resets
 const int amountinit = 5; //Initial step amount for camera movement, also for resets
 

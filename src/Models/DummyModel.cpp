@@ -8,8 +8,8 @@
 
 void DummyModel::update(double dt) {
     previousPosition = position;
-    position.point.moveByVec(Vector{1, 0, 0} * dt);
-    position.angles.roll+=10*dt;
+    position.point.moveByVec(Vector{1, 0, 0} * dt*throttle/100);
+    position.angles.roll+=ailerons*dt;
 }
 
 DummyModel::DummyModel(const Position &position) : PhysicalModel(position) {}
