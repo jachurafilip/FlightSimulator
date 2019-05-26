@@ -5,18 +5,21 @@
 #ifndef FLIGHTSIMULATOR_PART_H
 #define FLIGHTSIMULATOR_PART_H
 
-#include <chrono>
-
-
+#include <Basic/VectorUnit.h>
+#include <Basic/ScalarUnit.h>
+#include <Basic/Position.h>
+#include "Models/PlaneState.h"
 
 
 class Part {
-//    Mass mass;
-//    MomentOfInertia momentOfInertia;
-//    Position centerOfMass;
-//    Position centerOfDrag;
-//
-//    virtual std::pair<Force, MomentOfInertia> update(std::chrono::duration<double> dt, const PlaneState& state)=0;
+public:
+    Mass mass;
+    MomentOfInertia momentOfInertia;
+    Point centerOfMass;
+    Point centerOfDrag;
+public:
+    virtual void update(Time dt, const PlaneState &state);
+    virtual std::pair<ForceV, MomentOfForce> getForces(const PlaneState& state)const=0;
 };
 
 

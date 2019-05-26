@@ -18,6 +18,10 @@ private:
     std::vector<std::unique_ptr<Part>> parts;
 public:
     void update(Time dt) override;
+private:
+    std::pair<ForceV, MomentOfForce> getForces() const;
+    MomentOfInertia getMoments() const;
+    Mass getMasses() const;
 };
 
 

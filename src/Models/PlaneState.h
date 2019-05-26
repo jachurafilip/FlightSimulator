@@ -9,7 +9,7 @@ struct PlaneState{
     Position position;
     VelocityV absoluteVelocity;
 
-    Angles direction;
+
     VelocityV velocity;
 
     double AileronsAngle = 0;

@@ -1,5 +1,5 @@
-set(HEDEAR_FILES Part.h)
-set(SOURCE_FILES Part.cpp Wing.cpp Wing.h)
+set(HEDEAR_FILES Part.h Engine.h Wing.h)
+set(SOURCE_FILES Part.cpp Wing.cpp Engine.cpp)
 
 add_library(libparts STATIC ${SOURCE_FILES})
 target_include_directories(libparts PUBLIC ./)

@@ -5,3 +5,4 @@
 #include "Part.h"
 
 
+void Part::update(Time dt, const PlaneState &state) {}
