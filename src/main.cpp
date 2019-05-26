@@ -2,7 +2,6 @@
 #include <GLFW/glfw3.h>
 #include "Models/DummyModel.h"
 #include "PlaneController.h"
-#include "Scene/main2.cpp"
 #include "Scene/FixObj.cpp"
 #include "Scene/Scene.cpp"
 #include "Scene/FreeImage.h"
@@ -59,12 +58,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
 }
 
-int main(int argc, char** argv) {
-    fix("/Users/asia/Documents/FlightSimulator/src/Scene/blguru.obj", "Scene/teapot.obj");
-}
-
-
-/*
 int main(int argc, char** argv)
 {
 
@@ -117,4 +110,4 @@ int main(int argc, char** argv)
     exit(EXIT_SUCCESS);
 
 }
-*/
+

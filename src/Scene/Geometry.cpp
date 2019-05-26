@@ -1,41 +1,29 @@
-/*********************************************************************
-* This file provide implementations for the functions declared
-* in Geometry.h
-* It serves as an alternative to the now deprecated fixed-function
-* pipeline that GLUT utilizes.
-* Author: Hoang Tran
-* Written in July 2016.
-*********************************************************************/
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Geometry.h"
 #include <algorithm>
-// Avoiding linker error caused by multiply defined variables
+
 GLuint defaultVAO, defaultVBO, defaultNBO, defaultEBO;
 GLuint vertexshader, fragmentshader, shaderprogram;
 GLuint modelviewPos;
 glm::mat4 model;
 shape lastUsed = NONE;
-/** TEAPOT RELATED **/
-std::vector <glm::vec3> teapotVertices;
-std::vector <glm::vec3> teapotNormals;
-std::vector <unsigned int> teapotIndices;
 
-// Initialize the buffer objects. Can only be called after OpenGL is initialized.
+std::vector <glm::vec3> modelVertices;
+std::vector <glm::vec3> modelNormals;
+std::vector <unsigned int> modelIndices;
+
+
 void initBufferObjects() {
-	// Tell OpenGL to allocate us some space for the VAO
 	glGenVertexArrays(1, &defaultVAO);
-	// Now allocate some space for all the buffer objects
 	glGenBuffers(1, &defaultVBO);
 	glGenBuffers(1, &defaultNBO);
 	glGenBuffers(1, &defaultEBO);
 }
 
 
-
-// Free up any dynamically allocated memory here
 void destroyBufferObjects() {
 	glDeleteVertexArrays(1, &defaultVAO);
 	glDeleteBuffers(1, &defaultVBO);
@@ -71,7 +59,7 @@ void parse(const char * filepath) {
 
 		if ((c1 == 'v') && (c2 == ' ')) {
 			fscanf(fp, "%f %f %f", &x, &y, &z);
-			teapotVertices.push_back(glm::vec3(x, y, z));
+			modelVertices.push_back(glm::vec3(x, y, z));
 			if (y < minY) minY = y;
 			if (z < minZ) minZ = z;
 			if (y > maxY) maxY = y;
@@ -79,59 +67,59 @@ void parse(const char * filepath) {
 		}
 		else if ((c1 == 'v') && (c2 == 'n')) {
 			fscanf(fp, "%f %f %f", &x, &y, &z);
-			teapotNormals.push_back(glm::normalize(glm::vec3(x, y, z)));
+			modelNormals.push_back(glm::normalize(glm::vec3(x, y, z)));
 		}
 		else if (c1 == 'f')
 		{
 			fscanf(fp, "%d//%d %d//%d %d//%d", &fx, &ignore, &fy, &ignore, &fz, &ignore);
-			teapotIndices.push_back(fx - 1);
-			teapotIndices.push_back(fy - 1);
-			teapotIndices.push_back(fz - 1);
+			modelIndices.push_back(fx - 1);
+			modelIndices.push_back(fy - 1);
+			modelIndices.push_back(fz - 1);
 		}
 	}
 
 	fclose(fp);
 	float avgY = (minY + maxY) / 2.0f - 0.0234f;
 	float avgZ = (minZ + maxZ) / 2.0f;
-	for (unsigned int i = 0; i < teapotVertices.size(); ++i) {
-		glm::vec3 shiftedVertex = (teapotVertices[i] - glm::vec3(0.0f, avgY, avgZ)) * glm::vec3(0.975f, 0.975f, 0.975f);
-		teapotVertices[i] = shiftedVertex;
+	for (unsigned int i = 0; i < modelVertices.size(); ++i) {
+		glm::vec3 shiftedVertex = (modelVertices[i] - glm::vec3(0.0f, avgY, avgZ)) * glm::vec3(0.975f, 0.975f, 0.975f);
+		modelVertices[i] = shiftedVertex;
 	}
 }
 
-void bindTeapot() {
+void bindModel() {
 	glBindVertexArray(defaultVAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, defaultVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * teapotVertices.size(), &teapotVertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * modelVertices.size(), &modelVertices[0], GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0); // This allows usage of layout location 0 in the vertex shader
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
 	glBindBuffer(GL_ARRAY_BUFFER, defaultNBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * teapotNormals.size(), &teapotNormals[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * modelNormals.size(), &modelNormals[0], GL_STATIC_DRAW);
 	glEnableVertexAttribArray(1); // This allows usage of layout location 1 in the vertex shader
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, defaultEBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * teapotIndices.size(), &teapotIndices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * modelIndices.size(), &modelIndices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
-	lastUsed = TEAPOT;
+	lastUsed = PLANE;
 }
 
-void solidTeapot(float size) {
+void solidModel(float size) {
 	model = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
 	glUniformMatrix4fv(modelviewPos, 1, GL_FALSE, &(view * model)[0][0]);
-		bindTeapot();
+    bindModel();
 
 	glBindVertexArray(defaultVAO);
-	glDrawElements(GL_TRIANGLES , teapotIndices.size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES , modelIndices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0); // Unbind the VAO when done
 }
 
 void pitch(double angle) {
-    for(auto &v: teapotVertices)
+    for(auto &v: modelVertices)
     {
         auto v0 = v[0], v1 = v[1];
         v[0] = v0 * cos(angle)-v1*sin(angle);
@@ -142,7 +130,7 @@ void pitch(double angle) {
 }
 
 void roll(double angle) {
-    for(auto &v: teapotVertices)
+    for(auto &v: modelVertices)
     {
         auto v0 = v[1], v1 = v[2];
         v[1] = v0 * cos(angle)-v1*sin(angle);
@@ -153,7 +141,7 @@ void roll(double angle) {
 
 void yaw(double angle)
 {
-    for(auto &v: teapotVertices)
+    for(auto &v: modelVertices)
     {
         auto v0 = v[2], v1 = v[0];
         v[2] = v0 * cos(angle)-v1*sin(angle);

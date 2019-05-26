@@ -1,8 +1,5 @@
-
-
 #define DIRECTORY "/Users/asia/Documents/FlightSimulator/"
-#define PATH_TO_TEAPOT_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/Plane.obj"
-
+#define PATH_TO_PLANE_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/Plane.obj"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -146,7 +143,7 @@ void init() {
 	// Other initializations here
 	initBufferObjects();
 	// Load 3D model of the teapot so it can be drawn later.
-    parse(PATH_TO_TEAPOT_OBJ_FILE);
+    parse(PATH_TO_PLANE_OBJ_FILE);
 
 }
 
@@ -176,7 +173,7 @@ void display(GLFWwindow* window) {
 	glUniform1f(shininess, high);
 	glUniform1i(islight,true);
 
-	solidTeapot(4.5f);
+    solidModel(4.5f);
 }
 
 static void error_callback(int error, const char* description)

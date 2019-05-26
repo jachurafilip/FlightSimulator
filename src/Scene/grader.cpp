@@ -1,10 +1,3 @@
-/*
- * grader.cpp
- *
- * Created on: Jan 16, 2012
- *     Author: bmwang, nestorga
- */
-
 #include "grader.h"
 #include <unistd.h>
 
@@ -35,13 +28,6 @@ void Grader::loadCommands(string fname) {
       while (ss >> buf) {
         splitline.push_back(buf);
       }
-
-      /* Valid commands:
-       * alias
-       * input
-       * save
-       * inputsave
-       */
 
       //Ignore blank lines
       if(splitline.size() == 0) {
