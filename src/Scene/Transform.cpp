@@ -28,7 +28,6 @@ mat3 Transform::rotate(const float degrees, const vec3& axis) {
 void Transform::left(float degrees, vec3& eye, vec3& up) {
 	cout<<degrees<<endl;
 	for(int i=0; i<3; i++)
-		cout<<eye[i]<<" "<<up[i]<<endl;
 	printf("Coordinates: %.2f, %.2f, %.2f; distance: %.2f\n", eye.x, eye.y, eye.z, sqrt(pow(eye.x, 2) + pow(eye.y, 2) + pow(eye.z, 2)));
 
 	eye = eye * Transform::rotate(-degrees, up);

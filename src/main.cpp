@@ -40,14 +40,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
             case GLFW_KEY_H:
                 printHelp();
                 break;
+            case GLFW_KEY_W:
+                pc.flaps();
+                break;
             case GLFW_KEY_LEFT: //left
-                cameraLeft(amount,eye,up);
+                cameraLeft(-amount,eye,up);
                 break;
             case GLFW_KEY_UP: //up
                 pc.moveElevators(-amount);
                 break;
             case GLFW_KEY_RIGHT: //right
-                cameraLeft(-amount,eye,up);
+                cameraLeft(amount,eye,up);
                 break;
             case GLFW_KEY_DOWN: //down
                 pc.moveElevators(amount);

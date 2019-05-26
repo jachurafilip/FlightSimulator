@@ -23,6 +23,7 @@ public:
     void moveElevators(double value);
     void moveRudder(double value);
     void throttle(double value);
+    void flaps();
 
 private:
     const int FPS = 30;

@@ -85,6 +85,7 @@ void printHelp() {
 		<< "press ']' or '[' to change the accuracy of each operation\n"
 		<< "press i/o to throttle up/down\n"
 		<< "press Up/Down to steer the plane vertically\n"
+		<< "press W to turn flops on/off"<<
 		<< "press ESC to quit.\n";  
 }
 
@@ -208,9 +209,7 @@ void cameraUp(float degrees, vec3& eye, vec3& up) {
 }
 
 void cameraLeft(float degrees, vec3& eye, vec3& up) {
-    cout<<degrees<<endl;
     for(int i=0; i<3; i++)
-        cout<<eye[i]<<" "<<up[i]<<endl;
     eye = eye * Transform::rotate(-degrees, up);
 }
 
