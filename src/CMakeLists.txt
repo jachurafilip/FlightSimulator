@@ -1,5 +1,5 @@
-set(UnitsHeaders Basic/ScalarUnit.h Basic/Vector.h Basic/VectorUnit.h Basic/Point.h Basic/Position.h)
-set(UnitsSourceFiles Basic/Vector.cpp Basic/VectorUnit.cpp Basic/Point.cpp)
+set(UnitsHeaders Basic/ScalarUnit.h Basic/Vector.h Basic/VectorUnit.h Basic/Point.h Basic/Position.h Basic/Matrix.h Basic/MatrixUnit.h)
+set(UnitsSourceFiles Basic/Vector.cpp Basic/VectorUnit.cpp Basic/Point.cpp Basic/Matrix.cpp Basic/MatrixUnit.cpp)
 
 add_library(Units STATIC ${UnitsSourceFiles})
 target_include_directories(Units PUBLIC ./)
