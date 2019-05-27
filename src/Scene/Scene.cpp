@@ -85,7 +85,7 @@ void printHelp() {
 		<< "press ']' or '[' to change the accuracy of each operation\n"
 		<< "press i/o to throttle up/down\n"
 		<< "press Up/Down to steer the plane vertically\n"
-		<< "press W to turn flops on/off"<<
+		<< "press W to turn flops on/off"
 		<< "press ESC to quit.\n";  
 }
 
