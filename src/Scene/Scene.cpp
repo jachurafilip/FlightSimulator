@@ -1,6 +1,6 @@
-#define DIRECTORY "/Users/asia/Documents/FlightSimulator/"
-#define PATH_TO_PLANE_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/Plane.obj"
-#define PATH_TO_TERRAIN_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/terrain.obj"
+#define DIRECTORY "/home/filip/FlightSimulator/"
+#define PATH_TO_PLANE_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/Plane.obj"
+#define PATH_TO_TERRAIN_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/terrain.obj"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -22,7 +22,13 @@ vec3 up;  // The (regularly updated) vector coordinates of the up location
 const vec3 eyeinit(-20.0,5.0,0.0); // Initial eye position, also for resets
 const vec3 upinit(0.0,1.0,0.0); // Initial up position, also for resets
 const int amountinit = 5; //Initial step amount for camera movement, also for resets
+std::vector <glm::vec3> modelVertices;
+std::vector <glm::vec3> modelNormals;
+std::vector <unsigned int> modelIndices;
 
+std::vector <glm::vec3> floorVertices;
+std::vector <glm::vec3> floorNormals;
+std::vector <unsigned int> floorIndices;
 bool useGlu; // Toggle use of "official" opengl/glm transform vs user code
 int w = 500, h = 500; // width and height 
 
@@ -140,8 +146,9 @@ void init() {
 	projectionPosition = glGetUniformLocation(shaderprogram, "projection");
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
 	initBufferObjects();
-    parse(PATH_TO_PLANE_OBJ_FILE);
-    inittexture("/Users/asia/Documents/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
+    parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
+    parse(PATH_TO_TERRAIN_OBJ_FILE, floorVertices,floorNormals,floorIndices);
+    inittexture("/home/filip/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
 }
 
@@ -176,8 +183,8 @@ void display(GLFWwindow* window) {
 	glUniform1f(shininess, high);
 	glUniform1i(islight,true);
 
-    solidModel(4.0f);
-    solidFloor(1000.0f);
+    solidModel(4.0f, modelVertices,modelNormals,modelIndices);
+    solidFloor(1000.0f,floorVertices,floorNormals,floorIndices);
 
 }
 

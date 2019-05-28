@@ -44,18 +44,18 @@ void destroyBufferObjects();
 void inittexture (const char * filename, GLuint program) ;
 void drawtexture(GLuint object, GLuint texture) ;
 
-extern std::vector <glm::vec3> modelVertices;
-extern std::vector <glm::vec3> modelNormals;
-extern std::vector <unsigned int> modelIndices;
 
-void parse(const char*);
-void yaw(double angle);
-void pitch(double angle);
-void roll(double angle);
+void parse(const char*, std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices);
+void yaw(double angle, std::vector<glm::vec3>& modelVertices );
+void pitch(double angle, std::vector<glm::vec3>& modelVertices);
+void roll(double angle, std::vector<glm::vec3>& modelVertices);
 
-void bindModel();
-void solidModel(float);
-void bindFloor();
-void solidFloor(float);
+void move(double x, double y, double z, std::vector<glm::vec3>& modelVertices);
+
+
+void bindModel(std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices);
+void solidModel(float, std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices);
+void bindFloor(std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices);
+void solidFloor(float, std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices);
 
 #endif

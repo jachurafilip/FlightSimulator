@@ -15,9 +15,6 @@ glm::mat4 model;
 glm::mat4 floorModel;
 shape lastUsed = NONE;
 
-std::vector <glm::vec3> modelVertices;
-std::vector <glm::vec3> modelNormals;
-std::vector <unsigned int> modelIndices;
 
 GLubyte texture[256][256][3] ; // ** NEW ** texture (from grsites.com)
 GLuint texNames[1] ;
@@ -48,7 +45,7 @@ void destroyBufferObjects() {
 }
 
 // OBJ file parser func
-void parse(const char * filepath) {
+void parse(const char * filepath, std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices) {
 	FILE* fp;
 	float x, y, z;
 	int fx, fy, fz, ignore;
@@ -103,7 +100,7 @@ void parse(const char * filepath) {
 	}
 }
 
-void bindModel() {
+void bindModel(std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices) {
 	glBindVertexArray(defaultVAO);
 
 	glBindBuffer(GL_ARRAY_BUFFER, defaultVBO);
@@ -125,40 +122,40 @@ void bindModel() {
 }
 
 
-void bindFloor() {
+void bindFloor(std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices) {
     glBindVertexArray(floorVAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, floorVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(floorverts), (GLfloat *)floorverts, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * floorVertices.size(), &floorVertices[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
 
     glBindBuffer(GL_ARRAY_BUFFER, floorNBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(floorcol), (GLfloat *)floorcol, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * floorNormals.size(), &floorNormals[0], GL_STATIC_DRAW);
     glEnableVertexAttribArray(1);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, floorEBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(floorinds), (GLubyte *)floorinds, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * floorIndices.size(), &floorIndices[0], GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 }
 
-void solidModel(float size) {
+void solidModel(float size,std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices) {
     model = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
     glUniformMatrix4fv(modelviewPos, 1, GL_FALSE, &(view * model)[0][0]);
-    bindModel();
+    bindModel(modelVertices,modelNormals,modelIndices);
 
     glBindVertexArray(defaultVAO);
     glDrawElements(GL_TRIANGLES , modelIndices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 
-void solidFloor(float size) {
+void solidFloor(float size, std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices) {
     floorModel = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
     glUniformMatrix4fv(floorviewPos, 1, GL_FALSE, &(floorModel)[0][0]);
     glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
-    bindFloor();
+    bindFloor(floorVertices,floorNormals,floorIndices);
     drawtexture(FLOOR, texNames[0]);
 
     glBindVertexArray(floorVAO);
@@ -166,7 +163,7 @@ void solidFloor(float size) {
     glBindVertexArray(0);
 }
 
-void pitch(double angle) {
+void pitch(double angle, std::vector<glm::vec3>& modelVertices) {
     for (auto &v: modelVertices) {
         auto v0 = v[0], v1 = v[1];
         v[0] = v0 * cos(angle) - v1 * sin(angle);
@@ -175,7 +172,7 @@ void pitch(double angle) {
 }
 
 
-void roll(double angle) {
+void roll(double angle, std::vector<glm::vec3>& modelVertices) {
     for(auto &v: modelVertices)
     {
         auto v0 = v[1], v1 = v[2];
@@ -185,7 +182,7 @@ void roll(double angle) {
 
 }
 
-void yaw(double angle)
+void yaw(double angle,  std::vector<glm::vec3>& modelVertices)
 {
     for(auto &v: modelVertices)
     {
@@ -243,5 +240,16 @@ void drawtexture(GLuint object, GLuint texture) {
     glBindVertexArray(floorTBO);
     glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
     glBindVertexArray(0);
+}
+
+void move(double x, double y, double z, std::vector<glm::vec3> &modelVertices) {
+
+    for(auto &v: modelVertices)
+    {
+        v[0]+=x;
+        v[1]+=y;
+        v[2]+=z;
+    }
+
 }
 
