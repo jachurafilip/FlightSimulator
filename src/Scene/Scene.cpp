@@ -1,5 +1,6 @@
 #define DIRECTORY "/Users/asia/Documents/FlightSimulator/"
 #define PATH_TO_PLANE_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/Plane.obj"
+#define PATH_TO_TERRAIN_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/terrain.obj"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -13,6 +14,8 @@
 #include <PlaneController.h>
 #include "FreeImage.h"
 #include "grader.h"
+#include "Geometry.cpp"
+
 int amount; // The amount of rotation for each arrow press
 vec3 eye; // The (regularly updated) vector coordinates of the eye location 
 vec3 up;  // The (regularly updated) vector coordinates of the up location 
@@ -26,16 +29,18 @@ int w = 500, h = 500; // width and height
 Grader grader;
 bool allowGrader = false;
 
-// Constants to set up lighting on the teapot
-const vec4 light_position(0,5,10,1);    // Position of light 0
-const vec4 light_position1(0,5,-10,1);  // Position of light 1
-const vec4 light_specular(0.6,0.3,0,1);    // Specular of light 0
-const vec4 light_specular1(0,0.3,0.6,1);   // Specular of light 1
-const vec4 one(1,1,1,1);                 // Specular on teapot
-const vec4 medium(0.5,0.5,0.5,1);        // Diffuse on teapot
-const vec4 small(0.2,0.2,0.2,1);         // Ambient on teapot
-const GLfloat high = 100;                      // Shininess of teapot
+const vec4 light_position(0,5,10,1);
+const vec4 light_position1(0,5,-10,1);
+const vec4 light_specular(0.6,0.3,0,1);
+const vec4 light_specular1(0,0.3,0.6,1);
+const vec4 one(1,1,1,1);
+const vec4 medium(0.5,0.5,0.5,1);
+const vec4 small(0.2,0.2,0.2,1);
+const GLfloat high = 100;
 vec4 light0,light1;
+GLuint projectionPos;
+
+glm::mat4 identity(1.0f);
 
 // Variables to set uniform params for lighting fragment shader 
 GLuint islight; 
@@ -86,10 +91,6 @@ void printHelp() {
 }
 
 
-//  You will need to enter code for the arrow keys 
-//  When an arrow key is pressed, it will call your transform functions
-
-
 
 // This function gets called when the window size gets changed
 void reshape(GLFWwindow* window, int width,int height){
@@ -114,17 +115,17 @@ void init() {
 	amount = amountinit;
 	useGlu = true;
 
-	glEnable(GL_DEPTH_TEST);
 
-	// The lighting is enabled using the same framework as in mytest 3 
-	// Except that we use two point lights
-	// For now, lights and materials are set in display.  Will move to init 
-	// later, per update lights
-
+    glEnable(GL_DEPTH_TEST);
 
 	vertexshader = initshaders(GL_VERTEX_SHADER,DIRECTORY"src/Scene/light.vert");
 	fragmentshader = initshaders(GL_FRAGMENT_SHADER,DIRECTORY"src/Scene/light.frag");
-	shaderprogram = initprogram(vertexshader,fragmentshader); 
+	//
+    GLuint program = glCreateProgram() ;
+    GLint linked;
+    glGetProgramiv(shaderprogram, GL_LINK_STATUS, &linked) ;
+    //
+    shaderprogram = initprogram(vertexshader,fragmentshader);
 	islight = glGetUniformLocation(shaderprogram,"islight");        
 	light0posn = glGetUniformLocation(shaderprogram,"light0posn");       
 	light0color = glGetUniformLocation(shaderprogram,"light0color");       
@@ -136,14 +137,11 @@ void init() {
 	shininess = glGetUniformLocation(shaderprogram,"shininess");       
 	color = glGetUniformLocation(shaderprogram, "color");
 
-	// Get the uniform locations of the transformation matrices
 	projectionPosition = glGetUniformLocation(shaderprogram, "projection");
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
-
-	// Other initializations here
 	initBufferObjects();
-	// Load 3D model of the teapot so it can be drawn later.
     parse(PATH_TO_PLANE_OBJ_FILE);
+    inittexture("/Users/asia/Documents/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
 }
 
@@ -160,7 +158,12 @@ void display(GLFWwindow* window) {
 		view = Transform::lookAt(eye,up); 
 	}
 
-	transformvec(light_position,light0); 
+    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
+    drawtexture(FLOOR, texNames[0]);
+    glUniform1i(istex, 0);
+
+
+    transformvec(light_position,light0);
 	transformvec(light_position1,light1); 
 	glUniform4fv(light0posn,1,&light0[0]); 
 	glUniform4fv(light0color,1,&light_specular[0]); 
@@ -173,7 +176,9 @@ void display(GLFWwindow* window) {
 	glUniform1f(shininess, high);
 	glUniform1i(islight,true);
 
-    solidModel(4.5f);
+    solidModel(4.0f);
+    solidFloor(1000.0f);
+
 }
 
 static void error_callback(int error, const char* description)
@@ -182,7 +187,6 @@ static void error_callback(int error, const char* description)
 }
 
 mat3 rotate(const float degrees, const vec3& axis) {
-    // YOUR CODE FOR HW1 HERE
 
     mat3 I = mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
     mat3 aa = mat3(axis[0]*axis[0], axis[0]*axis[1], axis[0]*axis[2],
@@ -196,7 +200,7 @@ mat3 rotate(const float degrees, const vec3& axis) {
 }
 
 void cameraUp(float degrees, vec3& eye, vec3& up) {
-    // YOUR CODE FOR HW1 HERE
+
     vec3 p = glm::cross(eye, up);
     p = glm::normalize(p);
     eye = eye * Transform::rotate(-degrees, p);

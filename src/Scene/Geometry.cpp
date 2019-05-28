@@ -3,17 +3,25 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Geometry.h"
+#include <vector>
 #include <algorithm>
 
 GLuint defaultVAO, defaultVBO, defaultNBO, defaultEBO;
+GLuint floorVAO, floorVBO, floorNBO, floorEBO, floorTBO;
 GLuint vertexshader, fragmentshader, shaderprogram;
 GLuint modelviewPos;
+GLuint floorviewPos, colorPos;
 glm::mat4 model;
+glm::mat4 floorModel;
 shape lastUsed = NONE;
 
 std::vector <glm::vec3> modelVertices;
 std::vector <glm::vec3> modelNormals;
 std::vector <unsigned int> modelIndices;
+
+GLubyte texture[256][256][3] ; // ** NEW ** texture (from grsites.com)
+GLuint texNames[1] ;
+GLuint istex ;
 
 
 void initBufferObjects() {
@@ -21,6 +29,10 @@ void initBufferObjects() {
 	glGenBuffers(1, &defaultVBO);
 	glGenBuffers(1, &defaultNBO);
 	glGenBuffers(1, &defaultEBO);
+    glGenVertexArrays(1, &floorVAO);
+    glGenBuffers(1, &floorVBO);
+    glGenBuffers(1, &floorNBO);
+    glGenBuffers(1, &floorEBO);
 }
 
 
@@ -29,6 +41,10 @@ void destroyBufferObjects() {
 	glDeleteBuffers(1, &defaultVBO);
 	glDeleteBuffers(1, &defaultNBO);
 	glDeleteBuffers(1, &defaultEBO);
+    glDeleteVertexArrays(1, &floorVAO);
+    glDeleteBuffers(1, &floorVBO);
+    glDeleteBuffers(1, &floorNBO);
+    glDeleteBuffers(1, &floorEBO);
 }
 
 // OBJ file parser func
@@ -108,26 +124,56 @@ void bindModel() {
 	lastUsed = PLANE;
 }
 
+
+void bindFloor() {
+    glBindVertexArray(floorVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, floorVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(floorverts), (GLfloat *)floorverts, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+
+    glBindBuffer(GL_ARRAY_BUFFER, floorNBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(floorcol), (GLfloat *)floorcol, GL_STATIC_DRAW);
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, floorEBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(floorinds), (GLubyte *)floorinds, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
+}
+
 void solidModel(float size) {
-	model = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
-	glUniformMatrix4fv(modelviewPos, 1, GL_FALSE, &(view * model)[0][0]);
+    model = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
+    glUniformMatrix4fv(modelviewPos, 1, GL_FALSE, &(view * model)[0][0]);
     bindModel();
 
-	glBindVertexArray(defaultVAO);
-	glDrawElements(GL_TRIANGLES , modelIndices.size(), GL_UNSIGNED_INT, 0);
-	glBindVertexArray(0); // Unbind the VAO when done
+    glBindVertexArray(defaultVAO);
+    glDrawElements(GL_TRIANGLES , modelIndices.size(), GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
+}
+
+void solidFloor(float size) {
+    floorModel = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
+    glUniformMatrix4fv(floorviewPos, 1, GL_FALSE, &(floorModel)[0][0]);
+    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
+    bindFloor();
+    drawtexture(FLOOR, texNames[0]);
+
+    glBindVertexArray(floorVAO);
+    glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
+    glBindVertexArray(0);
 }
 
 void pitch(double angle) {
-    for(auto &v: modelVertices)
-    {
+    for (auto &v: modelVertices) {
         auto v0 = v[0], v1 = v[1];
-        v[0] = v0 * cos(angle)-v1*sin(angle);
-        v[1] = v0 * sin(angle)+v1*cos(angle);
+        v[0] = v0 * cos(angle) - v1 * sin(angle);
+        v[1] = v0 * sin(angle) + v1 * cos(angle);
     }
-
-
 }
+
 
 void roll(double angle) {
     for(auto &v: modelVertices)
@@ -148,3 +194,54 @@ void yaw(double angle)
         v[0] = v0 * sin(angle)+v1*cos(angle);
     }
 }
+
+
+
+// Very basic code to read a ppm file
+// And then set up buffers for texture coordinates
+void inittexture (const char * filename, GLuint program) {
+    int i,j,k ;
+    FILE * fp ;
+    assert(fp = fopen(filename,"rb")) ;
+    fscanf(fp,"%*s %*d %*d %*d%*c") ;
+    for (i = 0 ; i < 256 ; i++)
+        for (j = 0 ; j < 256 ; j++)
+            for (k = 0 ; k < 3 ; k++)
+                fscanf(fp,"%c",&(texture[i][j][k])) ;
+    fclose(fp) ;
+
+    // Set up Texture Coordinates
+    glGenTextures(1, texNames) ;
+    glBindVertexArray(floorVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, floorTBO) ;
+    glBufferData(GL_ARRAY_BUFFER, sizeof (floortex), floortex,GL_STATIC_DRAW);
+    // Use layout location 2 for texcoords
+    glEnableVertexAttribArray(2);
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+
+    glActiveTexture(GL_TEXTURE0) ;
+    glEnable(GL_TEXTURE_2D) ;
+
+    glBindTexture (GL_TEXTURE_2D, texNames[0]) ;
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGB, 256, 256, 0, GL_RGB, GL_UNSIGNED_BYTE,texture) ;
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR) ;
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR) ;
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT) ;
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT) ;
+    glBindVertexArray(0);
+    // Define a sampler.  See page 709 in red book, 7th ed.
+    GLint texsampler ;
+    texsampler = glGetUniformLocation(program, "tex") ;
+    // Note that the value assigned to the texture sampler is n, where n is the active
+    // texture number provided to glActiveTexture(). In this case, it's texture unit 0.
+    glUniform1i(texsampler,0) ;
+    istex = glGetUniformLocation(program,"istex") ;
+}
+
+void drawtexture(GLuint object, GLuint texture) {
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glBindVertexArray(floorTBO);
+    glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
+    glBindVertexArray(0);
+}
+
