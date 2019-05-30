@@ -1,8 +1,8 @@
-
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Models/DummyModel.h"
 #include "PlaneController.h"
+#include "Scene/FixObj.cpp"
 #include "Scene/Scene.cpp"
 #include "Scene/FreeImage.h"
 #include <iostream>
@@ -61,7 +61,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     }
 }
 
-
 int main(int argc, char** argv)
 {
 
@@ -72,8 +71,10 @@ int main(int argc, char** argv)
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     window = glfwCreateWindow(640, 480, "Simulation", nullptr, NULL);
     if (!window)
@@ -98,9 +99,10 @@ int main(int argc, char** argv)
         glfwPollEvents();
         display(window);
         pc.simulate();
-        roll((m.getCurrentPosition().angles.roll-m.getPreviousPosition().angles.roll)*M_PI/180);
-        pitch((m.getCurrentPosition().angles.pitch-m.getPreviousPosition().angles.pitch)*M_PI/180);
-        yaw((m.getCurrentPosition().angles.yaw-m.getPreviousPosition().angles.yaw)*M_PI/180);
+        roll((m.getCurrentPosition().angles.roll-m.getPreviousPosition().angles.roll)*M_PI/180,modelVertices);
+        pitch((m.getCurrentPosition().angles.pitch-m.getPreviousPosition().angles.pitch)*M_PI/180,modelVertices);
+        yaw((m.getCurrentPosition().angles.yaw-m.getPreviousPosition().angles.yaw)*M_PI/180,modelVertices);
+        move(0,-0.01,0,floorVertices);
         glfwSwapBuffers(window);
     } while( !glfwWindowShouldClose(window) );
 

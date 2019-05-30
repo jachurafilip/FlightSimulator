@@ -1,9 +1,3 @@
-/*
- * grader.h
- *
- * Created on: Jan 16, 2012
- *     Author: bmwang
- */
 
 #ifndef UCSDGRADER_H_
 #define UCSDGRADER_H_
@@ -15,13 +9,6 @@
 #include <map>
 #include <cstdio>
 #include <cstdlib>
-/*
- * #ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
-#endif
- */
 #include <iomanip>
 #include <sstream>
 #include <string>

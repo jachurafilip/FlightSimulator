@@ -1,13 +1,3 @@
-/***************************************************************************
-* This file defines functions that update array-type objects that should
-* then be passed onto the OpenGL shader program(s) to render the familiar
-* GLUT shapes in a modern OpenGL context.
-* The GLUT shapes SHOULD NOT be used in modern OpenGL due to the use of 
-* deprecated (often invalid) functions. The shapes defined by GLUT are
-* entirely inaccessible by the shaders due to the lack of buffer objects.
-* Author: hvt001
-* Written in July 2016
-***************************************************************************/
 #ifndef _GLUT_SHAPES_REPLACEMENT
 #define _GLUT_SHAPES_REPLACEMENT
 
@@ -25,44 +15,47 @@
 #include <sstream>
 #include <iostream>
 
-// These buffer objects should only be used for shapes defined in this file.
-// For user-defined objects, please make separate VAOs, VBOs, etc.
+
+enum {Vertices, Colors, Elements} ;
+enum {FLOOR} ;
+
+const GLfloat floorverts[4][3] = {
+        { 0.5, 0.5, 0.0 },{ -0.5, 0.5, 0.0 },{ -0.5, -0.5, 0.0 },{ 0.5, -0.5, 0.0 }
+};
+const GLfloat floorcol[4][3] = {
+        { 1.0, 1.0, 1.0 },{ 1.0, 1.0, 1.0 },{ 1.0, 1.0, 1.0 },{ 1.0, 1.0, 1.0 }
+};
+const GLubyte floorinds[1][6] = { { 0, 1, 2, 0, 2, 3 } };
+const GLfloat floortex[4][2] = {
+        { 1.0, 1.0 },{ 0.0, 1.0 },{ 0.0, 0.0 },{ 1.0, 0.0 }
+};
+
 extern GLuint defaultVAO, defaultVBO, defaultNBO, defaultEBO;
-
-// The default shaders used.
+extern GLuint floorVAO, floorVBO, floorNBO, floorEBO, floorTBO;
 extern GLuint vertexshader, fragmentshader, shaderprogram;
-// Default associated variables
 extern GLuint modelviewPos;
-extern glm::mat4 model, view;
-
-// Other variables
-enum shape{NONE, TEAPOT, CUBE, SPHERE};
+extern GLuint floorviewPos, colorPos;
+extern glm::mat4 model, view, floorModel;
+enum shape{NONE, PLANE, CUBE, SPHERE};
 extern shape lastUsed;
-
 void initBufferObjects();
 void destroyBufferObjects();
 
-// The actual rendering functions are defined below. Similar shapes are defined in the
-// same sections.
+void inittexture (const char * filename, GLuint program) ;
+void drawtexture(GLuint object, GLuint texture) ;
 
-// Teapot
-// Since GLUT draws a teapot using old OpenGL, it is unusable in our modern OpenGL context
-// Consequently, the teapot will be fed in as an OBJ file.
-// See "Wavefront OBJ" file format on Wikipedia for more information.
-extern std::vector <glm::vec3> teapotVertices;
-extern std::vector <glm::vec3> teapotNormals;
-extern std::vector <unsigned int> teapotIndices;
-// Helper function to parse an OBJ file
-void parse(const char*);
-void yaw(double angle);
-void pitch(double angle);
-void roll(double angle);
 
-// To save time, only (re)bind the teapot buffers when needed
-void bindTeapot();
-void solidTeapot(float);
+void parse(const char*, std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices);
+void yaw(double angle, std::vector<glm::vec3>& modelVertices );
+void pitch(double angle, std::vector<glm::vec3>& modelVertices);
+void roll(double angle, std::vector<glm::vec3>& modelVertices);
 
-/*****************************************************************************************
-* END OF TEAPOT SECTION
-*****************************************************************************************/
+void move(double x, double y, double z, std::vector<glm::vec3>& modelVertices);
+
+
+void bindModel(std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices);
+void solidModel(float, std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices);
+void bindFloor(std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices);
+void solidFloor(float, std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices);
+
 #endif
