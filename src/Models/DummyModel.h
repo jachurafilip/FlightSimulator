@@ -24,12 +24,10 @@ private:
     const AccelerationV g{0,0,-9.81};
     double liftCoefficient();
     double dragCoefficient();
-    double VMax = 100;
     const Area wingArea{37.25};
     const Area frontalArea{7};
     Density airDensity();
     VelocityV v{0,0,0};
-    ForceV weight();
     const ForceV maxThrust{54000};
     ForceV lift();
     ForceV drag();

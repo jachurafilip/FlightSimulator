@@ -22,15 +22,6 @@ void DummyModel::update(double dt) {
 
 
 
-
-    if(v.getValue().getX()>VMax)
-    {
-        v = VelocityV(VMax,v.getValue().getY(),v.getValue().getZ());
-    }
-    if(v.getValue().getZ()>VMax/4)
-    {
-        v = VelocityV(v.getValue().getX(),v.getValue().getY(),VMax/4);
-    }
     position.point.moveByVec(v.getValue()*dt);
     position.angles.roll+=ailerons*dt;
     if(v.getValue().getX()) {
@@ -48,9 +39,6 @@ void DummyModel::update(double dt) {
 
 DummyModel::DummyModel(const Position &position) : PhysicalModel(position) {}
 
-ForceV DummyModel::weight() {
-    return g*m;
-}
 
 Density DummyModel::airDensity() {
     return Density(1.225+-0.00006125*position.point.getZ());
@@ -58,9 +46,9 @@ Density DummyModel::airDensity() {
 
 double DummyModel::dragCoefficient() {
     if(!flaps)
-        return 0.2;
+        return 0.4*cos(position.angles.pitch*M_PI/180);
     else
-        return 1.2;
+        return 1.2*cos(position.angles.pitch*M_PI/180);
 }
 
 double DummyModel::liftCoefficient() {
@@ -84,8 +72,14 @@ ForceV DummyModel::lift() {
 }
 
 ForceV DummyModel::drag() {
-
-    double angle = position.angles.pitch*M_PI/180;
+    double angle;
+    if(v.getValue().getX()!=0)
+    angle = v.getValue().getZ()/v.getValue().getX()*M_PI/180;
+    else
+    {
+        if(v.getValue().getZ()==0) angle = 0;
+        else angle = M_PI/2;
+    }
 
     double dragValue = maxThrust.magnitude()*throttle/100;
     double dragResistanceValue = v.getValue().getX()*v.getValue().getX()*dragCoefficient()*airDensity().getMagnitude()*frontalArea.getMagnitude()/2 ;
