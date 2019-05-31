@@ -17,8 +17,9 @@ void DummyModel::update(double dt) {
         v.setValue(Vector{v.getValue().getX(),v.getValue().getY(),0});
     }
     else {
-        v = v + (g + lift()/ m) * Time(dt);
+        v = v + (g + lift()/ m + Elevators()/m) * Time(dt);
     }
+
 
 
 
@@ -32,7 +33,9 @@ void DummyModel::update(double dt) {
     }
     position.point.moveByVec(v.getValue()*dt);
     position.angles.roll+=ailerons*dt;
-    position.angles.pitch+=elevators*dt;
+    if(v.getValue().getX()) {
+        position.angles.pitch = v.getValue().getZ()/v.getValue().getX() * 180 / M_PI;
+    }
 
     if(position.point.getZ()<0)
     {
@@ -89,6 +92,12 @@ ForceV DummyModel::drag() {
     double drag = dragValue-dragResistanceValue;
 
     return ForceV{drag*cos(angle),0,drag*sin(angle)};
+}
+
+ForceV DummyModel::Elevators() {
+
+    if(elevators==0) return ForceV{0,0,0};
+    return elevators*ForceV{0,0,v.getValue().getX()*v.getValue().getX()*0.2};
 }
 
 

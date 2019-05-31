@@ -80,7 +80,7 @@ public:
 
     friend VectorUnit<M,K,S> operator*(const long double rhs,const VectorUnit<M,K,S> &lhs)
     {
-        return VectorUnit<M, K, S>(rhs*lhs);
+        return VectorUnit<M, K, S>(rhs*lhs.getValue());
     }
 
     VectorUnit<M,K,S>&operator*=(const long double rhs)

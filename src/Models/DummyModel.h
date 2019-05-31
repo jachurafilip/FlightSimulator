@@ -33,6 +33,7 @@ private:
     const ForceV maxThrust{54000};
     ForceV lift();
     ForceV drag();
+    ForceV Elevators();
 
 };
 
