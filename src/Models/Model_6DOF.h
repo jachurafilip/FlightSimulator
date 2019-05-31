@@ -11,6 +11,7 @@
 #include <memory>
 #include <vector>
 #include <Models/PlaneParts/Part.h>
+#include <Basic/MatrixUnit.h>
 
 class Model_6DOF : public PhysicalModel {
 private:
@@ -22,6 +23,7 @@ private:
     std::pair<ForceV, MomentOfForce> getForces() const;
     MomentOfInertia getMoments() const;
     Mass getMasses() const;
+    Point getCenterOfMass() const;
 };
 
 

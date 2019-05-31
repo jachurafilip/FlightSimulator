@@ -18,9 +18,11 @@ void Model_6DOF::update(Time dt) {
     }
 
     AccelerationV acceleration = forceV/mass;
-    AngularAcceleration angularAcceleration = momentOfForce.cross(momentOfInertia);
 
+    newState.angularMomentum = state.angularMomentum + momentOfForce * dt;
     newState.velocity = state.velocity + acceleration * dt;
+
+    newState.angularVelocity = momentOfInertia.inverse() * newState.angularMomentum;
 
     newState.position.point = state.position.point + (state.absoluteVelocity * dt).getValue();
 
@@ -41,7 +43,7 @@ std::pair<ForceV, MomentOfForce> Model_6DOF::getForces() const {
 
 MomentOfInertia Model_6DOF::getMoments() const {
     return std::accumulate(parts.begin(), parts.end(),
-            MomentOfInertia{0, 0, 0},
+            MomentOfInertia{Matrix::zeros()},
             [](const auto& acc, const auto& elem){return acc + elem->momentOfInertia;});
 }
 
@@ -49,4 +51,11 @@ Mass Model_6DOF::getMasses() const {
     return std::accumulate(parts.begin(), parts.end(),
                            Mass{0},
                            [](const auto& acc, const auto& elem){return acc + elem->mass;});
+}
+
+Point Model_6DOF::getCenterOfMass() const {
+    VectorUnit<1, 0, 0> offset = std::accumulate(parts.begin(), parts.end(),
+                           VectorUnit<1, 1, 0>{0, 0, 0},
+                           [](const auto& acc, const auto& elem){return acc + elem->mass * elem->centerOfMass;}) / getMasses();
+    return Point{0, 0, 0} + offset.getValue();
 }

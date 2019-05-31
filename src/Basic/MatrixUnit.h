@@ -60,9 +60,9 @@ public:
     }
 
     template<int M1, int K1, int S1>
-    MatrixUnit<M+M1, K+K1, S+S1> operator*(const VectorUnit<M,K,S> &rhs)
+    VectorUnit<M+M1, K+K1, S+S1> operator*(const VectorUnit<M1,K1,S1> &rhs)
     {
-        return MatrixUnit<M+M1, K+K1, S+S1>(this->value_ * rhs.getValue());
+        return VectorUnit<M+M1, K+K1, S+S1>(this->value_ * rhs.getValue());
     }
 
     MatrixUnit<M,K,S>&operator*=(const long double rhs)
@@ -78,10 +78,13 @@ public:
         return MatrixUnit<M-M1, K-K1, S-S1>(value_/rhs.getMagnitude());
     }
 
-
-
-
+    MatrixUnit<-M, -K, -S> inverse() const
+    {
+        return MatrixUnit<-M, -K, -S>(value_.inverse());
+    }
 };
+
+using MomentOfInertia = MatrixUnit<2, 1, 0>;
 
 
 #endif //FLIGHTSIMULATOR_MATRIXUNIT_H

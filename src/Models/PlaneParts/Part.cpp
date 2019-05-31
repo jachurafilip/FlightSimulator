@@ -6,3 +6,7 @@
 
 
 void Part::update(Time dt, const PlaneState &state) {}
+
+VelocityV Part::getRlativeAirspeed(PlaneState &state) const {
+    return state.velocity + state.angularVelocity.cross(LengthV(Point{0, 0, 0} - centerOfDrag));
+}

@@ -7,10 +7,12 @@
 
 struct PlaneState{
     Position position;
-    VelocityV absoluteVelocity;
+    VelocityV absoluteVelocity; // in ground frame of reference
 
-
-    VelocityV velocity;
+    VelocityV velocity; // in plane frame of reference
+    AngularMomentum angularMomentum;
+    AngularVelocity angularVelocity;
+    Point centerOfMass;
 
     double AileronsAngle = 0;
     double ElevatorsAngle = 0;

@@ -83,3 +83,35 @@ Matrix Matrix::operator*(double factor) const {
     result *= factor;
     return result;
 }
+
+Matrix Matrix::inverse() const{
+    double invDet = 1/det();
+    return Matrix(minorDet(0, 0)*invDet,
+                  minorDet(0, 1)*invDet,
+                  minorDet(0, 2)*invDet,
+                  minorDet(1, 0)*invDet,
+                  minorDet(1, 1)*invDet,
+                  minorDet(1, 2)*invDet,
+                  minorDet(2, 0)*invDet,
+                  minorDet(2, 1)*invDet,
+                  minorDet(2, 2)*invDet);
+}
+
+double Matrix::det() const {
+    return data_[0]*data_[4]*data_[8]
+         + data_[1]*data_[5]*data_[6]
+         + data_[2]*data_[3]*data_[7]
+         - data_[0]*data_[5]*data_[7]
+         - data_[1]*data_[3]*data_[8]
+         - data_[2]*data_[4]*data_[6];
+}
+
+double Matrix::minorDet(int x, int y) const {
+    if (x>2 or y>2) throw std::out_of_range("Index outside of matrix");
+    int x1 = x == 0 ? 1 : 0;
+    int x2 = x == 1 ? 2 : 1;
+    int y1 = y == 0 ? 1 : 0;
+    int y2 = y == 1 ? 2 : 1;
+    return get(x1, y1) * get(x2, y2) - get(x2, y1)  * get(x1, y2);
+}
+
