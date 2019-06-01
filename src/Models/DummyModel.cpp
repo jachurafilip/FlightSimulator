@@ -25,13 +25,14 @@ void DummyModel::update(double dt) {
     position.point.moveByVec(v.getValue()*dt);
     position.angles.roll+=ailerons*dt;
     if(v.getValue().getX()) {
-        position.angles.pitch = v.getValue().getZ()/v.getValue().getX() * 180 / M_PI;
+        position.angles.pitch = v.getValue().getZ()/v.getValue().magnitude() * 180 / M_PI;
     }
 
     if(position.point.getZ()<0)
     {
         position.point.setZ(0);
     }
+
 
     if(position.point!=previousPosition.point)
     std::cout<<"Speed: "<<v.getValue().getX()<<","<<v.getValue().getZ()<<"m/s, altitude: "<<position.point.getZ()<<" meters, pitching angle: "<<position.angles.pitch<<std::endl;
