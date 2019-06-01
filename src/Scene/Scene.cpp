@@ -147,7 +147,7 @@ void init() {
 	projectionPosition = glGetUniformLocation(shaderprogram, "projection");
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
 	initBufferObjects();
-  //  parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
+    parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
     parse(PATH_TO_TERRAIN_OBJ_FILE, floorVertices,floorNormals,floorIndices);
     inittexture("/home/filip/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
