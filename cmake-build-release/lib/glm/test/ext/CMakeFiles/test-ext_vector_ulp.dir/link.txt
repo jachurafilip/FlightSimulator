@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -O3 -DNDEBUG  -rdynamic CMakeFiles/test-ext_vector_ulp.dir/ext_vector_ulp.cpp.o  -o test-ext_vector_ulp 

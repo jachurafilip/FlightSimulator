@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -O3 -DNDEBUG  -rdynamic CMakeFiles/test-bug_ms_vec_static.dir/bug_ms_vec_static.cpp.o  -o test-bug_ms_vec_static 

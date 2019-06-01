@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -O2 -g -DNDEBUG  -rdynamic CMakeFiles/test-ext_vec1.dir/ext_vec1.cpp.o  -o test-ext_vec1 

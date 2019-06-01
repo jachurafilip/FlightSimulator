@@ -1,1 +1,0 @@
-/usr/bin/c++   -Wall -Wextra -O2 -g -DNDEBUG   CMakeFiles/main.dir/main.cpp.o  -o main libScene.a libModels.a libController.a libPlanes.a ../lib/glfw/src/libglfw3.a ../lib/glad/libglad.a /usr/lib/x86_64-linux-gnu/librt.so -lm -ldl /usr/lib/x86_64-linux-gnu/libX11.so -lpthread libUnits.a 
