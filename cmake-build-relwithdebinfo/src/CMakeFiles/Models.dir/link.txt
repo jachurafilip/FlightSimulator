@@ -1,0 +1,2 @@
+/usr/bin/ar qc libModels.a  CMakeFiles/Models.dir/Models/PhysicalModel.cpp.o CMakeFiles/Models.dir/Models/DummyModel.cpp.o CMakeFiles/Models.dir/Models/Model_6DOF.cpp.o
+/usr/bin/ranlib libModels.a

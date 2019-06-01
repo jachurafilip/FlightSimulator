@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O3 -DNDEBUG  -rdynamic CMakeFiles/test-gtx_vec_swizzle.dir/gtx_vec_swizzle.cpp.o  -o test-gtx_vec_swizzle 

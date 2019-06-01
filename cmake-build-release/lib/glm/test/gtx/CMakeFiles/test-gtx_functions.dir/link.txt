@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O3 -DNDEBUG  -rdynamic CMakeFiles/test-gtx_functions.dir/gtx_functions.cpp.o  -o test-gtx_functions 

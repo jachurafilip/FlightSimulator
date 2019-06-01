@@ -1,6 +1,6 @@
 #define DIRECTORY "/home/filip/FlightSimulator/"
 #define PATH_TO_PLANE_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/Plane.obj"
-#define PATH_TO_TERRAIN_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/terrain.obj"
+#define PATH_TO_TERRAIN_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/basicPlane.obj"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -29,6 +29,7 @@ std::vector <unsigned int> modelIndices;
 std::vector <glm::vec3> floorVertices;
 std::vector <glm::vec3> floorNormals;
 std::vector <unsigned int> floorIndices;
+
 bool useGlu; // Toggle use of "official" opengl/glm transform vs user code
 int w = 500, h = 500; // width and height 
 
@@ -98,7 +99,6 @@ void printHelp() {
 }
 
 
-
 // This function gets called when the window size gets changed
 void reshape(GLFWwindow* window, int width,int height){
 	w = width;
@@ -147,7 +147,7 @@ void init() {
 	projectionPosition = glGetUniformLocation(shaderprogram, "projection");
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
 	initBufferObjects();
-    parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
+  //  parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
     parse(PATH_TO_TERRAIN_OBJ_FILE, floorVertices,floorNormals,floorIndices);
     inittexture("/home/filip/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
@@ -163,7 +163,7 @@ void display(GLFWwindow* window) {
 		view = glm::lookAt(eye, center, up);
 	}
 	else {
-		view = Transform::lookAt(eye,up); 
+		view = Transform::lookAt(eye,up);
 	}
 
     glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
@@ -185,7 +185,7 @@ void display(GLFWwindow* window) {
 	glUniform1i(islight,true);
 
     solidModel(4.0f, modelVertices,modelNormals,modelIndices);
-    solidFloor(1000.0f,floorVertices,floorNormals,floorIndices);
+    solidFloor(100.0f,floorVertices,floorNormals,floorIndices);
 
 }
 

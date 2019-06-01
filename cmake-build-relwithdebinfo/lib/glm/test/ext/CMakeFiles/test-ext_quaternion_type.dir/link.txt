@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O2 -g -DNDEBUG  -rdynamic CMakeFiles/test-ext_quaternion_type.dir/ext_quaternion_type.cpp.o  -o test-ext_quaternion_type 

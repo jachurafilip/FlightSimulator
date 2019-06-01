@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O3 -DNDEBUG  -rdynamic CMakeFiles/test-gtx_log_base.dir/gtx_log_base.cpp.o  -o test-gtx_log_base 

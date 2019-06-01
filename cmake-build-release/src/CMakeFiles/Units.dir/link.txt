@@ -1,0 +1,2 @@
+/usr/bin/ar qc libUnits.a  CMakeFiles/Units.dir/Basic/ScalarUnit.cpp.o CMakeFiles/Units.dir/Basic/Vector.cpp.o CMakeFiles/Units.dir/Basic/VectorUnit.cpp.o CMakeFiles/Units.dir/Basic/Point.cpp.o
+/usr/bin/ranlib libUnits.a

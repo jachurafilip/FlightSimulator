@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O2 -g -DNDEBUG  -rdynamic CMakeFiles/test-gtc_reciprocal.dir/gtc_reciprocal.cpp.o  -o test-gtc_reciprocal 

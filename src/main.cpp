@@ -94,6 +94,7 @@ int main(int argc, char** argv)
     init();
 
     printHelp();
+    move(500,100,0,floorVertices);
 
     do{
         glfwPollEvents();

@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O2 -g -DNDEBUG  -rdynamic CMakeFiles/test-gtx_vector_query.dir/gtx_vector_query.cpp.o  -o test-gtx_vector_query 

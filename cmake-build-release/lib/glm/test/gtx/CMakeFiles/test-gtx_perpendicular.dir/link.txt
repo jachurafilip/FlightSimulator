@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -Wextra -O3 -DNDEBUG  -rdynamic CMakeFiles/test-gtx_perpendicular.dir/gtx_perpendicular.cpp.o  -o test-gtx_perpendicular 

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libScene.a  CMakeFiles/Scene.dir/Scene/Geometry.cpp.o CMakeFiles/Scene.dir/Scene/shaders.cpp.o CMakeFiles/Scene.dir/Scene/Transform.cpp.o CMakeFiles/Scene.dir/Scene/grader.cpp.o CMakeFiles/Scene.dir/Scene/main2.cpp.o
+/usr/bin/ranlib libScene.a
