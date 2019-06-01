@@ -92,6 +92,7 @@ int main(int argc, char** argv)
     glfwSwapInterval(1);
 
     init();
+    move(5,5,10,floorVertices);
 
     printHelp();
     move(500,100,0,floorVertices);

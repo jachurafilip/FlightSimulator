@@ -156,11 +156,12 @@ void solidFloor(float size, std::vector<glm::vec3>& floorVertices,std::vector<gl
     glUniformMatrix4fv(floorviewPos, 1, GL_FALSE, &(floorModel)[0][0]);
     glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
     bindFloor(floorVertices,floorNormals,floorIndices);
-    drawtexture(FLOOR, texNames[0]);
+    //drawtexture(FLOOR, texNames[0]);
 
     glBindVertexArray(floorVAO);
     glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
     glBindVertexArray(0);
+
 }
 
 void pitch(double angle, std::vector<glm::vec3>& modelVertices) {
@@ -235,10 +236,10 @@ void inittexture (const char * filename, GLuint program) {
     istex = glGetUniformLocation(program,"istex") ;
 }
 
-void drawtexture(GLuint object, GLuint texture) {
+void drawtexture(GLuint object, GLuint texture, std::vector<unsigned int>& floorIndices) {
     glBindTexture(GL_TEXTURE_2D, texture);
     glBindVertexArray(floorTBO);
-    glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
+    glDrawElements(GL_TRIANGLES, sizeof(unsigned int) * floorIndices.size() , GL_UNSIGNED_BYTE, 0);
     glBindVertexArray(0);
 }
 

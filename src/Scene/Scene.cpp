@@ -1,6 +1,6 @@
-#define DIRECTORY "/home/filip/FlightSimulator/"
-#define PATH_TO_PLANE_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/Plane.obj"
-#define PATH_TO_TERRAIN_OBJ_FILE  "/home/filip/FlightSimulator/src/Scene/basicPlane.obj"
+#define DIRECTORY "/Users/asia/Documents/FlightSimulator/"
+#define PATH_TO_PLANE_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/Plane.obj"
+#define PATH_TO_TERRAIN_OBJ_FILE  "/Users/asia/Documents/FlightSimulator/src/Scene/basicPlane.obj"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -147,9 +147,9 @@ void init() {
 	projectionPosition = glGetUniformLocation(shaderprogram, "projection");
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
 	initBufferObjects();
-  //  parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
+    parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
     parse(PATH_TO_TERRAIN_OBJ_FILE, floorVertices,floorNormals,floorIndices);
-    inittexture("/home/filip/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
+    inittexture("/Users/asia/Documents/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
 }
 
@@ -163,13 +163,8 @@ void display(GLFWwindow* window) {
 		view = glm::lookAt(eye, center, up);
 	}
 	else {
-		view = Transform::lookAt(eye,up);
+		view = Transform::lookAt(eye,up); 
 	}
-
-    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
-    drawtexture(FLOOR, texNames[0]);
-    glUniform1i(istex, 0);
-
 
     transformvec(light_position,light0);
 	transformvec(light_position1,light1); 
@@ -187,6 +182,9 @@ void display(GLFWwindow* window) {
     solidModel(4.0f, modelVertices,modelNormals,modelIndices);
     solidFloor(100.0f,floorVertices,floorNormals,floorIndices);
 
+    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
+    drawtexture(FLOOR, texNames[0],floorIndices);
+    glUniform1i(istex, 0);
 }
 
 static void error_callback(int error, const char* description)
