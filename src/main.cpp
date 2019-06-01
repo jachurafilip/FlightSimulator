@@ -76,7 +76,7 @@ int main(int argc, char** argv)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    window = glfwCreateWindow(640, 480, "Simulation", nullptr, NULL);
+    window = glfwCreateWindow(640, 480, "Simulation", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -95,7 +95,7 @@ int main(int argc, char** argv)
     move(5,5,10,floorVertices);
 
     printHelp();
-    move(500,100,0,floorVertices);
+    move(0,0,0,floorVertices);
 
     do{
         glfwPollEvents();
