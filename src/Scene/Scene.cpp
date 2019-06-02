@@ -31,7 +31,7 @@ std::vector <glm::vec3> floorNormals;
 std::vector <unsigned int> floorIndices;
 
 bool useGlu; // Toggle use of "official" opengl/glm transform vs user code
-int w = 500, h = 500; // width and height 
+int w = 800, h = 600; // width and height
 
 Grader grader;
 bool allowGrader = false;
@@ -148,7 +148,6 @@ void init() {
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
 	initBufferObjects();
     parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
-    inittexture("/home/filip/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
 }
 
@@ -166,8 +165,7 @@ void display(GLFWwindow* window) {
 	}
 
     glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
-    drawtexture(FLOOR, texNames[0]);
-    glUniform1i(istex, 0);
+
 
 
     transformvec(light_position,light0);
@@ -184,8 +182,6 @@ void display(GLFWwindow* window) {
 	glUniform1i(islight,true);
 
     solidModel(4.0f, modelVertices,modelNormals,modelIndices);
-    solidFloor(4.0f, floorVertices,floorNormals,floorIndices);
-
 }
 
 static void error_callback(int error, const char* description)
