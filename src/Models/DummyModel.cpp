@@ -8,6 +8,10 @@
 
 
 void DummyModel::update(double dt) {
+    if(position.point.getZ()==0 && v.getValue().getZ()<-3)
+    {
+        throw 1;
+    }
     previousPosition = position;
 
     v = v+(drag()/m)*Time(dt); // v = v0+a*t
@@ -49,12 +53,14 @@ double DummyModel::dragCoefficient() {
     if(!flaps)
         return 0.4*cos(position.angles.pitch*M_PI/180);
     else
-        return 1.2*cos(position.angles.pitch*M_PI/180);
+        return 0.8*cos(position.angles.pitch*M_PI/180);
 }
 
 double DummyModel::liftCoefficient() {
     if ((0.5+0.1459*position.angles.pitch/180+(-0.004236)*position.angles.pitch/180*position.angles.pitch/180) < 0)
         return 0;
+    if(flaps && v.getValue().getX()<70)
+        return (75-v.getValue().getX())/20+1+0.1459*position.angles.pitch/180+(-0.004236)*position.angles.pitch/180*position.angles.pitch/180;
     return 1+0.1459*position.angles.pitch/180+(-0.004236)*position.angles.pitch/180*position.angles.pitch/180;
 }
 
@@ -65,7 +71,7 @@ ForceV DummyModel::lift() {
 
 
 
-    double liftValue = liftCoefficient()*airDensity().getMagnitude()*v.magnitude()*v.magnitude()*wingArea.getMagnitude()/2;
+    double liftValue = liftCoefficient()*airDensity().getMagnitude()*v.getValue().getX()*v.getValue().getX()*wingArea.getMagnitude()/2;
 
     return ForceV{0,0,cos(angle)*liftValue};
 

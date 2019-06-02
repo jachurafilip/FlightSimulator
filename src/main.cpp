@@ -99,17 +99,32 @@ int main(int argc, char** argv)
     printHelp();
     move(0,0,0,floorVertices);
 
-    do{
-        glfwPollEvents();
-        display(window);
-        pc.simulate();
-        roll((m.getCurrentPosition().angles.roll-m.getPreviousPosition().angles.roll)*M_PI/180,modelVertices);
-        pitch((m.getCurrentPosition().angles.pitch-m.getPreviousPosition().angles.pitch)*M_PI/180,modelVertices);
-        yaw((m.getCurrentPosition().angles.yaw-m.getPreviousPosition().angles.yaw)*M_PI/180,modelVertices);
-        move(m.getPreviousPosition().point.getX()-m.getCurrentPosition().point.getX(),m.getPreviousPosition().point.getZ()-m.getCurrentPosition().point.getZ(),
-                m.getPreviousPosition().point.getY()-m.getCurrentPosition().point.getY(),modelVertices);
-        glfwSwapBuffers(window);
-    } while( !glfwWindowShouldClose(window) );
+    try {
+
+        do {
+            glfwPollEvents();
+            display(window);
+            pc.simulate();
+            roll((m.getCurrentPosition().angles.roll - m.getPreviousPosition().angles.roll) * M_PI / 180,
+                 modelVertices);
+            pitch((m.getCurrentPosition().angles.pitch - m.getPreviousPosition().angles.pitch) * M_PI / 180,
+                  modelVertices);
+            yaw((m.getCurrentPosition().angles.yaw - m.getPreviousPosition().angles.yaw) * M_PI / 180, modelVertices);
+            move(m.getPreviousPosition().point.getX() - m.getCurrentPosition().point.getX(),
+                 m.getPreviousPosition().point.getZ() - m.getCurrentPosition().point.getZ(),
+                 m.getPreviousPosition().point.getY() - m.getCurrentPosition().point.getY(), modelVertices);
+            glfwSwapBuffers(window);
+        } while (!glfwWindowShouldClose(window));
+    }
+    catch (int e)
+    {
+        cleanup();
+        glfwDestroyWindow(window);
+        std::cout<<"You crashed";
+        glfwTerminate();
+        exit(EXIT_SUCCESS);
+    }
+
 
 
     cleanup();
