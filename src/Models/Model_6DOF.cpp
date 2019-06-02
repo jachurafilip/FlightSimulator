@@ -4,6 +4,7 @@
 
 #include "Model_6DOF.h"
 #include <numeric>
+#include <Basic/Physics.h>
 
 
 void Model_6DOF::update(Time dt) {
@@ -11,8 +12,10 @@ void Model_6DOF::update(Time dt) {
     ForceV forceV;
     MomentOfForce momentOfForce;
     std::tie(forceV, momentOfForce) = getForces();
-    MomentOfInertia momentOfInertia = getMoments();
     Mass mass = getMasses();
+    Point centerOfMass = getCenterOfMass();
+    MomentOfInertia momentOfInertia = Physics::steiner(getMoments(), mass, {0, 0, 0}, centerOfMass)
+            ;
     for (auto & part : parts){
         part->update(dt, state);
     }

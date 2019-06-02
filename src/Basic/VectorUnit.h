@@ -103,8 +103,6 @@ public:
         return *this;
     }
 
-
-
     VectorUnit<M,K,S> operator/(const long double rhs) const
     {
         return VectorUnit<M, K, S>(value_/rhs);

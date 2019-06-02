@@ -42,6 +42,8 @@ public:
     Vector& operator-=(const Vector &other);
     Vector operator-() const;
 
+    double operator[](int index);
+
     double dot(const Vector &other) const ;
     Vector cross(const Vector &other) const;
 

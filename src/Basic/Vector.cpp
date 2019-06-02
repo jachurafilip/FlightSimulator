@@ -142,6 +142,16 @@ std::ostream &operator<<(std::ostream &os, const Vector &vector) {
     return os;
 }
 
+double Vector::operator[](int index) {
+    if (index==0)
+        return x;
+    if (index==1)
+        return y;
+    if (index==2)
+        return z;
+    throw std::out_of_range("Index outside of vector");
+}
+
 
 
 

@@ -15,12 +15,14 @@
 class Part {
 public:
     Mass mass;
-    MomentOfInertia momentOfInertia; //relative to plane CoM
+    MomentOfInertia momentOfInertia; //relative to plane origin
+    MomentOfInertia selfMomentOfInertia; //relative to part CoM
     Point centerOfMass;
     Point centerOfDrag;
 public:
+    Part(Mass mass, MomentOfInertia selfMomentOfInertia, Point centerOfMass, Point centerOfDrag);
     virtual void update(Time dt, const PlaneState &state);
-    virtual VelocityV getRlativeAirspeed(PlaneState &state) const;
+    VelocityV getRlativeAirspeed(PlaneState &state) const;
     virtual std::pair<ForceV, MomentOfForce> getForces(const PlaneState& state)const=0;
 };
 
