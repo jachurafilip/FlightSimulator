@@ -11,7 +11,8 @@
 GLfloat texCoords[] = {
         0.0f, 0.0f,  // Lower-left corner
         1.0f, 0.0f,  // Lower-right corner
-        0.5f, 1.0f   // Top-center corner
+        0.0f, 1.0f,   // Top-left corner
+        1.0f, 1.0f  // Top-right corner
 };
 GLuint texture;
 
@@ -130,45 +131,18 @@ void bindModel(std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& mod
 }
 
 
-void bindFloor(std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices) {
-    glBindVertexArray(floorVAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, floorVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * floorVertices.size(), &floorVertices[0], GL_STATIC_DRAW);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, floorNBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * floorNormals.size(), &floorNormals[0], GL_STATIC_DRAW);
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, floorEBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * floorIndices.size(), &floorIndices[0], GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
-}
-
 void solidModel(float size,std::vector<glm::vec3>& modelVertices,std::vector<glm::vec3>& modelNormals,std::vector<unsigned int>& modelIndices) {
     model = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
     glUniformMatrix4fv(modelviewPos, 1, GL_FALSE, &(view * model)[0][0]);
     bindModel(modelVertices,modelNormals,modelIndices);
 
     glBindVertexArray(defaultVAO);
+    glDrawElements(GL_TRIANGLES , modelIndices.size()-4, GL_UNSIGNED_INT, 0);
+    glBindTexture(GL_TEXTURE_2D, texture);
     glDrawElements(GL_TRIANGLES , modelIndices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 
-void solidFloor(float size, std::vector<glm::vec3>& floorVertices,std::vector<glm::vec3>& floorNormals,std::vector<unsigned int>& floorIndices) {
-    floorModel = glm::scale(glm::mat4(1.0f), glm::vec3(size, size, size));
-    glUniformMatrix4fv(floorviewPos, 1, GL_FALSE, &(floorModel)[0][0]);
-    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
-    bindFloor(floorVertices,floorNormals,floorIndices);
-
-    glBindVertexArray(floorVAO);
-    glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
-    glBindVertexArray(0);
-}
 
 void pitch(double angle, std::vector<glm::vec3>& modelVertices) {
     for(int i =0; i<modelVertices.size();i++)
@@ -223,7 +197,7 @@ void move(double x, double y, double z, std::vector<glm::vec3> &modelVertices) {
     }
 }
 
-void Texture()
+void wrapTexture()
 {
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -232,6 +206,17 @@ void Texture()
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     glBindTexture(GL_TEXTURE_2D, 0);
 
-
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_REPEAT);
+    float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    float pixels[] = {
+            0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
+            1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
+    };
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 2, 2, 0, GL_RGB, GL_FLOAT, pixels);
 }
 

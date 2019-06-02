@@ -15,8 +15,8 @@ out vec4 fragColor;
 
 uniform int islight ; // are we lighting. 
 
-uniform vec3 color; // RGB color normally used in glColor*
-
+//uniform vec3 color; // RGB color normally used in glColor*
+out vec3 color;
 // Assume light 0 and light 1 are both point lights
 // The actual light values are passed from the main OpenGL program. 
 // This could of course be fancier.  My goal is to illustrate a simple idea. 
@@ -75,6 +75,9 @@ void main (void)
         vec3 half1 = normalize (direction1 + eyedirn) ;  
         vec4 col1 = ComputeLight(direction1, light1color, normal, half1, diffuse, specular, shininess) ;
         
-        fragColor = ambient + col0 + col1 ; 
+        fragColor = ambient + col0 + col1 ;
+
 	}
+
+    color = vec3(1,0,0);
 }

@@ -20,15 +20,20 @@ layout (location = 1) in vec3 normal;
 uniform mat4 projection;
 uniform mat4 modelview;
 
+
+
 // The default output of the vertex shader is gl_Position.
 // Other outputs of the vertex shader can be defined with the keyword "out", which
 // become the inputs (with the same variable name) of the fragment shader.
 out vec3 Normal; 
 out vec4 Position;
+out vec3 color;
+
 
 void main() {
     gl_Position = projection * modelview * vec4(position, 1.0f);
     Normal = mat3(transpose(inverse(modelview))) * normal; 
     Position = modelview * vec4(position, 1.0f);
+    color = vec3(1,0,0);
 }
 
