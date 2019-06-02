@@ -7,6 +7,8 @@
 #include "Scene/FreeImage.h"
 #include <iostream>
 
+#include <../lib/SOIL/src/SOIL.h>
+
 Plane p;
 DummyModel m;
 
