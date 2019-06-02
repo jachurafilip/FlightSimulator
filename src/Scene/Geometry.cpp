@@ -5,6 +5,16 @@
 #include "Geometry.h"
 #include <vector>
 #include <algorithm>
+#include <../lib/SOIL/src/SOIL.h>
+
+
+GLfloat texCoords[] = {
+        0.0f, 0.0f,  // Lower-left corner
+        1.0f, 0.0f,  // Lower-right corner
+        0.5f, 1.0f   // Top-center corner
+};
+GLuint texture;
+
 
 GLuint defaultVAO, defaultVBO, defaultNBO, defaultEBO;
 GLuint floorVAO, floorVBO, floorNBO, floorEBO, floorTBO;
@@ -15,8 +25,6 @@ glm::mat4 model;
 glm::mat4 floorModel;
 shape lastUsed = NONE;
 
-
-GLubyte texture[256][256][3] ; // ** NEW ** texture (from grsites.com)
 GLuint texNames[1] ;
 GLuint istex ;
 
@@ -85,9 +93,9 @@ void parse(const char * filepath, std::vector<glm::vec3>& modelVertices,std::vec
 		else if (c1 == 'f')
 		{
 			fscanf(fp, "%d//%d %d//%d %d//%d", &fx, &ignore, &fy, &ignore, &fz, &ignore);
-			modelIndices.push_back(fx - 1);
-			modelIndices.push_back(fy - 1);
-			modelIndices.push_back(fz - 1);
+			modelIndices.push_back(fx -1);
+			modelIndices.push_back(fy -1);
+			modelIndices.push_back(fz -1);
 		}
 	}
 
@@ -156,7 +164,6 @@ void solidFloor(float size, std::vector<glm::vec3>& floorVertices,std::vector<gl
     glUniformMatrix4fv(floorviewPos, 1, GL_FALSE, &(floorModel)[0][0]);
     glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
     bindFloor(floorVertices,floorNormals,floorIndices);
-    drawtexture(FLOOR, texNames[0]);
 
     glBindVertexArray(floorVAO);
     glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
@@ -202,51 +209,7 @@ void yaw(double angle,  std::vector<glm::vec3>& modelVertices)
 
 // Very basic code to read a ppm file
 // And then set up buffers for texture coordinates
-void inittexture (const char * filename, GLuint program) {
-    int i,j,k ;
-    FILE * fp ;
-    assert(fp = fopen(filename,"rb")) ;
-    fscanf(fp,"%*s %*d %*d %*d%*c") ;
-    for (i = 0 ; i < 256 ; i++)
-        for (j = 0 ; j < 256 ; j++)
-            for (k = 0 ; k < 3 ; k++)
-                fscanf(fp,"%c",&(texture[i][j][k])) ;
-    fclose(fp) ;
 
-    // Set up Texture Coordinates
-    glGenTextures(1, texNames) ;
-    glBindVertexArray(floorVAO);
-    glBindBuffer(GL_ARRAY_BUFFER, floorTBO) ;
-    glBufferData(GL_ARRAY_BUFFER, sizeof (floortex), floortex,GL_STATIC_DRAW);
-    // Use layout location 2 for texcoords
-    glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
-
-    glActiveTexture(GL_TEXTURE0) ;
-    glEnable(GL_TEXTURE_2D) ;
-
-    glBindTexture (GL_TEXTURE_2D, texNames[0]) ;
-    glTexImage2D(GL_TEXTURE_2D,0,GL_RGB, 256, 256, 0, GL_RGB, GL_UNSIGNED_BYTE,texture) ;
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR) ;
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR) ;
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT) ;
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT) ;
-    glBindVertexArray(0);
-    // Define a sampler.  See page 709 in red book, 7th ed.
-    GLint texsampler ;
-    texsampler = glGetUniformLocation(program, "tex") ;
-    // Note that the value assigned to the texture sampler is n, where n is the active
-    // texture number provided to glActiveTexture(). In this case, it's texture unit 0.
-    glUniform1i(texsampler,0) ;
-    istex = glGetUniformLocation(program,"istex") ;
-}
-
-void drawtexture(GLuint object, GLuint texture, std::vector<unsigned int>& floorIndices) {
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glBindVertexArray(floorTBO);
-    glDrawElements(GL_TRIANGLES, sizeof(unsigned int) * floorIndices.size() , GL_UNSIGNED_BYTE, 0);
-    glBindVertexArray(0);
-}
 
 void move(double x, double y, double z, std::vector<glm::vec3> &modelVertices) {
 
@@ -258,6 +221,17 @@ void move(double x, double y, double z, std::vector<glm::vec3> &modelVertices) {
             modelVertices[i][2] += z;
         }
     }
+}
+
+void Texture()
+{
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    int width, height;
+    unsigned char* image = SOIL_load_image("image.png", &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
 
 }
 

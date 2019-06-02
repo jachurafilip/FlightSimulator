@@ -71,12 +71,14 @@ int main(int argc, char** argv)
     if (!glfwInit())
         exit(EXIT_FAILURE);
 
+    int windowWidth = 640;
+    int windowHeight = 480;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-    window = glfwCreateWindow(640, 480, "Simulation", nullptr, nullptr);
+    window = glfwCreateWindow(windowWidth, windowHeight, "Simulation", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -92,7 +94,7 @@ int main(int argc, char** argv)
     glfwSwapInterval(1);
 
     init();
-    move(5,5,10,floorVertices);
+    reshape(window,windowWidth,windowHeight);
 
     printHelp();
     move(0,0,0,floorVertices);

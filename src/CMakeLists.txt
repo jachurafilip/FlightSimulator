@@ -20,6 +20,7 @@ target_link_libraries(Scene Units)
 target_link_libraries(Scene glfw)
 target_link_libraries(Scene glad)
 target_link_libraries(Scene glm)
+target_link_libraries(Scene SOIL)
 
 add_library(Units STATIC ${UnitsSourceFiles})
 target_include_directories(Units PUBLIC . )
@@ -45,6 +46,7 @@ target_link_libraries(main Planes)
 target_link_libraries(main glfw)
 target_link_libraries(main glad)
 target_link_libraries(main glm)
+target_link_libraries(Scene SOIL)
 
 
 
