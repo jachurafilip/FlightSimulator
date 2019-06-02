@@ -104,8 +104,8 @@ int main(int argc, char** argv)
         roll((m.getCurrentPosition().angles.roll-m.getPreviousPosition().angles.roll)*M_PI/180,modelVertices);
         pitch((m.getCurrentPosition().angles.pitch-m.getPreviousPosition().angles.pitch)*M_PI/180,modelVertices);
         yaw((m.getCurrentPosition().angles.yaw-m.getPreviousPosition().angles.yaw)*M_PI/180,modelVertices);
-        move(m.getPreviousPosition().point.getX()-m.getCurrentPosition().point.getX(),m.getPreviousPosition().point.getY()-m.getCurrentPosition().point.getY(),
-             m.getPreviousPosition().point.getZ()-m.getCurrentPosition().point.getZ(),floorVertices);
+        move(m.getPreviousPosition().point.getX()-m.getCurrentPosition().point.getX(),m.getPreviousPosition().point.getZ()-m.getCurrentPosition().point.getZ(),
+                m.getPreviousPosition().point.getY()-m.getCurrentPosition().point.getY(),modelVertices);
         glfwSwapBuffers(window);
     } while( !glfwWindowShouldClose(window) );
 

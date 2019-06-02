@@ -156,40 +156,45 @@ void solidFloor(float size, std::vector<glm::vec3>& floorVertices,std::vector<gl
     glUniformMatrix4fv(floorviewPos, 1, GL_FALSE, &(floorModel)[0][0]);
     glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
     bindFloor(floorVertices,floorNormals,floorIndices);
-    //drawtexture(FLOOR, texNames[0]);
+    drawtexture(FLOOR, texNames[0]);
 
     glBindVertexArray(floorVAO);
     glDrawElements(GL_TRIANGLES, sizeof(floorinds), GL_UNSIGNED_BYTE, 0);
     glBindVertexArray(0);
-
 }
 
 void pitch(double angle, std::vector<glm::vec3>& modelVertices) {
-    for (auto &v: modelVertices) {
-        auto v0 = v[0], v1 = v[1];
-        v[0] = v0 * cos(angle) - v1 * sin(angle);
-        v[1] = v0 * sin(angle) + v1 * cos(angle);
+    for(int i =0; i<modelVertices.size();i++)
+    {
+        if(i<1568) {
+            auto v0 = modelVertices[i][0], v1 = modelVertices[i][1];
+            modelVertices[i][0] = v0 * cos(angle) - v1 * sin(angle);
+            modelVertices[i][1] = v0 * sin(angle) + v1 * cos(angle);
+        }
     }
 }
 
 
 void roll(double angle, std::vector<glm::vec3>& modelVertices) {
-    for(auto &v: modelVertices)
+    for(int i =0; i<modelVertices.size();i++)
     {
-        auto v0 = v[1], v1 = v[2];
-        v[1] = v0 * cos(angle)-v1*sin(angle);
-        v[2] = v0 * sin(angle)+v1*cos(angle);
+        if(i<1568) {
+            auto v0 = modelVertices[i][1], v1 = modelVertices[i][2];
+            modelVertices[i][1] = v0 * cos(angle) - v1 * sin(angle);
+            modelVertices[i][2] = v0 * sin(angle) + v1 * cos(angle);
+        }
     }
 
 }
 
 void yaw(double angle,  std::vector<glm::vec3>& modelVertices)
 {
-    for(auto &v: modelVertices)
-    {
-        auto v0 = v[2], v1 = v[0];
-        v[2] = v0 * cos(angle)-v1*sin(angle);
-        v[0] = v0 * sin(angle)+v1*cos(angle);
+    for(int i =0; i<modelVertices.size();i++) {
+        if (i < 1568) {
+            auto v0 = modelVertices[i][2], v1 = modelVertices[i][0];
+            modelVertices[i][2] = v0 * cos(angle) - v1 * sin(angle);
+            modelVertices[i][0] = v0 * sin(angle) + v1 * cos(angle);
+        }
     }
 }
 
@@ -245,11 +250,13 @@ void drawtexture(GLuint object, GLuint texture, std::vector<unsigned int>& floor
 
 void move(double x, double y, double z, std::vector<glm::vec3> &modelVertices) {
 
-    for(auto &v: modelVertices)
+    for(int i =0; i<modelVertices.size();++i)
     {
-        v[0]+=x;
-        v[1]+=y;
-        v[2]+=z;
+        if(i>1567) {
+            modelVertices[i][0] += 0.1*x;
+            modelVertices[i][1] += 0.1*y;
+            modelVertices[i][2] += z;
+        }
     }
 
 }

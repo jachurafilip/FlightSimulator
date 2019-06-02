@@ -148,7 +148,7 @@ void init() {
 	modelviewPos = glGetUniformLocation(shaderprogram, "modelview");
 	initBufferObjects();
     parse(PATH_TO_PLANE_OBJ_FILE, modelVertices, modelNormals, modelIndices);
-    parse(PATH_TO_TERRAIN_OBJ_FILE, floorVertices,floorNormals,floorIndices);
+    //parse(PATH_TO_TERRAIN_OBJ_FILE, floorVertices,floorNormals,floorIndices);
     inittexture("/Users/asia/Documents/FlightSimulator/src/Scene/wood.ppm", shaderprogram) ;
 
 }
@@ -163,8 +163,13 @@ void display(GLFWwindow* window) {
 		view = glm::lookAt(eye, center, up);
 	}
 	else {
-		view = Transform::lookAt(eye,up); 
+		view = Transform::lookAt(eye,up);
 	}
+
+    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
+    drawtexture(FLOOR, texNames[0]);
+    glUniform1i(istex, 0);
+
 
     transformvec(light_position,light0);
 	transformvec(light_position1,light1); 
@@ -180,11 +185,8 @@ void display(GLFWwindow* window) {
 	glUniform1i(islight,true);
 
     solidModel(4.0f, modelVertices,modelNormals,modelIndices);
-    solidFloor(100.0f,floorVertices,floorNormals,floorIndices);
+    solidFloor(4.0f, floorVertices,floorNormals,floorIndices);
 
-    glUniform3f(colorPos, 1.0f, 1.0f, 1.0f);
-    drawtexture(FLOOR, texNames[0],floorIndices);
-    glUniform1i(istex, 0);
 }
 
 static void error_callback(int error, const char* description)
