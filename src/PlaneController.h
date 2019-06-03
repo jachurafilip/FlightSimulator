@@ -24,6 +24,7 @@ public:
     void moveRudder(double value);
     void throttle(double value);
     void flaps();
+    void turnLogs();
 
 private:
     const int FPS = 30;

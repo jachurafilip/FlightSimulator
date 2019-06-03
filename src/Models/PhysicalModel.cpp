@@ -5,7 +5,7 @@
 #include <iostream>
 #include "PhysicalModel.h"
 
-PhysicalModel::PhysicalModel(const Position &position) : position(position) {}
+PhysicalModel::PhysicalModel(const Position &position) : position(position), logs(true) {}
 
 const Position &PhysicalModel::getCurrentPosition() const {
     return position;
@@ -13,6 +13,7 @@ const Position &PhysicalModel::getCurrentPosition() const {
 
 PhysicalModel::PhysicalModel() {
     position = Position();
+    logs = true;
 
 }
 
@@ -47,4 +48,9 @@ void PhysicalModel::setElevators(double amount) {
 
 void PhysicalModel::Flaps() {
  flaps = !flaps;
+}
+
+void PhysicalModel::Logs() {
+    logs = !logs;
+
 }

@@ -31,29 +31,47 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
                 amount--;
                 std::cout << "amount set to " << amount << "\n";
                 break;
+            case GLFW_KEY_R:
+                reset();
+                break;
             case GLFW_KEY_I:
                 pc.throttle(amount);
                 break;
             case GLFW_KEY_O:
                 pc.throttle(-amount);
                 break;
+            case GLFW_KEY_K:
+                pc.turnLogs();
+                break;
             case GLFW_KEY_H:
                 printHelp();
                 break;
-            case GLFW_KEY_W:
+            case GLFW_KEY_F:
                 pc.flaps();
                 break;
-            case GLFW_KEY_LEFT: //left
-                cameraLeft(-amount,eye,up);
+            case GLFW_KEY_LEFT:
+                pc.moveAilerons(-amount);
                 break;
-            case GLFW_KEY_UP: //up
+            case GLFW_KEY_UP:
                 pc.moveElevators(-amount);
                 break;
-            case GLFW_KEY_RIGHT: //right
+            case GLFW_KEY_DOWN:
+                pc.moveElevators(amount);
+                break;
+            case  GLFW_KEY_RIGHT:
+                pc.moveAilerons(amount);
+                break;
+            case GLFW_KEY_D:
                 cameraLeft(amount,eye,up);
                 break;
-            case GLFW_KEY_DOWN: //down
-                pc.moveElevators(amount);
+            case GLFW_KEY_A:
+                cameraLeft(-amount,eye,up);
+                break;
+            case GLFW_KEY_W:
+                cameraUp(amount,eye,up);
+                break;
+            case GLFW_KEY_S:
+                cameraUp(-amount,eye,up);
                 break;
             default:
                 break;
@@ -118,10 +136,10 @@ int main(int argc, char** argv)
     }
     catch (int e)
     {
+        std::cout<<"You crashed";
         cleanup();
         glfwDestroyWindow(window);
-        std::cout<<"You crashed";
-        glfwTerminate();
+        //glfwTerminate();
         exit(EXIT_SUCCESS);
     }
 

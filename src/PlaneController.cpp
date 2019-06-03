@@ -51,4 +51,9 @@ void PlaneController::flaps() {
 
 }
 
+void PlaneController::turnLogs() {
+    model->Logs();
+
+}
+
 

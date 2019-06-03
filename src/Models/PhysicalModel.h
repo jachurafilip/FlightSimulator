@@ -18,6 +18,7 @@ protected:
     double ailerons; //range [-100,100] (-100 is left aileron up - plane rolling left)
     double elevators; //range [-100,100] (-100 is elevator down - plane pitching down)
     bool flaps;
+    bool logs;
 public:
     explicit PhysicalModel(const Position &position);
     PhysicalModel();
@@ -32,6 +33,7 @@ public:
     void setAilerons(double amount);
     void setElevators(double amount);
     void Flaps();
+    void Logs();
 
 
 };

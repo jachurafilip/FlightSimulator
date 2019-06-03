@@ -27,7 +27,13 @@ void DummyModel::update(double dt) {
 
 
     position.point.moveByVec(v.getValue()*dt);
-    position.angles.roll+=ailerons*dt;
+    if(position.point.getZ()==0)
+    {
+        position.angles.roll = 0;
+    }
+    else {
+        position.angles.roll += 3*sin(ailerons*M_PI/200) * dt;
+    }
     if(v.getValue().getX()) {
         position.angles.pitch = v.getValue().getZ()/v.getValue().magnitude() * 180 / M_PI;
     }
@@ -39,7 +45,8 @@ void DummyModel::update(double dt) {
 
 
     if(position.point!=previousPosition.point)
-    std::cout<<"Speed: "<<v.getValue().getX()<<","<<v.getValue().getZ()<<"m/s, altitude: "<<position.point.getZ()<<" meters, pitching angle: "<<position.angles.pitch<<std::endl;
+        if(logs)
+            std::cout<<"Speed: "<<v.getValue().getX()<<","<<v.getValue().getZ()<<"m/s, altitude: "<<position.point.getZ()<<" meters, pitching angle: "<<position.angles.pitch<<std::endl;
 }
 
 DummyModel::DummyModel(const Position &position) : PhysicalModel(position) {}

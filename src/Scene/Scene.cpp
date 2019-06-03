@@ -90,11 +90,14 @@ std::string imgNumber(int num) {
 
 
 void printHelp() {
-	std::cout << "\npress 'h' to print this message again.\n" 
+	std::cout << "\npress 'H' to print this message again.\n"
+	    << "press 'K' to turn on/off logs printing\n"
+	    << "press WSAD to move the camera\n"
+	    << "press R to reset camera\n"
 		<< "press ']' or '[' to change the accuracy of each operation\n"
-		<< "press i/o to throttle up/down\n"
-		<< "press Up/Down to steer the plane vertically\n"
-		<< "press W to turn flops on/off"
+		<< "press 'I'/'O' to throttle up/down\n"
+		<< "press Up/Down/Left/Right to steer the plane\n"
+		<< "press F to turn flops on/off\n"
 		<< "press ESC to quit.\n";  
 }
 
@@ -153,7 +156,7 @@ void init() {
 }
 
 void display(GLFWwindow* window) {
-	glClearColor(0,0,1,0);
+	glClearColor(0.5,0.5,0.5,0.3);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	const vec3 center(5.0,0.0,0.0);
@@ -210,7 +213,7 @@ void cameraUp(float degrees, vec3& eye, vec3& up) {
     p = glm::normalize(p);
     eye = eye * Transform::rotate(-degrees, p);
     up = up * Transform::rotate(-degrees, p);
-    // eye = eye * Transform::rotate(-degrees, up);
+    //eye = eye * Transform::rotate(-degrees, up);
 }
 
 void cameraLeft(float degrees, vec3& eye, vec3& up) {
@@ -218,4 +221,9 @@ void cameraLeft(float degrees, vec3& eye, vec3& up) {
     eye = eye * Transform::rotate(-degrees, up);
 }
 
+void reset()
+{
+    eye = eyeinit;
+    up = upinit;
+}
 
