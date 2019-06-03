@@ -22,7 +22,7 @@ public:
 public:
     Part(Mass mass, MomentOfInertia selfMomentOfInertia, Point centerOfMass, Point centerOfDrag);
     virtual void update(Time dt, const PlaneState &state);
-    VelocityV getRlativeAirspeed(PlaneState &state) const;
+    VelocityV getRlativeAirspeed(const PlaneState &state) const;
     virtual std::pair<ForceV, MomentOfForce> getForces(const PlaneState& state)const=0;
 };
 

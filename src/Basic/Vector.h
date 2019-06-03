@@ -55,6 +55,8 @@ public:
     friend Vector operator/(double c, const Vector &vec);
     Vector&operator/=(double c);
 
+    Vector getNorm() const;
+
     double magnitude() const;
     void normalize();
     friend Vector unit(Vector v);

@@ -151,6 +151,7 @@ private:
 };
 
 using LengthV = VectorUnit<1,0,0>;
+using AreaV = VectorUnit<2, 0, 0>;
 using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;

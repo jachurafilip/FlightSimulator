@@ -62,3 +62,7 @@ Point Model_6DOF::getCenterOfMass() const {
                            [](const auto& acc, const auto& elem){return acc + elem->mass * elem->centerOfMass;}) / getMasses();
     return Point{0, 0, 0} + offset.getValue();
 }
+
+Model_6DOF::Model_6DOF(const Position &position1) : PhysicalModel(position1) {
+
+}

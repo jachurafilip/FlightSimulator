@@ -183,4 +183,6 @@ inline Power operator""_W(long double magnitude) noexcept
     return Power(magnitude);
 }
 
+using Density = ScalarUnit<-3, 1, 0>;
+
 #endif //FLIGHTSIMULATOR_PHYSICALVALUE_H

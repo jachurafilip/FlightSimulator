@@ -152,6 +152,12 @@ double Vector::operator[](int index) {
     throw std::out_of_range("Index outside of vector");
 }
 
+Vector Vector::getNorm() const {
+    Vector v(*this);
+    v.normalize();
+    return v;
+}
+
 
 
 

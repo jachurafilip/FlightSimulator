@@ -6,11 +6,13 @@
 #define FLIGHTSIMULATOR_PHYSICS_H
 
 
+#include <Models/AtmosphereModel.h>
 #include "MatrixUnit.h"
 #include "Point.h"
 
 namespace Physics{
     inline int kronecker (int x, int y) { return x==y ? 1 : 0;}
+
     MomentOfInertia steiner(const MomentOfInertia& oldMoment, const Mass& mass, const Point& oldAxis, const Point& newAxis){
         Matrix result = Matrix::zeros();
         Vector distance = (newAxis - oldAxis);
@@ -23,6 +25,12 @@ namespace Physics{
         }
         return MomentOfInertia(result);
     }
+
+    ForceV calculateDrag(AreaV areaV, VelocityV airspeed, double dragCoefficient, Length altitude){
+        return ForceV(-0.5 * areaV.magnitude() * airspeed.magnitude() * airspeed.magnitude() *
+            AtmosphereModel::getDensity(altitude).getMagnitude() * dragCoefficient * airspeed.getValue().getNorm());
+    }
+
 }
 
 

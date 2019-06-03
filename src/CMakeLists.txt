@@ -3,8 +3,8 @@ set(UnitsSourceFiles Basic/Vector.cpp Basic/VectorUnit.cpp Basic/Point.cpp Basic
 
 add_library(Units STATIC ${UnitsSourceFiles})
 target_include_directories(Units PUBLIC ./)
-set(ModelsHeaders Models/PhysicalModel.h Models/DummyModel.h Models/Model_6DOF.h Models/PlaneState.h)
-set(ModelsSourceFiles Models/PhysicalModel.cpp Models/DummyModel.cpp Models/Model_6DOF.cpp)
+set(ModelsHeaders Models/PhysicalModel.h Models/DummyModel.h Models/Model_6DOF.h Models/PlaneState.h Models/AtmosphereModel.cpp)
+set(ModelsSourceFiles Models/PhysicalModel.cpp Models/DummyModel.cpp Models/Model_6DOF.cpp Models/AtmosphereModel.h)
 
 set(ControllerSourceFiles PlaneController.cpp tests)
 set(ControllerHearder PlaneController.h)

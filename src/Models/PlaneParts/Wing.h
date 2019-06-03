@@ -8,7 +8,13 @@
 #include <Part.h>
 
 class Wing : public Part{
-
+public:
+    Area area;
+    LengthV forward;
+    LengthV up; // direction of generated positive lift
+    std::pair<ForceV, MomentOfForce> getForces(const PlaneState &state) const override;
+    double getCoefficientOfLift(double angleOfAttack) const;
+    double getCoefficientOfDrag(double angleOfAttack) const;
 };
 
 

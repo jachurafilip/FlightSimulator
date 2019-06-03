@@ -1,0 +1,14 @@
+//
+// Created by igor on 03.06.19.
+//
+
+#ifndef FLIGHTSIMULATOR_CONTROLLSURFACE_H
+#define FLIGHTSIMULATOR_CONTROLLSURFACE_H
+
+
+class ControllSurface {
+
+};
+
+
+#endif //FLIGHTSIMULATOR_CONTROLLSURFACE_H
