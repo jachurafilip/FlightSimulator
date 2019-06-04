@@ -1,6 +1,7 @@
 
 #include <gtest/gtest.h>
 #include <Basic/ScalarUnit.h>
+#include <Basic/VectorUnit.h>
 
 TEST(PhysicalUnitsTests,Equality)
 {
@@ -44,5 +45,5 @@ TEST(PhysicalUnitsTests, IsAbleToDivideTwoValues)
 
 TEST(PhysicalUnitsTests, LiteralOperators)
 {
-    EXPECT_EQ(10.0_kg*5.0_ms2, 50.0_N);
+    EXPECT_EQ(10.0_kg * 5.0_ms2, 50.0_N);
 }

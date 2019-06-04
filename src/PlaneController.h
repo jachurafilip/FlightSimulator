@@ -12,20 +12,24 @@
 class PlaneController {
 public:
 
-    PlaneController(Plane *p,PhysicalModel *m):plane(p), model(m){};
+    PlaneController(Plane *p,PhysicalModel *m):plane(p), model(m){
+        previous = std::chrono::system_clock::now();
+    };
     void simulate();
     void waitForUsersAction();
-
-
-private:
     std::unique_ptr<Plane> plane;
     std::unique_ptr<PhysicalModel> model;
-    const int FPS = 30;
-
     void moveAilerons(double value);
     void moveElevators(double value);
     void moveRudder(double value);
     void throttle(double value);
+    void flaps();
+
+private:
+    const int FPS = 30;
+    std::chrono::time_point<std::chrono::system_clock> previous;
+
+
 };
 
 

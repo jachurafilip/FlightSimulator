@@ -7,6 +7,7 @@
 #include <chrono>
 #include <thread>
 #include <Models/DummyModel.h>
+#include <iostream>
 
 void PlaneController::waitForUsersAction() {
 
@@ -20,17 +21,33 @@ void PlaneController::simulate()
     using namespace std::chrono;
 
 
-    time_point<system_clock> start = system_clock::now();
-    while(true) {
-        duration<double> dt = system_clock::now() - start;
-        waitForUsersAction();
-        start = system_clock::now();
-        model->update(Time(0));
+        duration<double> dt = system_clock::now() - previous;
+        auto next = system_clock::now();
+        model->update(dt.count());
         plane->pos = model->getCurrentPosition();
 
         plane->draw();
-        std::this_thread::sleep_until(start + 1000ms/FPS);
-    }
+        std::this_thread::sleep_until(previous + 1000ms/FPS);
+        previous = next;
+
+}
+
+void PlaneController::moveAilerons(double value) {
+    model->setAilerons(value);
+
+}
+
+void PlaneController::moveElevators(double value) {
+    model->setElevators(value);
+}
+
+void PlaneController::throttle(double value) {
+    model->setThrottle(value);
+
+}
+
+void PlaneController::flaps() {
+    model->Flaps();
 
 }
 

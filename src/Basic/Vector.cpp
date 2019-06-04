@@ -163,3 +163,5 @@ Vector Vector::getNorm() const {
 
 
 
+
+

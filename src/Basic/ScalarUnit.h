@@ -15,6 +15,7 @@ private:
 
 public:
     explicit ScalarUnit(const long double magnitude) : magnitude_(magnitude) {}
+    ScalarUnit() = default;
 
     long double getMagnitude() const
     {
