@@ -26,8 +26,8 @@ namespace Physics{
         return MomentOfInertia(result);
     }
 
-    ForceV calculateDrag(AreaV areaV, VelocityV airspeed, double dragCoefficient, Length altitude){
-        return ForceV(-0.5 * areaV.magnitude() * airspeed.magnitude() * airspeed.magnitude() *
+    ForceV calculateDrag(Area area, VelocityV airspeed, double dragCoefficient, Length altitude){
+        return ForceV(-0.5 * area.getMagnitude() * airspeed.magnitude() * airspeed.magnitude() *
             AtmosphereModel::getDensity(altitude).getMagnitude() * dragCoefficient * airspeed.getValue().getNorm());
     }
 

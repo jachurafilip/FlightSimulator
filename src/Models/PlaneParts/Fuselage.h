@@ -6,8 +6,14 @@
 #define FLIGHTSIMULATOR_FUSELAGE_H
 
 
-class Fuselage {
+#include "Part.h"
 
+class Fuselage : public Part{
+private:
+    Area area;
+    double dragCoefficient;
+public:
+    std::pair<ForceV, MomentOfForce> getForces(const PlaneState &state) const override;
 };
 
 

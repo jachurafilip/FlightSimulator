@@ -6,8 +6,19 @@
 #define FLIGHTSIMULATOR_CONTROLLSURFACE_H
 
 
-class ControllSurface {
+#include "Wing.h"
 
+enum ControllType{
+    aileron,
+    rudder,
+    elevator
+};
+
+class ControllSurface : public Wing {
+    double maxDeflection;
+    ControllType type;
+public:
+    std::pair<ForceV, MomentOfForce> getForces(const PlaneState &state) const override;
 };
 
 

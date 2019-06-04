@@ -12,10 +12,10 @@ std::pair<ForceV, MomentOfForce> Wing::getForces(const PlaneState &state) const 
     Velocity parallelAirspeed = Velocity(airspeed.dot(forward).getMagnitude());
     double angleOfAttack = atan((airspeed.dot(up) / airspeed.dot(forward)).getMagnitude());
     Density d = AtmosphereModel::getDensity(Length(state.position.point.getY()));
-    ForceV drag = ForceV((0.5 * forward * d * area * parallelAirspeed * parallelAirspeed
-            * getCoefficientOfDrag(angleOfAttack)).getValue());
-    ForceV lift = ForceV((0.5 * up * d * area * parallelAirspeed * parallelAirspeed
-                        * getCoefficientOfLift(angleOfAttack)).getValue());
+    ForceV drag = 0.5 * forward * d * area * parallelAirspeed * parallelAirspeed
+            * getCoefficientOfDrag(angleOfAttack);
+    ForceV lift = 0.5 * up * d * area * parallelAirspeed * parallelAirspeed
+                        * getCoefficientOfLift(angleOfAttack);
     MomentOfForce momentOfDrag = (drag + lift).cross(LengthV(centerOfMass - state.centerOfMass));
     return std::make_pair(drag + lift, momentOfDrag);
 }
