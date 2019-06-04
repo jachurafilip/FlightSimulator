@@ -23,9 +23,6 @@ target_link_libraries(Scene glfw)
 target_link_libraries(Scene glad)
 target_link_libraries(Scene glm)
 
-add_library(Units STATIC ${UnitsSourceFiles})
-target_include_directories(Units PUBLIC . )
-set(PlanesHeaders Plane.h)
 
 add_library(Models STATIC ${ModelsSourceFiles})
 target_include_directories(Models PUBLIC . )

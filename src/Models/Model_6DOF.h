@@ -18,7 +18,7 @@ private:
     PlaneState state;
     std::vector<std::unique_ptr<Part>> parts;
 public:
-    void update(Time dt) override;
+    void update(double dt_) override;
     Model_6DOF(const Position& position1);
 private:
     std::pair<ForceV, MomentOfForce> getForces() const;

@@ -7,7 +7,8 @@
 #include <Basic/Physics.h>
 
 
-void Model_6DOF::update(Time dt) {
+void Model_6DOF::update(double dt_) {
+    Time dt{dt_};
     PlaneState newState{};
     ForceV forceV;
     MomentOfForce momentOfForce;
@@ -59,7 +60,7 @@ Mass Model_6DOF::getMasses() const {
 Point Model_6DOF::getCenterOfMass() const {
     VectorUnit<1, 0, 0> offset = std::accumulate(parts.begin(), parts.end(),
                            VectorUnit<1, 1, 0>{0, 0, 0},
-                           [](const auto& acc, const auto& elem){return acc + elem->mass * elem->centerOfMass;}) / getMasses();
+                           [](const auto& acc, const auto& elem){return acc + LengthV(elem->centerOfMass - Point{0, 0, 0}) * elem->mass;}) / getMasses();
     return Point{0, 0, 0} + offset.getValue();
 }
 
