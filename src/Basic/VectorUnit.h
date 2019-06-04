@@ -53,10 +53,24 @@ public:
     {
         return VectorUnit<M,K,S>(value_+other.value_);
     }
+
+    VectorUnit<M,K,S> operator+=(const VectorUnit<M,K,S> &other)
+    {
+        value_+=other.value_;
+        return *this;
+    }
+
     VectorUnit<M,K,S> operator-(const VectorUnit<M,K,S> &other) const
     {
         return VectorUnit<M, K, S>(value_-other.value_);
     }
+
+    VectorUnit<M,K,S> operator-=(const VectorUnit<M,K,S> &other)
+    {
+        value_-=other.value_;
+        return *this;
+    }
+
     VectorUnit<M,K,S> operator-() const
     {
         return VectorUnit<M,K,S>(-value_);
@@ -101,7 +115,7 @@ public:
     }
 
     template<int M1, int K1, int S1>
-    VectorUnit<M+M1, K+K1, S+S1> operator/(const ScalarUnit<M1,K1,S1> &rhs) const
+    VectorUnit<M-M1, K-K1, S-S1> operator/(const ScalarUnit<M1,K1,S1> &rhs) const
     {
         return VectorUnit<M-M1, K-K1, S-S1>(value_/rhs.getMagnitude());
     }
@@ -137,13 +151,14 @@ private:
 };
 
 using LengthV = VectorUnit<1,0,0>;
+using AreaV = VectorUnit<2, 0, 0>;
 using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;
 using MomentOfForce = VectorUnit<2,1,-2>;
-using MomentOfInertia = VectorUnit<2, 1, 0>;
 using AngularVelocity = VectorUnit<0, 0, -1>;
 using AngularAcceleration = VectorUnit<0, 0, -2>;
+using AngularMomentum = VectorUnit<2, 1, -1>;
 
 
 #endif //FLIGHTSIMULATOR_VECTORUNIT_H

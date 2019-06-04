@@ -5,18 +5,25 @@
 #ifndef FLIGHTSIMULATOR_PART_H
 #define FLIGHTSIMULATOR_PART_H
 
-#include <chrono>
-
-
+#include <Basic/VectorUnit.h>
+#include <Basic/ScalarUnit.h>
+#include <Basic/Position.h>
+#include <Basic/MatrixUnit.h>
+#include "Models/PlaneState.h"
 
 
 class Part {
-//    Mass mass;
-//    MomentOfInertia momentOfInertia;
-//    Position centerOfMass;
-//    Position centerOfDrag;
-//
-//    virtual std::pair<Force, MomentOfInertia> update(std::chrono::duration<double> dt, const PlaneState& state)=0;
+public:
+    Mass mass;
+    MomentOfInertia momentOfInertia; //relative to plane origin
+    MomentOfInertia selfMomentOfInertia; //relative to part CoM
+    Point centerOfMass;
+    Point centerOfDrag;
+public:
+    Part(Mass mass, MomentOfInertia selfMomentOfInertia, Point centerOfMass, Point centerOfDrag);
+    virtual void update(Time dt, const PlaneState &state);
+    VelocityV getRlativeAirspeed(const PlaneState &state) const;
+    virtual std::pair<ForceV, MomentOfForce> getForces(const PlaneState& state)const=0;
 };
 
 
