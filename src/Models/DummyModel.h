@@ -5,6 +5,7 @@
 #ifndef FLIGHTSIMULATOR_DUMMYMODEL_H
 #define FLIGHTSIMULATOR_DUMMYMODEL_H
 
+#define Model6DOF DummyModel
 
 #include "PhysicalModel.h"
 #include "Basic/ScalarUnit.cpp"

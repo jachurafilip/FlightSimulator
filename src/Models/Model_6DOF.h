@@ -19,7 +19,8 @@ private:
     std::vector<std::unique_ptr<Part>> parts;
 public:
     void update(double dt_) override;
-    Model_6DOF(const Position& position1);
+    explicit Model_6DOF(const Position& position1);
+    Model_6DOF();
 private:
     std::pair<ForceV, MomentOfForce> getForces() const;
     MomentOfInertia getMoments() const;

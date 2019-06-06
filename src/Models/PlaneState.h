@@ -13,12 +13,6 @@ struct PlaneState{
     AngularMomentum angularMomentum;
     AngularVelocity angularVelocity;
     Point centerOfMass;
-
-    double AileronsAngle = 0;
-    double ElevatorsAngle = 0;
-    double RudderAngle = 0;
-    double throttleSeting = 0;
-    //TODO add state variables;
 };
 
 #endif //FLIGHTSIMULATOR_PLANESTATE_H

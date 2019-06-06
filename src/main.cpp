@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "Models/DummyModel.h"
+#include "Models/Model_6DOF.h"
 #include "PlaneController.h"
 #include "Scene/FixObj.cpp"
 #include "Scene/Scene.cpp"
@@ -8,7 +9,7 @@
 #include <iostream>
 
 Plane p;
-DummyModel m;
+Model6DOF m;
 
 PlaneController pc(&p,&m);
 
@@ -82,6 +83,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 int main(int argc, char** argv)
 {
 
+    system("feh ../../test.jpg");
 
     GLFWwindow* window;
     glfwSetErrorCallback(error_callback);

@@ -8,6 +8,7 @@
 
 
 void Model_6DOF::update(double dt_) {
+    previousPosition = position;
     Time dt{dt_};
     PlaneState newState{};
     ForceV forceV;
@@ -65,5 +66,9 @@ Point Model_6DOF::getCenterOfMass() const {
 }
 
 Model_6DOF::Model_6DOF(const Position &position1) : PhysicalModel(position1) {
+
+}
+
+Model_6DOF::Model_6DOF(): PhysicalModel() {
 
 }

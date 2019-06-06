@@ -16,12 +16,10 @@ public:
         previous = std::chrono::system_clock::now();
     };
     void simulate();
-    void waitForUsersAction();
     std::unique_ptr<Plane> plane;
     std::unique_ptr<PhysicalModel> model;
     void moveAilerons(double value);
     void moveElevators(double value);
-    void moveRudder(double value);
     void throttle(double value);
     void flaps();
     void turnLogs();
