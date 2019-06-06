@@ -30,11 +30,15 @@ public:
 
     double distance(const Point &other);
 
-    void moveByVec(const Vector &vec);
+    Point& moveByVec(const Vector &vec);
 
     bool operator==(const Point &rhs) const;
 
     bool operator!=(const Point &rhs) const;
+
+    Point operator + (const Vector &vec);
+
+    Vector operator - (const Point& other) const;
 
 private:
     double x,y,z;

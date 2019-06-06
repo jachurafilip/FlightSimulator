@@ -42,14 +42,25 @@ double Point::distance(const Point &other) {
     return sqrt(pow(x-other.x,2.0)+pow(y-other.y,2.0)+pow(y-other.y,2.0));
 }
 
-void Point::moveByVec(const Vector &vec) {
+Point& Point::moveByVec(const Vector &vec) {
     x+=vec.getX();
     y+=vec.getY();
     z+=vec.getZ();
+    return *this;
 }
+
+
 
 std::ostream &operator<<(std::ostream &os, const Point &point) {
     os << "x: " << point.x << " y: " << point.y << " z: " << point.z;
     return os;
+}
+
+Point Point::operator+(const Vector &vec) {
+    return Point(x, y, z).moveByVec(vec);
+}
+
+Vector Point::operator-(const Point &other) const {
+    return Vector(x - other.x, y - other.y, z - other.z);
 }
 

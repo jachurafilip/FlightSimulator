@@ -53,10 +53,24 @@ public:
     {
         return VectorUnit<M,K,S>(value_+other.value_);
     }
+
+    VectorUnit<M,K,S> operator+=(const VectorUnit<M,K,S> &other)
+    {
+        value_+=other.value_;
+        return *this;
+    }
+
     VectorUnit<M,K,S> operator-(const VectorUnit<M,K,S> &other) const
     {
         return VectorUnit<M, K, S>(value_-other.value_);
     }
+
+    VectorUnit<M,K,S> operator-=(const VectorUnit<M,K,S> &other)
+    {
+        value_-=other.value_;
+        return *this;
+    }
+
     VectorUnit<M,K,S> operator-() const
     {
         return VectorUnit<M,K,S>(-value_);
@@ -137,10 +151,14 @@ private:
 };
 
 using LengthV = VectorUnit<1,0,0>;
+using AreaV = VectorUnit<2, 0, 0>;
 using VelocityV = VectorUnit<1,0,-1>;
 using AccelerationV = VectorUnit<1,0,-2>;
 using ForceV = VectorUnit<1,1,-2>;
 using MomentOfForce = VectorUnit<2,1,-2>;
+using AngularVelocity = VectorUnit<0, 0, -1>;
+using AngularAcceleration = VectorUnit<0, 0, -2>;
+using AngularMomentum = VectorUnit<2, 1, -1>;
 
 
 #endif //FLIGHTSIMULATOR_VECTORUNIT_H

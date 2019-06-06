@@ -7,23 +7,24 @@
 
 
 #include "PhysicalModel.h"
-
-struct plane_state{
-    Position position;
-    VelocityV velocity;
-
-    double AileronsAngle = 0;
-    double ElevatorsAngle = 0;
-    double RudderAngle = 0;
-    double throttleSeting = 0;
-    //TODO add state variables;
-};
+#include "PlaneState.h"
+#include <memory>
+#include <vector>
+#include <Models/PlaneParts/Part.h>
+#include <Basic/MatrixUnit.h>
 
 class Model_6DOF : public PhysicalModel {
 private:
-    plane_state state;
+    PlaneState state;
+    std::vector<std::unique_ptr<Part>> parts;
 public:
-    void update(double dt) override;
+    void update(double dt_) override;
+    Model_6DOF(const Position& position1);
+private:
+    std::pair<ForceV, MomentOfForce> getForces() const;
+    MomentOfInertia getMoments() const;
+    Mass getMasses() const;
+    Point getCenterOfMass() const;
 };
 
 

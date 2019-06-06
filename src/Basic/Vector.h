@@ -42,6 +42,8 @@ public:
     Vector& operator-=(const Vector &other);
     Vector operator-() const;
 
+    double operator[](int index);
+
     double dot(const Vector &other) const ;
     Vector cross(const Vector &other) const;
 
@@ -52,6 +54,8 @@ public:
     Vector operator/(double c)const;
     friend Vector operator/(double c, const Vector &vec);
     Vector&operator/=(double c);
+
+    Vector getNorm() const;
 
     double magnitude() const;
     void normalize();
