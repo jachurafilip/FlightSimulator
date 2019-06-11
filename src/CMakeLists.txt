@@ -9,9 +9,6 @@ set(ModelsSourceFiles Models/PhysicalModel.cpp Models/DummyModel.cpp Models/Mode
 set(ControllerSourceFiles PlaneController.cpp)
 set(ControllerHearder PlaneController.h)
 
-set(PlanesSourceFiles Plane.cpp)
-set(PlanesHeaders Plane.h linmath.h)
-
 set(SceneSourceFiles Scene/Geometry.cpp Scene/shaders.cpp Scene/Transform.cpp Scene/grader.cpp Scene/FixObj.cpp Scene/Scene.cpp)
 set(SceneHearder Scene/Geometry.h Scene/shaders.h Scene/Transform.h Scene/grader.h Scene/FreeImage.h)
 
@@ -36,8 +33,6 @@ target_link_libraries(Controller Units)
 target_link_libraries(Controller glfw)
 target_link_libraries(Controller glad)
 
-add_library(Planes STATIC ${PlanesSourceFiles})
-target_include_directories(Planes PUBLIC .)
 
 add_subdirectory(Models/PlaneParts)
 
@@ -45,7 +40,6 @@ add_executable(main main.cpp)
 target_link_libraries(main Scene)
 target_link_libraries(main Models)
 target_link_libraries(main Controller)
-target_link_libraries(main Planes)
 target_link_libraries(main glfw)
 target_link_libraries(main glad)
 target_link_libraries(main glm)

@@ -10,10 +10,9 @@
 #include <sys/types.h>
 #include <unistd.h>
 
-Plane p;
 Model6DOF m;
 
-PlaneController pc(&p,&m);
+PlaneController pc(&m);
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {

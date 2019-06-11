@@ -46,7 +46,7 @@ void DummyModel::update(double dt) {
 
     if(position.point!=previousPosition.point)
         if(logs)
-            std::cout<<"Speed: "<<v.getValue().getX()<<","<<v.getValue().getZ()<<"m/s, altitude: "<<position.point.getZ()<<" meters, pitching angle: "<<position.angles.pitch<<std::endl;
+            std::cout<<"Speed: "<<v.getValue().getX()<<","<<v.getValue().getZ()<<"m/s, altitude: "<<position.point.getZ()<<" meters, pitching angle: "<<position.angles.pitch<<std::endl<<position.point.getX();
 }
 
 DummyModel::DummyModel(const Position &position) : PhysicalModel(position) {}

@@ -25,6 +25,6 @@ double Wing::getCoefficientOfDrag(double angleOfAttack) const {
 }
 
 double Wing::getCoefficientOfLift(double angleOfAttack) const {
-    return angleOfAttack; // TODO przepisać te tableki
+    return angleOfAttack;
 }
 

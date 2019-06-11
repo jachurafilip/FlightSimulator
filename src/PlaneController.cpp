@@ -9,20 +9,15 @@
 #include <Models/DummyModel.h>
 #include <iostream>
 
-
+using namespace std::chrono_literals;
+using namespace std::chrono;
 
 void PlaneController::simulate()
 {
-    using namespace std::chrono_literals;
-    using namespace std::chrono;
-
-
         duration<double> dt = system_clock::now() - previous;
         auto next = system_clock::now();
         model->update(dt.count());
-        plane->pos = model->getCurrentPosition();
 
-        plane->draw();
         std::this_thread::sleep_until(previous + 1000ms/FPS);
         previous = next;
 
@@ -30,7 +25,6 @@ void PlaneController::simulate()
 
 void PlaneController::moveAilerons(double value) {
     model->setAilerons(value);
-
 }
 
 void PlaneController::moveElevators(double value) {
